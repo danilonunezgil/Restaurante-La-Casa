@@ -16,6 +16,7 @@ makemigrations:
 migrate:
 	docker exec -it project_name ./manage.py migrate
 
+
 initialfixture:
 	docker exec -it project_name ./manage.py loaddata initial
 

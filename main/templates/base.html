@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
 
@@ -222,16 +223,14 @@
                       <div class="col-md-6 col-lg-3">
                         <h5>Shop</h5>
                         <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="{% static 'shop-category.html' %}" class="nav-link">Category -
-                              sidebar right</a></li>
+                          <li class="nav-item"><a href="{% url 'shop:product' %}" class="nav-link">Category-sidebar right</a></li>
                           <li class="nav-item"><a href="{% static 'shop-category-left.html' %}"
                               class="nav-link">Category - sidebar left</a></li>
-                          <li class="nav-item"><a href="{% static 'shop-category-full.html' %}"
+                          <li class="nav-iteminclude"><a href="{% static 'shop-category-full.html' %}"
                               class="nav-link">Category - full width</a></li>
-                          <li class="nav-item"><a href="{% static 'shop-detail.html' %}" class="nav-link">Product
-                              detail</a></li>
+                          <li class="nav-item"><a href="{% static 'shop-detail.html' %}" class="nav-link">Product detail</a></li>
                         </ul>
-                        <!--<h5>Shop - order process</h5>
+                        <!--<h5>Shop - order process</h5>include
                           <ul class="list-unstyled mb-3">
                             <li class="nav-item"><a href="{% static 'shop-basket.html' %}" class="nav-link">Shopping cart</a></li>
                             <li class="nav-item"><a href="{% static 'shop-checkout1.html' %}" class="nav-link">Checkout - step 1</a></li>
@@ -272,7 +271,7 @@
               <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown"
                   class="dropdown-toggle">Contact <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li class="dropdown-item"><a href="{% url 'contact' %}" class="nav-link">Contact option 1</a>
+                  <li class="dropdown-item"><a href="{% url 'shop:contact' %}" class="nav-link">Contact option 1</a>
                   </li>
                   <!--<li class="dropdown-item"><a href="{% static 'contact2.html' %}" class="nav-link">Contact option 2</a></li>
                     <li class="dropdown-item"><a href="{% static 'contact3.html' %}" class="nav-link">Contact option 3</a></li>-->
