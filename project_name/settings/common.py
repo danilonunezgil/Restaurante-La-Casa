@@ -11,7 +11,12 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ 
 
+env = environ.Env()
+
+# Leer el archivo .env
+environ.Env.read_env()
 
 ENVIRONMENT = os.environ.get('ENVIRONMENT', 'development')
 IS_PRODUCTION = ENVIRONMENT == "production"
@@ -31,10 +36,13 @@ DEPENDENCIES_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
 
+    'crispy_forms',
+]
+ 
 PROJECT_APPS = [
     'main',
+    'shop',
 ]
 
 ADDONS = [
@@ -48,6 +56,10 @@ ADDONS = [
 ]
 
 INSTALLED_APPS = DEPENDENCIES_APPS + ADDONS + PROJECT_APPS
+
+
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
+NOTIFY_EMAIL = env('NOTIFY_EMAIL')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -98,6 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -112,10 +125,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+#STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+#MEDIA_URL = '/media/'
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Email Config
 EMAIL_SUBJECT_PREFIX = '[project_name] '

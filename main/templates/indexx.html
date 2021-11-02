@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Ecommerce
+{% endblock title %}
+
+{% block content %}
+
+<!-- imagen de fondo -->
+<section >
+  <div class="container">
+    <!-- Carousel Start-->
+    <div class="home-carousel">
+      <div class="dark-mask mask-primary"></div>
+      <div class="container">
+        <div class="homepage owl-carousel">
+          <div class="item">
+            <div class="row">
+              <div class="col-md-5 text-right">
+                <!--<p><img src="{% static 'img/logo.png' %}" alt="" class="ml-auto"></p>-->
+                <h1>COMPUTER FAIR</h1>
+                <p>Computers for study<br>work and entertainment</p>
+              </div>
+              <div class="col-md-7"><img src="{% static 'img/sportatil.png' %}" alt="" class="img-fluid"></div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="col-md-7 text-center"><img src="{% static 'img/small-cell.png' %}" alt="" class="img-fluid"></div>
+              <div class="col-md-5">
+                <h1>YOUR IDEAL CELL PHONE AT THE BEST PRICE</h1>
+                <!-- <ul class="list-unstyled">
+                  <li>Sliders and carousels</li>
+                  <li>4 Header variations</li>
+                  <li>Google maps, Forms, Megamenu, CSS3 Animations and much more</li>
+                  <li>+ 11 extra pages showing template features</li>
+                </ul>-->
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="col-md-5 text-right">
+                <h1>THE BEST IN FASHION CAN BE FOUND HERE</h1>
+                <ul class="list-unstyled">
+                  <li>CLOTHES FOR MEN</li>
+                  <li>WOMEN'S CLOTHING</li>
+                  <li>CLOTHES FOR KIDS</li>                
+                </ul>
+              </div>
+              <div class="col-md-7"><img src="{% static 'img/smoda.png' %}" alt=""
+                  class="img-fluid"></div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="row">
+              <div class="col-md-7"><img src="{% static 'img/tenis.png' %}" alt="" class="img-fluid">
+              </div>
+              <div class="col-md-5">
+                <h1>RUNING SPORT SHOES</h1>
+                <!--<ul class="list-unstyled">
+                  <li>7 preprepared colour variations.</li>
+                  <li>Easily to change fonts</li>
+                </ul>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Carousel End-->
+  </div>
+</section>
+<section class="bar bg-gray">
+  <div class="container">
+    <div class="heading text-center">
+      <h2>PRODUCTOS</h2>
+    </div>
+  </div>
+</section>
+{% endblock content %}

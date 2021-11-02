@@ -30,6 +30,7 @@ else:
     }
 
 # Email Config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 """
 EMAIL_PASSWORD = get_secret('EMAIL_PASSWORD')
 EMAIL_HOST = 'smtp.project_name.com'
