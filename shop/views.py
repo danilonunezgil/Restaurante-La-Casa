@@ -22,21 +22,21 @@ class ContactView(generic.FormView):
     
     def form_valid(self, form):
         messages.info(
-            self.request, "Hemos recibido tu mensaje")
+            self.request, "We have received your message ")
         Name = form.cleaned_data.get('Name')
         Last_name = form.cleaned_data.get('Last_name')
         Email = form.cleaned_data.get('Email')
         Message = form.cleaned_data.get('Message')
 
         full_message = f"""
-            Mensaje recibibo de {Name},{Last_name}, {Email}
+            Message received from {Name},{Last_name}, {Email}
             ___________________________________
 
 
             {Message}
             """
         send_mail(
-            subject="Mensaje recibido por Contact Form",
+            subject="Message received by Contact Form",
             message=full_message,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[settings.NOTIFY_EMAIL]
