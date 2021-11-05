@@ -17,12 +17,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+#from shop import views
+from main import views 
+
 
 urlpatterns = [
-    path('', include('main.urls')),
+    path('', views.Home.as_view(),name="Home"),
     path('admin/', admin.site.urls),
+    path('main/', include('main.urls', namespace='main')),
+    path('shop/', include('shop.urls', namespace='shop')),
+    
+    #path('contact/', views.ContactView.as_view(),name="contact"),    
 ]
 
-if not settings.IS_PRODUCTION:
+if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
