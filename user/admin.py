@@ -5,4 +5,3 @@ from .models import person
 # Register your models here.
 
 admin.site.register(person)
-admin.site.register(profil)
