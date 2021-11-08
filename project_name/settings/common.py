@@ -46,7 +46,6 @@ PROJECT_APPS = [
     'user',
 ]
 
-
 ADDONS = [
     # Pick the Addons you want
     # To use Webpack, uncomment next line
