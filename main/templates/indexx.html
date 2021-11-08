@@ -76,6 +76,26 @@ Ecommerce
     <div class="heading text-center">
       <h2>PRODUCTOS</h2>
     </div>
+
+    <div class="container">
+      <div class="row mb-5">
+    
+        {% for product in object_list %}
+        <div class="col-lg-4 col-md-6 mb-4" data-aos='fade-up'>
+          <figure class="block-4-image">
+            <a><img src="{{ product.image.url }}" width="100%" class="img-fluid"> </a>
+          </figure>
+    
+          <div class="bloc-4-text p-4"></div>
+          <a>
+            <h3>{{ product.title }}</h3>
+          </a>
+          <p class="mb-0">Precio : ${{ product.price }}</p>
+          <p class="mb-0">{{ product.descritption }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </section>
 {% endblock content %}
