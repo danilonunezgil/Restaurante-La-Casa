@@ -43,6 +43,7 @@ DEPENDENCIES_APPS = [
 PROJECT_APPS = [
     'main',
     'shop',
+    'user',
 ]
 
 ADDONS = [
