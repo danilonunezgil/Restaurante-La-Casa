@@ -5,7 +5,9 @@ from django.utils.text import slugify
 from django.shortcuts import reverse
 
 User = get_user_model()
-
+"""""
+Definition of ecommerce models
+"""
 class Address(models.Model):
     ADDRESS_CHOICES = (
         ('B', 'Billing'),
@@ -28,16 +30,20 @@ class Address(models.Model):
 
 
 class Product(models.Model):
-    title = models.CharField(max_length=150)
-    slug = models.SlugField(unique=True)
+    """
+    class to store a product, related to, model: `auth.User`.
+    """
+    title = models.CharField(max_length=150, help_text="Name of product, example product 1")
+    slug = models.SlugField(unique=True, help_text="A short name, generally used in URLs.")
     image = models.ImageField(upload_to='product_images')
-    descritption = models.TextField()
-    price = models.IntegerField(default=0)
+    descritption = models.TextField(help_text="Here you must write the product description")
+    price = models.IntegerField(default=0, help_text="Price of product")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    active = models.BooleanField(default=False)
+    active = models.BooleanField(default=False, help_text="Field to know if the product is active or not active")
     
     def __str__(self):
+        """Return title of product."""
         return self.title
     
     @property
