@@ -4,6 +4,23 @@ Django 3.1.1 + Postgres 11 + Dokku config (Production Ready)
 
 ## Documentation ##
 
+The project has a requirements document which is hosted at the following link:
+https://docs.google.com/document/d/1sPXStBqmgArgUppvDD705n8iP_wjbgbnHtVZsB5MZwA
+
+### Kanban ###
+```
+The visualization and assignment of tasks and project requirements is handled on a Kanban board 
+located in the Projects tab called "Base CMS E-Commerce". In the board there are 5 columns.
+- To Do (pending tasks) 
+- In progress (Tasks in progress)
+- Review in progress
+- Reviewer approved
+- Done (tasks/requirements completed)
+
+The Issues and notes are created in the To Do column. 
+Notes are requirements to work in later.
+issues are next or in progress requirements to develop.
+```
 ### Directory Tree ###
 ```
 
