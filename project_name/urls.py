@@ -23,9 +23,11 @@ from main import views
 
 urlpatterns = [
     path('', views.Home.as_view(),name="Home"),
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('main/', include('main.urls', namespace='main')),
     path('shop/', include('shop.urls', namespace='shop')),
+    path('user/', include('user.urls', namespace='user')),
     
     #path('contact/', views.ContactView.as_view(),name="contact"),    
 ]
