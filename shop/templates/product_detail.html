@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Product detail
+{% endblock title %}
+
+{% block content %}
+
+<div class="m-3 p-3" id="content">
+    <div class="container bg-white">
+        <div class="row bar">
+            <!-- LEFT COLUMN _________________________________________________________-->
+            <div class="col-lg-8">
+                <div id="productMain" class="row">
+                    <div class="col-sm-1">
+                        <div data-slider-id="1" class="owl-thumbs">
+                            <picture>
+                                <source srcset="{{ product.image.url }}" type="image/svg+xml">
+                                <img src="{{ product.image.url }}" class="img-fluid img-thumbnail" alt="{{ product.title }}" width="44">
+                                <img src="{{ product.image.url }}" class="img-fluid img-thumbnail" alt="{{ product.title }}" width="44">
+                                <img src="{{ product.image.url }}" class="img-fluid img-thumbnail" alt="{{ product.title }}" width="44">
+                            </picture>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
+                            <div> <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid"></div>
+                            <div> <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid"></div>
+                            <div> <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="description" class="box mb-4 mt-4">
+                    <h3 class="font-weight-bold">Descripcion</h3>
+                    <p>{{ product.descritption }}</p>
+                </div>
+            </div>
+            <div class="col-lg-3 border bg-white m-4 p-2">
+                <!-- MENUS -->
+                <div class="panel panel-default sidebar-menu">
+                    <div class="panel-heading p-2">
+                        <h3 class="h4 panel-title">{{ product.title }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="price m-1 p-1">  
+                            <span>$ {{ product.price }} </span>
+                        </div>
+                        <div class="pay-method m-1 p-1">
+                            <i class="fa fa-cc-visa" style="color:blue; font-size: 24px;"></i>
+                            <i class="fa fa-cc-mastercard" style="color:blue; font-size: 24px;"></i>
+                            <i class="fa fa-cc-paypal" style="color:blue; font-size: 24px;"></i>
+                        </div>
+                        <div class="stock m-1 p-1">
+                            <span for="quantity_units">Cantidad: </span>
+                            <select id="quantity_units">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <span style="font-size: 10px; color: grey;">({{product.stock}} unidades disponibles)</span>
+                        </div>
+                        <div class="actions m-1 p-1">
+                            <div class="p-1" id="add_car" name="add_car">
+                                <button type="submit" class="btn btn-template-outlined btn-block">
+                                    <i class="fa fa-shopping-cart"></i> Add to cart
+                                </button>
+                            </div>
+                            <div class="p-1" id="buy_now" name="buy_now">
+                                <button type="submit" class="btn btn-template-outlined btn-block">
+                                    Buy now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+

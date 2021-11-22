@@ -37,7 +37,8 @@ class Product(models.Model):
     slug = models.SlugField(unique=True, help_text="A short name, generally used in URLs.")
     image = models.ImageField(upload_to='product_images')
     descritption = models.TextField(help_text="Here you must write the product description")
-    price = models.IntegerField(default=0, help_text="Price of product")
+    price = models.FloatField(default=0, help_text="Price of product")
+    stock = models.IntegerField(default=0, help_text="Stock of product")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=False, help_text="Field to know if the product is active or not active")
@@ -45,6 +46,9 @@ class Product(models.Model):
     def __str__(self):
         """Return title of product."""
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("shop:detail", kwargs={'slug': self.slug})
     
     @property
     def in_stock(self):
