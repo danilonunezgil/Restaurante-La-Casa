@@ -40,6 +40,7 @@ DEPENDENCIES_APPS = [
     'crispy_forms',
     #admindocs
     'django.contrib.admindocs',
+    'djmoney',
 ]
  
 PROJECT_APPS = [

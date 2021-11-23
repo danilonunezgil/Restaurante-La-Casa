@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.db.models.fields import DecimalField
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
 from django.shortcuts import reverse
+from djmoney.models.fields import MoneyField
 
 User = get_user_model()
 """""
@@ -37,7 +39,12 @@ class Product(models.Model):
     slug = models.SlugField(unique=True, help_text="A short name, generally used in URLs.")
     image = models.ImageField(upload_to='product_images')
     descritption = models.TextField(help_text="Here you must write the product description")
-    price = models.FloatField(default=0, help_text="Price of product")
+    price = MoneyField(
+        default = 0,
+        decimal_places = 2,
+        default_currency='USD',
+        max_digits = 11,
+        help_text="Price of product")
     stock = models.IntegerField(default=0, help_text="Stock of product")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
