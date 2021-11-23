@@ -49,5 +49,7 @@ class ProductListView(generic.ListView):
     template_name='product_list.html'
     queryset = Product.objects.all()
     
-
+class ProductDetailView(generic.DetailView):
+    template_name='product_detail.html'
+    queryset = Product.objects.all()
    
