@@ -71,7 +71,7 @@ class Order(models.Model):
     """
     This class allows you to purchase a product, related to, model: `auth.User`.
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, help_text="Name of the user making the purchase ")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, help_text="Name of the user making the purchase ")
     start_date = models.DateTimeField(auto_now_add=True)
     ordered_date = models.DateTimeField(blank=True, null=True, help_text="Date of purchase")
     ordered = models.BooleanField(default=False)

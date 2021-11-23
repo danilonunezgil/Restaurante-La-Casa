@@ -1,4 +1,7 @@
 from django import forms
+from django.forms import fields
+
+from shop.models import OrderItem
 
 #contact form class
 class Contactf(forms.Form):
@@ -14,3 +17,9 @@ class Contactf(forms.Form):
     Message = forms.CharField( widget=forms.Textarea(attrs={
         'placeholder': "Your Message"
     }))
+
+class AddToCartForm(forms.ModelForm):
+
+    class Meta:
+        model = OrderItem
+        fields = ['quantity']
