@@ -32,7 +32,7 @@ Product detail
                     </div>
                 </div>
                 <div id="description" class="box mb-4 mt-4">
-                    <h3 class="font-weight-bold">Descripcion</h3>
+                    <h3 class="font-weight-bold">Description</h3>
                     <p>{{ product.descritption }}</p>
                 </div>
             </div>
@@ -47,7 +47,7 @@ Product detail
                         </div>
                         <div class="panel-body">
                             <div class="price m-1 p-1">  
-                                <span>$ {{ product.price }} </span>
+                                <span> {{ product.price }} </span>
                             </div>
                             <div class="pay-method m-1 p-1">
                                 <i class="fa fa-cc-visa" style="color:blue; font-size: 24px;"></i>
@@ -56,7 +56,7 @@ Product detail
                             </div>
                             <div class="stock m-1 p-1">
                                 {{ form|crispy}}
-                                <span style="font-size: 10px; color: grey;">({{product.stock}} unidades disponibles)</span>
+                                <span style="font-size: 10px; color: grey;">({{product.stock}} units avalaible)</span>
                             </div>
                             <div class="actions m-1 p-1">
                                 <div class="p-1" id="add_car" name="add_car">
