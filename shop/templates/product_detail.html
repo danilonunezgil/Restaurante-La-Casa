@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %}
 Product detail
 {% endblock title %}
@@ -37,9 +38,12 @@ Product detail
             </div>
             <div class="col-lg-3 border bg-white m-4 p-2">
                 <!-- MENUS -->
-                <div class="panel panel-default sidebar-menu">
-                    <div class="panel-heading p-2">
-                        <h3 class="h4 panel-title">{{ product.title }}</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="panel panel-default sidebar-menu">
+                        <div class="panel-heading p-2">
+                            <h3 class="h4 panel-title">{{ product.title }}</h3>
                     </div>
                     <div class="panel-body">
                         <div class="price m-1 p-1">  
@@ -51,30 +55,36 @@ Product detail
                             <i class="fa fa-cc-paypal" style="color:blue; font-size: 24px;"></i>
                         </div>
                         <div class="stock m-1 p-1">
-                            <span for="quantity_units">Quantity: </span>
-                            <select id="quantity_units">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
                             <span style="font-size: 10px; color: grey;">({{product.stock}} units avalible )</span>
                         </div>
-                        <div class="actions m-1 p-1">
-                            <div class="p-1" id="add_car" name="add_car">
-                                <button type="submit" class="btn btn-template-outlined btn-block">
-                                    <i class="fa fa-shopping-cart"></i> Add to cart
-                                </button>
+                        <div class="panel-body">
+                            <div class="price m-1 p-1">  
+                                <span> {{ product.price }} </span>
                             </div>
-                            <div class="p-1" id="buy_now" name="buy_now">
-                                <button type="submit" class="btn btn-template-outlined btn-block">
-                                    Buy now
-                                </button>
+                            <div class="pay-method m-1 p-1">
+                                <i class="fa fa-cc-visa" style="color:blue; font-size: 24px;"></i>
+                                <i class="fa fa-cc-mastercard" style="color:blue; font-size: 24px;"></i>
+                                <i class="fa fa-cc-paypal" style="color:blue; font-size: 24px;"></i>
+                            </div>
+                            <div class="stock m-1 p-1">
+                                {{ form|crispy}}
+                                <span style="font-size: 10px; color: grey;">({{product.stock}} units avalaible)</span>
+                            </div>
+                            <div class="actions m-1 p-1">
+                                <div class="p-1" id="add_car" name="add_car">
+                                    <button type="submit" class="btn btn-template-outlined btn-block">
+                                        <i class="fa fa-shopping-cart"></i> Add to cart
+                                    </button>
+                                </div>
+                                <div class="p-1" id="buy_now" name="buy_now">
+                                    <button type="submit" class="btn btn-template-outlined btn-block">
+                                        Buy now
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
