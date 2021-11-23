@@ -74,7 +74,7 @@ Ecommerce
 <section class="bar bg-gray">
   <div class="container">
     <div class="heading text-center">
-      <h2>PRODUCTOS</h2>
+      <h2>PRODUCTS</h2>
     </div>
 
     <div class="container">
@@ -90,7 +90,7 @@ Ecommerce
           <a href="{{ product.get_absolute_url }}">
             <h3>{{ product.title }}</h3>
           </a>
-          <p class="mb-0">Precio : ${{ product.price }}</p>
+          <p class="mb-0">Price: {{ product.price }}</p>
         </div>
         {% endfor %}
       </div>
