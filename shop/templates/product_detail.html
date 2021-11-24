@@ -40,22 +40,9 @@ Product detail
                 <!-- MENUS -->
                 <form method="post">
                     {% csrf_token %}
-                    
                     <div class="panel panel-default sidebar-menu">
                         <div class="panel-heading p-2">
                             <h3 class="h4 panel-title">{{ product.title }}</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="price m-1 p-1">  
-                            <span> {{ product.price }} </span>
-                        </div>
-                        <div class="pay-method m-1 p-1">
-                            <i class="fa fa-cc-visa" style="color:blue; font-size: 24px;"></i>
-                            <i class="fa fa-cc-mastercard" style="color:blue; font-size: 24px;"></i>
-                            <i class="fa fa-cc-paypal" style="color:blue; font-size: 24px;"></i>
-                        </div>
-                        <div class="stock m-1 p-1">
-                            <span style="font-size: 10px; color: grey;">({{product.stock}} units avalible )</span>
                         </div>
                         <div class="panel-body">
                             <div class="price m-1 p-1">  
