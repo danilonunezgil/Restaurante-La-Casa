@@ -1,15 +1,16 @@
 from typing import Generic
+from django.db.models.query import InstanceCheckMeta
 from django.http import request
-from django.shortcuts import reverse, get_object_or_404
+from django.shortcuts import redirect, reverse, get_object_or_404
 from django.views import generic
 from .forms import Contactf, AddToCartForm
 from django.core.mail import send_mail
 from django.conf import settings 
 from django.contrib import messages 
-from .models import Product
+from .models import OrderItem, Product
 from django.db.models import Q
 from .utils import get_or_set_order_session
-
+from django.urls import resolve
 
 
 # Create your views here.
@@ -56,12 +57,15 @@ class ProductDetailView(generic.FormView):
     form_class = AddToCartForm
     
     def get_object(self):
+        print('get_object')
         return get_object_or_404(Product, slug = self.kwargs["slug"])
     
     def get_success_url(self):
-        return reverse('Home') #TODO: shop
+         print('get_succes')
+         return reverse('Home')
 
     def form_valid(self, form):
+        print('form valid')
         order = get_or_set_order_session(self.request)
         product = self.get_object()
         item_filter = order.items.filter(product = product)
@@ -79,6 +83,7 @@ class ProductDetailView(generic.FormView):
         return super(ProductDetailView, self).form_valid(form)
     
     def get_context_data(self, **kwargs):
+        print('get_context')
         context = super(ProductDetailView, self).get_context_data(**kwargs)
         context['product'] = self.get_object()
         return context

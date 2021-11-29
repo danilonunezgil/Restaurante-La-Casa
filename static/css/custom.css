@@ -1,1 +1,54 @@
 /* your styles go here */ 
+
+/* Popup product detail view */
+
+.overlay {
+    position: absolute;
+    z-index: 1;
+}
+
+.overlay.active {
+    visibility: visible;
+    display: flex;
+}
+
+.popup {
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .3);
+    padding: 20px;
+    width: 500px;
+    transform: scale(0.7);
+}
+
+.popup.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.popup .btn-info-popup {
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.popup .text-header-popup {
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.popup .btn-close {
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.pay-method .lpaypal{
+    min-width: 40px !important;
+    width: 45px;
+    height: 40px;
+}
+.pay-method .lmasterc{
+    width: 50px;
+    height: 40px;
+}
+.pay-method .lcredibanco{
+    width: 75px;
+    height: 30px;
+}
