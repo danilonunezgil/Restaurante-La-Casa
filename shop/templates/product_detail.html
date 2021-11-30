@@ -64,13 +64,13 @@ Product detail
                                 <span style="font-size: 10px; color: grey;">({{product.stock}} units avalaible)</span>
                             </div>
                             <div class="actions m-1 p-1">
-                                <div class="p-1" id="add_car" name="add_car">
-                                    <button type="submit" class="btn btn-template-outlined btn-block" id="btn-open-popup">
+                                <div class="m-1" id="add_car" name="add_car">
+                                    <button type="submit" class="btn btn-template-outlined btn-block" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                         <i class="fa fa-shopping-cart"></i> Add to cart
                                     </button>
                                 </div>
-                                <div class="p-1" id="buy_now" name="buy_now">
-                                    <button type="submit" class="btn btn-template-outlined btn-block">
+                                <div class="m-1" id="buy_now" name="buy_now">
+                                    <button type="button" class="btn btn-template-outlined btn-block">
                                         Buy now
                                     </button>
                                 </div>
@@ -80,32 +80,26 @@ Product detail
                 </form>
             </div>
         </div>
-        <div class="overlay d-none d-flex align-items-center justify-content-center visible mt-2 mb-0 ms-0 me-0" id="overlay">
-            <div class="popup bg-gray-100 rounded opacity-0" id="popup">
-                <table style="width: 100%;">
-                    <tr>
-                        <td><i class="fa fa-check-circle d-inline text-start btn-info-popup"></i></td>
-                        <td><h4 class="d-inline text-center text-header-popup">Your product has been successfully added to your cart.</h4></td>
-                        <td style="text-align: right;">
-                            <a href="#" id="btn-close" class="d-block text-end btn-close">
-                                <i class="fa fa-times btn-close"></i>
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-                <hr class="bg-danger border-2 border-top border-danger">
-                <div class="d-inline-block" id="product-img">
-                    <img src="{{ product.image.url }}" alt="{{ product.title }}" width="200">
-                </div>
-                <div class="d-inline-block" id="product-title">
-                    <h3>{{ product.title }}</h3>
-                    <h3>{{ product.price }}</h3>
-                </div>
-                <div class="btn-add-to-cart" id="btn-add-to-cart">
-                    <button type="submit" class="btn btn-template-outlined btn-block" id="add-to-cart"> Go to cart </button>
-                </div>
-                <div class="btn-continue-buy" id="btn-continue-buy">
-                    <button type="submit" class="btn btn-template-outlined btn-block"> Continue shopping. </button>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel"><i class="fa fa-check-circle d-inline text-start btn-info-popup"></i> Your product has been successfully added to your cart.</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="d-inline-block" id="product-img">
+                            <img src="{{ product.image.url }}" alt="{{ product.title }}" width="200">
+                        </div>
+                        <div class="d-inline-block" id="product-title">
+                            <h3>{{ product.title }}</h3>
+                            <h3>{{ product.price }}</h3>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue shopping.</button>
+                        <button type="button" class="btn btn-primary" id="add-to-cart">Go to cart</button>
+                    </div>
                 </div>
             </div>
         </div>
