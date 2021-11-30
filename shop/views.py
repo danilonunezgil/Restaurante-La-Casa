@@ -1,13 +1,14 @@
+from re import template
 from typing import Generic
 from django.db.models.query import InstanceCheckMeta
 from django.http import request
-from django.shortcuts import redirect, reverse, get_object_or_404
+from django.shortcuts import reverse, get_object_or_404, redirect
 from django.views import generic
 from .forms import Contactf, AddToCartForm
 from django.core.mail import send_mail
 from django.conf import settings 
 from django.contrib import messages 
-from .models import OrderItem, Product
+from .models import Product, OrderItem
 from django.db.models import Q
 from .utils import get_or_set_order_session
 from django.urls import resolve
@@ -71,7 +72,7 @@ class ProductDetailView(generic.FormView):
         item_filter = order.items.filter(product = product)
         if item_filter.exists():
             item = item_filter.first()
-            item.quantity = int(form.cleaned_data['quantity'])
+            item.quantity += int(form.cleaned_data['quantity'])
             item.save()
 
         else:
@@ -87,3 +88,34 @@ class ProductDetailView(generic.FormView):
         context = super(ProductDetailView, self).get_context_data(**kwargs)
         context['product'] = self.get_object()
         return context
+
+class CartView(generic.TemplateView):
+    template_name = "cart.html"
+    def get_context_data(self, *args,**kwargs):
+        context = super(CartView, self).get_context_data(**kwargs)
+        context["order"] = get_or_set_order_session(self.request)
+        return context
+
+class IncreaseQuantityView(generic.View):
+    def get(self, request, *args, **kwargs):
+        order_item = get_object_or_404(OrderItem, id=kwargs['pk'])
+        order_item.quantity += 1
+        order_item.save()
+        return redirect("shop:summary")
+
+class DecreaseQuantityView(generic.View):
+    def get(self, request, *args, **kwargs):
+        order_item = get_object_or_404(OrderItem, id=kwargs['pk'])
+
+        if order_item.quantity <= 1:
+            order_item.delete()
+        else:
+            order_item.quantity -= 1
+            order_item.save()
+        return redirect("shop:summary")
+
+class RemoveFromCartView(generic.View):
+    def get(self, request, *args, **kwargs):
+        order_item = get_object_or_404(OrderItem, id=kwargs['pk'])
+        order_item.delete()
+        return redirect("shop:summary")

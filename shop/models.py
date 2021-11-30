@@ -57,6 +57,9 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse("shop:detail", kwargs={'slug': self.slug})
     
+    def get_price(self):
+        return self.price
+    
     @property
     def in_stock(self):
         return self.stock > 0
@@ -73,6 +76,13 @@ class OrderItem(models.Model):
     def __str__(self):
         """ Return quantity and title of product"""
         return f"{self.quantity} x {self.product.title}"
+    
+    def get_raw_total_item_price(self):
+        return self.quantity * self.product.price
+    
+    def get_total_item_price(self):
+        price = self.get_raw_total_item_price() 
+        return price
     
 class Order(models.Model):
     """
@@ -95,6 +105,26 @@ class Order(models.Model):
     @property
     def reference_number(self):
         return f"ORDER-{self.pk}"
+    
+    def get_raw_subtotal(self):
+        total = 0
+        for order_item in self.items.all():
+            total += order_item.get_raw_total_item_price()
+        return total
+
+    def get_subtotal(self):
+        subtotal = self.get_raw_subtotal()
+        return subtotal
+
+    def get_raw_total(self):
+        subtotal = self.get_raw_subtotal()
+        # agregar suma de IGV, Delivery, Resta DESCUENTOS
+        #total = subtotal - discounts + tax + delivery
+        return subtotal
+
+    def get_total(self):
+        total = self.get_raw_total()
+        return total
     
 class Payment(models.Model):
     """
