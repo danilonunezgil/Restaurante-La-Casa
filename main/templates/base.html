@@ -1,4 +1,5 @@
 {% load static %}
+{% load cart_template_tags %}
 
 <!DOCTYPE html>
 <html>
@@ -40,7 +41,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
 
-<body>
+<body class="bg-gray">
   <div id="all">
     <!-- Top bar-->
     <div class="top-bar">
@@ -195,9 +196,9 @@
             </form>
           </div>-->
         </div>
-        <a href="#" class="site-cart">
+        <a href="{% url 'shop:summary' %}" class="site-cart">
           <span><i class="fa fa-shopping-cart"></i></span>
-          <span class="count">0</span>
+          <span class="count"> {{request|cart_item_count}} </span>
         </a>
       </div>
     </header>
@@ -208,7 +209,7 @@
     {% block content %}
 
     {% endblock content %}
-    <section class="bar bg-gray">
+    <section class="bar bg-white">
       <div class="container">
         <div class="heading text-center">
           <h2>Our Clients</h2>
@@ -295,12 +296,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-4 text-center-md">
-              <p>&copy; 2020. Your company / name goes here</p>
-            </div>
-            <div class="col-lg-8 text-right text-center-md">
-              <p>Template design by <a href="https://bootstrapious.com/snippets">Bootstrapious </a>& <a
-                  href="https://fity.cz/">Fity</a></p>
-              <!-- Please do not remove the backlink to us unless you purchase the Attribution-free License at https://bootstrapious.com/donate. Thank you. -->
+              <p>&copy; 2021. Enciso Systems </p>
             </div>
           </div>
         </div>

@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.db.models.fields import DecimalField
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
 from django.shortcuts import reverse
+from djmoney.models.fields import MoneyField
 
 User = get_user_model()
 """""
@@ -37,7 +39,13 @@ class Product(models.Model):
     slug = models.SlugField(unique=True, help_text="A short name, generally used in URLs.")
     image = models.ImageField(upload_to='product_images')
     descritption = models.TextField(help_text="Here you must write the product description")
-    price = models.IntegerField(default=0, help_text="Price of product")
+    price = MoneyField(
+        default = 0,
+        decimal_places = 2,
+        default_currency='USD',
+        max_digits = 11,
+        help_text="Price of product")
+    stock = models.IntegerField(default=0, help_text="Stock of product")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=False, help_text="Field to know if the product is active or not active")
@@ -45,6 +53,12 @@ class Product(models.Model):
     def __str__(self):
         """Return title of product."""
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("shop:detail", kwargs={'slug': self.slug})
+    
+    def get_price(self):
+        return self.price
     
     @property
     def in_stock(self):
@@ -63,11 +77,18 @@ class OrderItem(models.Model):
         """ Return quantity and title of product"""
         return f"{self.quantity} x {self.product.title}"
     
+    def get_raw_total_item_price(self):
+        return self.quantity * self.product.price
+    
+    def get_total_item_price(self):
+        price = self.get_raw_total_item_price() 
+        return price
+    
 class Order(models.Model):
     """
     This class allows you to purchase a product, related to, model: `auth.User`.
     """
-    user = models.ForeignKey(User, on_delete=models.CASCADE, help_text="Name of the user making the purchase ")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, help_text="Name of the user making the purchase ")
     start_date = models.DateTimeField(auto_now_add=True)
     ordered_date = models.DateTimeField(blank=True, null=True, help_text="Date of purchase")
     ordered = models.BooleanField(default=False)
@@ -84,6 +105,26 @@ class Order(models.Model):
     @property
     def reference_number(self):
         return f"ORDER-{self.pk}"
+    
+    def get_raw_subtotal(self):
+        total = 0
+        for order_item in self.items.all():
+            total += order_item.get_raw_total_item_price()
+        return total
+
+    def get_subtotal(self):
+        subtotal = self.get_raw_subtotal()
+        return subtotal
+
+    def get_raw_total(self):
+        subtotal = self.get_raw_subtotal()
+        # agregar suma de IGV, Delivery, Resta DESCUENTOS
+        #total = subtotal - discounts + tax + delivery
+        return subtotal
+
+    def get_total(self):
+        total = self.get_raw_total()
+        return total
     
 class Payment(models.Model):
     """
