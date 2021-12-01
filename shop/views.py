@@ -63,7 +63,7 @@ class ProductDetailView(generic.FormView):
     
     def get_success_url(self):
          print('get_succes')
-         return reverse('Home')
+         return reverse('shop:summary')
 
     def form_valid(self, form):
         print('form valid')
