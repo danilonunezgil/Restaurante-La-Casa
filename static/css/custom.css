@@ -2,16 +2,8 @@
 
 /* img payment - product detail view */
 
-.pay-method .lpaypal{
-    min-width: 40px !important;
-    width: 45px;
-    height: 40px;
-}
-.pay-method .lmasterc{
-    width: 50px;
-    height: 40px;
-}
 .pay-method .lcredibanco{
-    width: 75px;
-    height: 30px;
+    max-width: 105px !important;
+    width: 104px;
+    height: 32px;
 }
