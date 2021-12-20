@@ -56,11 +56,28 @@
                 <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
                 <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
               </ul>
-              <div class="login"><a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn"><i
-                    class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Sign In</span></a><a
-                  href="{% static 'customer-register.html' %}" class="signup-btn"><i class="fa fa-user"></i><span
-                    class="d-none d-md-inline-block">Sign Up</span></a>
-              </div>
+              {% if not request.user.is_authenticated %}
+                <div class="login"><a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn"><i
+                      class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Sign In</span></a><a
+                    href="{% static 'customer-register.html' %}" class="signup-btn"><i class="fa fa-user"></i><span
+                      class="d-none d-md-inline-block">Sign Up</span></a>
+                </div>
+              {% else %}
+              <a  href="#" > {{ user.username }}  &nbsp; </a>
+                <div class="header-menu">
+                  <div class="user-area dropdown float">
+                      <a href="#" class="dropdown-toggle active " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        
+                        <i class="fa fa-user " aria-hidden="true"> </i>
+                       
+                      </a>
+                      <div class="user-menu dropdown-menu">
+                          <a class="nav-link" href="#"><i class="fa fa -cog"></i>My account </a>
+                          <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i>Logout</a>
+                      </div>
+                  </div>
+                </div>
+              {% endif %}
               <ul class="social-custom list-inline">
                 <li class="list-inline-item"><a href="https://es-la.facebook.com/"><i class="fa fa-facebook"></i></a>
                 </li>
@@ -85,20 +102,31 @@
                 aria-hidden="true">×</span></button>
           </div>
           <div class="modal-body">
-            <form action="customer-orders.html" method="get">
-              <div class="form-group">
-                <input id="email_modal" type="text" placeholder="email" class="form-control">
+            <form method="POST" action= "{% url 'user:login' %}" >
+              {% csrf_token %}
+
+              <div class="form-group " >
+                {% if form.error_messages %}
+                  <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss = "alert" aria-label = "Close">
+                    <span aria-hidden = "true">&times;</span>
+                    </button>
+                    <strong>Warning: </strong> {{ form.get_invalid_login_error }}
+                  </div>
+                {% endif %}
+                <input class="form-control" type="text" placeholder="Username" name="username" />
               </div>
+
               <div class="form-group">
-                <input id="password_modal" type="password" placeholder="password" class="form-control">
+                  <input id="password_modal" class="form-control" type="password" placeholder="Password" name="password" />
               </div>
-              <p class="text-center">
-                <button class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Log in</button>
-              </p>
+
+
+              <button class="btn btn-secondary btn-block mt-5" type="submit" >Sign in!</button>
             </form>
             <p class="text-center text-muted">Not registered yet?</p>
-            <p class="text-center text-muted"><a href="{% static 'customer-register.html' %}"><strong>Register
-                  now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much
+            <p class="text-center text-muted"><a href="#"><strong>Register
+                  now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much
               more!</p>
           </div>
         </div>
@@ -109,19 +137,23 @@
     <!-- Navbar Start-->
     <header class="nav-holder make-sticky">
       <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
-        <div class="container"><a href="{% url 'Home' %}" class="navbar-brand home"><img
-              src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-none d-md-inline-block"><img
-              src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-inline-block d-md-none"><span
-              class="sr-only">Enciso - go to homepage</span></a>
-          <button type="button" data-toggle="collapse" data-target="#navigation"
-            class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i
-              class="fa fa-align-justify"></i></button>
+        <a href="{% url 'Home' %}" class="navbar-brand home"><img
+          src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-none d-md-inline-block"><img
+          src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-inline-block d-md-none"><span
+          class="sr-only">Enciso - go to homepage</span>
+        </a>
+        <div class="container">
           <nav class="navbar navbar-light bg-light">
             <form class="form-inline">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SEARCH</button>
             </form>
           </nav>
+          <button type="button" data-toggle="collapse" data-target="#navigation"
+            class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i
+              class="fa fa-align-justify"></i>
+          </button>
+          
           <div id="navigation" class="navbar-collapse collapse">
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item dropdown active"><a href="javascript: void(0)" data-toggle="dropdown"
