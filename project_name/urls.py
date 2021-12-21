@@ -27,7 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/', include('main.urls', namespace='main')),
     path('shop/', include('shop.urls', namespace='shop')),
-    path('user/', include('user.urls', namespace='user')),
+    path('user/', include(('user.urls', 'user'), namespace='user')),
+    
     
     #path('contact/', views.ContactView.as_view(),name="contact"),    
 ]

@@ -149,3 +149,6 @@ SERVER_EMAIL = 'Server <server@project_name.com>'
 # ADMINS = [('Admin', 'admin@project_name.com')]
 # MANAGERS = [('Admin', 'admin@project_name.com')]
 
+LOGIN_URL = '/user/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'Home'
