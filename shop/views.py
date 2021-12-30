@@ -1,7 +1,8 @@
 from re import template
+from django.contrib.messages.api import error
 from typing import Generic
 from django.db.models.query import InstanceCheckMeta
-from django.http import request
+from django.http import request, JsonResponse, response
 from django.shortcuts import reverse, get_object_or_404, redirect
 from django.views import generic
 from .forms import Contactf, AddToCartForm
@@ -58,33 +59,39 @@ class ProductDetailView(generic.FormView):
     form_class = AddToCartForm
     
     def get_object(self):
-        print('get_object')
         return get_object_or_404(Product, slug = self.kwargs["slug"])
-    
-    def get_success_url(self):
-         print('get_succes')
-         return reverse('shop:summary')
 
-    def form_valid(self, form):
-        print('form valid')
-        order = get_or_set_order_session(self.request)
-        product = self.get_object()
-        item_filter = order.items.filter(product = product)
-        if item_filter.exists():
-            item = item_filter.first()
-            item.quantity += int(form.cleaned_data['quantity'])
-            item.save()
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            order = get_or_set_order_session(self.request)
+            product = self.get_object()
+            form = self.form_class(request.POST)
+            item_filter = order.items.filter(product = product)
 
-        else:
-            new_item = form.save(commit=False)
-            new_item.product = product
-            new_item.order = order
-            new_item.save()
-
-        return super(ProductDetailView, self).form_valid(form)
+            if form.is_valid():
+                if item_filter.exists():
+                    item = item_filter.first()
+                    item.quantity += int(form.cleaned_data['quantity'])
+                    item.save()
+                    msg = "sumar item"
+                    error = form.errors
+                else:
+                    new_item = form.save(commit=False)
+                    new_item.product = product
+                    new_item.order = order
+                    new_item.save()
+                    msg = "nuevo item"
+                    error = form.errors
+                response = JsonResponse({'mensaje':msg,'error':error})
+                return response    
+            else:
+                msg = "form no valido"
+                error = form.errors
+                response = JsonResponse({'mensaje':msg,'error':error})
+                print(form.errors)
+                return response
     
     def get_context_data(self, **kwargs):
-        print('get_context')
         context = super(ProductDetailView, self).get_context_data(**kwargs)
         context['product'] = self.get_object()
         return context
