@@ -57,26 +57,47 @@
                 <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
               </ul>
               {% if not request.user.is_authenticated %}
-                <div class="login"><a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn"><i
-                      class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Sign In</span></a><a
-                    href="{% static 'customer-register.html' %}" class="signup-btn"><i class="fa fa-user"></i><span
-                      class="d-none d-md-inline-block">Sign Up</span></a>
+                <div class="login">
+                  <a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn">
+                    <i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Sign In</span>
+                  </a>
+                  <a href="{% url 'user:signup' %}" class="signup-btn">
+                    <i class="fa fa-user"></i>
+                    <span class="d-none d-md-inline-block">Sign Up</span>
+                  </a>
                 </div>
-              {% else %}
-              <a  href="#" > {{ user.username }}  &nbsp; </a>
-                <div class="header-menu">
-                  <div class="user-area dropdown float">
-                      <a href="#" class="dropdown-toggle active " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {% else  %}
+                {% if request.user.is_superuser %}
+                  <a  href="#" > {{ user.username }}  &nbsp; </a>
+                  <div class="header-menu">
+                    <div class="user-area dropdown float">
+                        <a href="#" class="dropdown-toggle active " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          
+                          <i class="fa fa-user " aria-hidden="true"> </i>
                         
-                        <i class="fa fa-user " aria-hidden="true"> </i>
-                       
-                      </a>
-                      <div class="user-menu dropdown-menu">
-                          <a class="nav-link" href="#"><i class="fa fa -cog"></i>My account </a>
-                          <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i>Logout</a>
-                      </div>
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="{% url 'admin:index' %}"><i class="fa fa -cog"></i>Administrate </a>
+                            <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i>Logout</a>
+                        </div>
+                    </div>
                   </div>
-                </div>
+                {% else %}
+                  <a  href="#" > {{ user.username }}  &nbsp; </a>
+                  <div class="header-menu">
+                    <div class="user-area dropdown float">
+                        <a href="#" class="dropdown-toggle active " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          
+                          <i class="fa fa-user " aria-hidden="true"> </i>
+                        
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="{% url 'user:detail' request.user.username %}"><i class="fa fa -cog"></i>My account </a>
+                            <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i>Logout</a>
+                        </div>
+                    </div>
+                  </div>  
+                {% endif %}                                
               {% endif %}
               <ul class="social-custom list-inline">
                 <li class="list-inline-item"><a href="https://es-la.facebook.com/"><i class="fa fa-facebook"></i></a>
@@ -122,10 +143,10 @@
               </div>
 
 
-              <button class="btn btn-secondary btn-block mt-5" type="submit" >Sign in!</button>
+              <button class="btn btn-primary btn-block mt-5" type="submit" >Sign in!</button>
             </form>
             <p class="text-center text-muted">Not registered yet?</p>
-            <p class="text-center text-muted"><a href="#"><strong>Register
+            <p class="text-center text-muted"><a href="{% url 'user:signup' %}"><strong>Register
                   now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much
               more!</p>
           </div>
