@@ -1,18 +1,22 @@
-from re import template
-from django.contrib.messages.api import error
-from typing import Generic
+#from re import template
+#from django.contrib.messages.api import error
+#from typing import Generic
+from django.core import paginator
 from django.db.models.query import InstanceCheckMeta
-from django.http import request, JsonResponse, response
+from django.http import request, JsonResponse, response, Http404
 from django.shortcuts import reverse, get_object_or_404, redirect
 from django.views import generic
-from .forms import Contactf, AddToCartForm
 from django.core.mail import send_mail
 from django.conf import settings 
 from django.contrib import messages 
-from .models import Product, OrderItem
-from django.db.models import Q
-from .utils import get_or_set_order_session
-from django.urls import resolve
+#from django.db.models import Q
+#from django.urls import resolve
+from django.core.paginator import Paginator
+
+from shop.forms import Contactf, AddToCartForm
+from shop.models import Product, OrderItem
+from shop.utils import get_or_set_order_session
+
 
 
 # Create your views here.
@@ -52,7 +56,9 @@ class ContactView(generic.FormView):
 
 class ProductListView(generic.ListView):
     template_name='product_list.html'
-    queryset = Product.objects.all()
+    model = Product
+    paginate_by = 12
+    context_object_name = 'product'
     
 class ProductDetailView(generic.FormView):
     template_name='product_detail.html'
