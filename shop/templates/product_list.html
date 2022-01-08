@@ -7,20 +7,8 @@ Shop
 
 {% block content %}
 
-<div class="bg-light py-3"> 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 mb-0">
-                <a href="{% url 'Home' %}">Home</a>
-                <span class="mx-2 mb-0">/</span>
-                <strong class="text-block">Shop</strong>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="site-section">
-    <div class="container">
+<div class="site-section m-3 p-3">
+    <div class="container bg-white">
         <div class="row mb-5">
  
             {% for product in object_list %}
@@ -30,10 +18,13 @@ Shop
                     </figure>        
                     <div class="bloc-4-text p-4"></div>
                     <a href="{{ product.get_absolute_url }}"><h3>{{ product.title }}</h3></a>
-                    <p class="mb-0">Precio : ${{ product.price }}</p>
-                    <p class="mb-0">{{ product.descritption }}</p>
+                    <p class="mb-0">Precio :  {{ product.price }}</p>
+                    
                 </div>
             {% endfor %}                    
+        </div>
+        <div>
+            {% include 'pagination.html'%}
         </div>
     </div>
 </div>
