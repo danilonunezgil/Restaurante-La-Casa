@@ -71,7 +71,7 @@ Ecommerce
     <!-- Carousel End-->
   </div>
 </section>
-<section class="bar bg-gray">
+<section class="bar bg-body">
   <div class="container bg-white">
     <div class="heading text-center"><br>
       <h2>PRODUCTS</h2>
@@ -95,6 +95,21 @@ Ecommerce
         {% endfor %}
       </div>
     </div>
+  </div>
+</section>
+<section class="bar bg-clients">
+  <div class="container">
+    <div class="heading text-center">
+      <h2>Our Clients</h2>
+    </div>
+    <ul class="list-unstyled owl-carousel customers no-mb">
+      <li class="item"><img src="{% static 'img/customer-1.png' %}" alt="" class="img-fluid"></li>
+      <li class="item"><img src="{% static 'img/customer-2.png' %}" alt="" class="img-fluid"></li>
+      <li class="item"><img src="{% static 'img/customer-3.png' %}" alt="" class="img-fluid"></li>
+      <li class="item"><img src="{% static 'img/customer-4.png' %}" alt="" class="img-fluid"></li>
+      <li class="item"><img src="{% static 'img/customer-5.png' %}" alt="" class="img-fluid"></li>
+      <li class="item"><img src="{% static 'img/customer-6.png' %}" alt="" class="img-fluid"></li>
+    </ul>
   </div>
 </section>
 {% endblock content %}
