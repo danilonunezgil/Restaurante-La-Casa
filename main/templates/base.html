@@ -158,101 +158,88 @@
     <!-- Navbar Start-->
     <header class="nav-holder make-sticky">
       <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
-        <a href="{% url 'Home' %}" class="navbar-brand home"><img
-          src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-none d-md-inline-block"><img
-          src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-inline-block d-md-none"><span
-          class="sr-only">Enciso - go to homepage</span>
-        </a>
-        <div class="container">
-          <nav class="navbar navbar-light bg-light">
-            <form class="form-inline">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SEARCH</button>
-            </form>
-          </nav>
-          <button type="button" data-toggle="collapse" data-target="#navigation"
-            class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i
-              class="fa fa-align-justify"></i>
-          </button>
-          
-          <div id="navigation" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item dropdown active"><a href="javascript: void(0)" data-toggle="dropdown"
-                  class="dropdown-toggle">Home <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-item"><a href="{% url 'Home' %}" class="nav-link">Option 1: Default Page</a></li>
-                </ul>
-
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown"
-                  class="dropdown-toggle">About<b class="caret"></b></a>
-                <ul class="dropdown-menu megamenu">
-                  <li>
-                    <div class="row">
-                      <div class="col-lg-6"><img src="{% static 'img/template-homepage.png' %}" alt=""
-                          class="img-fluid d-none d-lg-block"></div>
-                      <div class="col-lg-3 col-md-6">
-                        <!--<h5>About</h5>-->
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="{% static 'about.html' %}" class="nav-link">About us</a></li>
-                          <li class="nav-item"><a href="{% static 'team.html' %}" class="nav-link">Our team</a></li>
-                          <li class="nav-item"><a href="{% static 'team-member.html' %}" class="nav-link">Team
-                              member</a></li>
-                          <li class="nav-item"><a href="{% static 'services.html' %}" class="nav-link">Services</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <!-- ========== FULL WIDTH MEGAMENU ==================-->
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown"
-                  data-delay="200" class="dropdown-toggle">CATEGORY<b class="caret"></b></a>
-                <ul class="dropdown-menu megamenu">
-                  <li>
-                    <div class="row">
-                      <div class="col-md-6 col-lg-3">
-                        <h5>Shop</h5>
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="{% url 'shop:product' %}" class="nav-link">Category-sidebar
-                              right</a></li>
-                          <li class="nav-item"><a href="{% static 'shop-category-left.html' %}"
-                              class="nav-link">Category - sidebar left</a></li>
-                          <li class="nav-iteminclude"><a href="{% static 'shop-category-full.html' %}"
-                              class="nav-link">Category - full width</a></li>
-                          <li class="nav-item"><a href="{% static 'shop-detail.html' %}" class="nav-link">Product
-                              detail</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <!-- ========== FULL WIDTH MEGAMENU END ==================-->
-              <!-- ========== Contact dropdown ==================-->
-              <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown"
-                  class="dropdown-toggle">Contact <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-item"><a href="{% url 'shop:contact' %}" class="nav-link">Contact option 1</a>
-                  </li>
-                </ul>
-              </li>
-              <!-- ========== Contact dropdown end ==================-->
-            </ul>
-          </div>
-
-          <!--<div id="search" class="collapse clearfix">
-            <form role="search" class="navbar-form">
-              <div class="input-group">
-                <input type="text" placeholder="Search" class="form-control"><span class="input-group-btn">
-                  <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button></span>
-              </div>
-            </form>
-          </div>-->
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <a href="{% url 'Home' %}" class="navbar-brand home">
+            <img src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-none d-md-inline-block">
+            <img src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-inline-block d-md-none">
+            <span class="sr-only">Enciso - go to homepage</span>
+          </a>
         </div>
-        <a href="{% url 'shop:summary' %}" class="site-cart">
-          <span><i class="fa fa-shopping-cart"></i></span>
-          <span class="count"> {{request|cart_item_count}} </span>
-        </a>
+        <div class="col-lg-8 col-md-8 col-sm-8">
+          <div class="container">          
+            <button type="button" data-toggle="collapse" data-target="#navigation"
+              class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i
+                class="fa fa-align-justify"></i>
+            </button>          
+            <div id="navigation" class="navbar-collapse collapse">            
+              <div class="input-group w-50 m-1">
+                <input type="text" class="form-control" placeholder="Search">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="button">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>           
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a href="{% url 'Home' %}" class="nav-link">Home</a>                  
+                </li>                
+                <!-- ========== FULL WIDTH MEGAMENU ==================-->
+                <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown"
+                    data-delay="200" class="dropdown-toggle">CATEGORY<b class="caret"></b></a>
+                  <ul class="dropdown-menu megamenu">
+                    <li>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                          <h5>Shop</h5>
+                          <ul class="list-unstyled mb-3">
+                            <li class="nav-item"><a href="{% url 'shop:product' %}" class="nav-link">All Products</a></li>
+                            <li class="nav-item"><a href="{% static 'shop-category-left.html' %}"
+                                class="nav-link">Category - sidebar left</a></li>
+                            <li class="nav-iteminclude"><a href="{% static 'shop-category-full.html' %}"
+                                class="nav-link">Category - full width</a></li>
+                            <li class="nav-item"><a href="{% static 'shop-detail.html' %}" class="nav-link">Product
+                                detail</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown"><a href="#" data-toggle="dropdown"
+                  class="dropdown-toggle">About<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>                    
+                    <ul class="list-unstyled mb-3">
+                      <li class="nav-item"><a href="{% static 'about.html' %}" class="nav-link">About us</a></li>
+                      <li class="nav-item"><a href="{% static 'team.html' %}" class="nav-link">Our team</a></li>
+                      <li class="nav-item"><a href="{% static 'team-member.html' %}" class="nav-link">Team member</a></li>
+                      <li class="nav-item"><a href="{% static 'services.html' %}" class="nav-link">Services</a></li>
+                    </ul>                    
+                  </li>
+                </ul>
+              </li>
+                <!-- ========== FULL WIDTH MEGAMENU END ==================-->
+                <!-- ========== Contact dropdown ==================-->
+                <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown"
+                    class="dropdown-toggle">Contact <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item">
+                      <a href="{% url 'shop:contact' %}" class="nav-link">Contact option 1</a>
+                    </li>
+                  </ul>
+                </li>
+                <!-- ========== Contact dropdown end ==================-->
+              </ul>            
+            </div>          
+          </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1">
+          <a href="{% url 'shop:summary' %}" class="site-cart float-right">
+            <span><i class="fa fa-shopping-cart"></i></span>
+            <span class="count"> {{request|cart_item_count}} </span>
+          </a>
+        </div>        
       </div>
     </header>
     <!-- Navbar End-->
