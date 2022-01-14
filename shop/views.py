@@ -4,7 +4,7 @@
 from django.core import paginator
 from django.db.models.query import InstanceCheckMeta
 from django.http import request, JsonResponse, response, Http404
-from django.shortcuts import reverse, get_object_or_404, redirect
+from django.shortcuts import reverse, get_object_or_404, redirect, render
 from django.views import generic
 from django.core.mail import send_mail
 from django.conf import settings 
@@ -52,7 +52,13 @@ class ContactView(generic.FormView):
         )
         return super(ContactView, self).form_valid(form)
 
-
+def search(request):
+    if request.method == "POST":
+        search = request.POST['search']
+        product = Product.objects.filter(title__icontains=search)
+        return render(request, 'product_list.html', {'search':search, 'product':product})
+    else:
+        return render(request, 'product_list.html', {})
 
 class ProductListView(generic.ListView):
     template_name='product_list.html'

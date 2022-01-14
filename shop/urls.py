@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from shop import views
 from django.conf import settings
 from django.conf.urls.static import static
 #general urls
@@ -7,6 +7,7 @@ app_name = 'shop'
 urlpatterns = [
     path('', views.CartView.as_view(), name='summary'),    
     path('product/', views.ProductListView.as_view(), name='product'),
+    path('search/', views.search, name="search"), 
     path('contact/', views.ContactView.as_view(), name='contact'),
     path('product/<slug>/', views.ProductDetailView.as_view(), name='detail'),
     path('increase-quantity/<pk>/', views.IncreaseQuantityView.as_view(), name='increase-quantity'),
