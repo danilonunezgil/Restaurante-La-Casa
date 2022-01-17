@@ -1,0 +1,277 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-17 12:23-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: shop/templates/cart.html:4
+msgid "Cart"
+msgstr "Carrito"
+
+#: shop/templates/cart.html:18
+msgid "Image"
+msgstr "Imagen"
+
+#: shop/templates/cart.html:19
+msgid "Product"
+msgstr "Producto"
+
+#: shop/templates/cart.html:20
+msgid "Price"
+msgstr "Precio"
+
+#: shop/templates/cart.html:21
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: shop/templates/cart.html:22
+msgid "Total"
+msgstr "Total"
+
+#: shop/templates/cart.html:23
+msgid "Actions"
+msgstr "Acciones"
+
+#: shop/templates/cart.html:67
+msgid "There are no items in your cart."
+msgstr "No hay articulos en su carrito"
+
+#: shop/templates/cart.html:69 shop/templates/cart.html:90
+msgid "Continue Shopping"
+msgstr "Continuar comprando"
+
+#: shop/templates/cart.html:105
+msgid "Order summary"
+msgstr "Resumen de compra"
+
+#: shop/templates/cart.html:116
+msgid "Shipping"
+msgstr "Costo de envio"
+
+#: shop/templates/cart.html:128
+msgid "Proceed to Checkout"
+msgstr "Proceder a pagar"
+
+#: shop/templates/contact.html:5 shop/templates/contact.html:16
+msgid "Contact"
+msgstr "Contacto"
+
+#: shop/templates/contact.html:14
+msgid "Home"
+msgstr "Inicio"
+
+#: shop/templates/contact.html:26
+msgid "Get in touch"
+msgstr "Ponte en contacto"
+
+#: shop/templates/contact.html:33
+msgid "Submit message"
+msgstr "Enviar mensaje"
+
+#: shop/templates/pagination.html:6 shop/templates/pagination.html:39
+msgid "Previous"
+msgstr "Anterior"
+
+#: shop/templates/pagination.html:32 shop/templates/pagination.html:42
+msgid "Next"
+msgstr "Siguiente"
+
+#: shop/templates/product_detail.html:5
+#, fuzzy
+#| msgid "Product"
+msgid "Product detail"
+msgstr "Detalle de producto"
+
+#: shop/templates/product_detail.html:35
+msgid "Description"
+msgstr "Descripción"
+
+#: shop/templates/product_detail.html:53
+msgid "Payment Method"
+msgstr "Metodo de pago"
+
+#: shop/templates/product_detail.html:62
+msgid "units avalaible"
+msgstr "Unidades disponibles"
+
+#: shop/templates/product_detail.html:68
+msgid "Add to cart"
+msgstr "Agregar al carrito"
+
+#: shop/templates/product_detail.html:73
+msgid "Buy now"
+msgstr "Comprar ahora"
+
+#: shop/templates/product_detail.html:88
+msgid "Your product has been successfully added to your cart."
+msgstr "Tu producto ha sido agregado al carrito exitosamente"
+
+#: shop/templates/product_detail.html:105
+msgid "Continue shopping."
+msgstr "Continuar comprando"
+
+#: shop/templates/product_detail.html:107
+msgid "Go to cart"
+msgstr "Ir al carrito"
+
+#: user/templates/detail.html:5 user/templates/detail.html:147
+msgid "My account"
+msgstr "Mi cuenta"
+
+#: user/templates/detail.html:18
+#, fuzzy
+#| msgid "Product"
+msgid "Personal details"
+msgstr "Detalle de producto"
+
+#: user/templates/detail.html:25 user/templates/update_profile.html:74
+msgid "Age"
+msgstr "Edad"
+
+#: user/templates/detail.html:30 user/templates/detail.html:82
+#: user/templates/update_profile.html:62
+msgid "Enter your home address"
+msgstr "Inresa tu dirección"
+
+#: user/templates/detail.html:43 user/templates/update_profile.html:24
+msgid "Identification Card"
+msgstr "Identificación"
+
+#: user/templates/detail.html:48 user/templates/update_profile.html:29
+msgid "Enter your ID number"
+msgstr "Ingresa tu numero de ID"
+
+#: user/templates/detail.html:60 user/templates/update_profile.html:40
+msgid "Phone number"
+msgstr "Número de telefono"
+
+#: user/templates/detail.html:65 user/templates/update_profile.html:45
+msgid "Enter your cell phone number"
+msgstr "Ingresa tu número de celular"
+
+#: user/templates/detail.html:77 user/templates/update_profile.html:57
+msgid "Address"
+msgstr "Dirección"
+
+#: user/templates/detail.html:94
+msgid "Save changes"
+msgstr "Guardar cambios"
+
+#: user/templates/detail.html:100
+msgid "Your Orders"
+msgstr "Tus compras"
+
+#: user/templates/detail.html:106
+msgid "Reference No."
+msgstr "No de referencia"
+
+#: user/templates/detail.html:107
+msgid "Date"
+msgstr "Fecha"
+
+#: user/templates/detail.html:108
+msgid "Amount"
+msgstr "Cantidad"
+
+#: user/templates/detail.html:109
+msgid "Payment Status"
+msgstr "Estado del pago"
+
+#: user/templates/detail.html:118
+msgid "Paid"
+msgstr "Pagado"
+
+#: user/templates/detail.html:118
+msgid "Not paid"
+msgstr "No pagado"
+
+#: user/templates/detail.html:122
+msgid "You haven't made any purchases"
+msgstr "No has hecho ninguna compra"
+
+#: user/templates/detail.html:134
+msgid "Customer section"
+msgstr "Sección de clientes"
+
+#: user/templates/detail.html:141
+msgid "Settings"
+msgstr "Ajustes"
+
+#: user/templates/detail.html:153
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: user/templates/login.html:4 user/templates/login.html:15
+#: user/templates/signup.html:25
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: user/templates/login.html:26 user/templates/signup.html:36
+msgid "Warning"
+msgstr "Advertencia"
+
+#: user/templates/login.html:30 user/templates/signup.html:40
+msgid "Username"
+msgstr "Usuario"
+
+#: user/templates/login.html:34 user/templates/signup.html:44
+msgid "Password"
+msgstr "Contraseña"
+
+#: user/templates/login.html:36 user/templates/signup.html:46
+msgid "Sign in"
+msgstr "Iniciar sesión"
+
+#: user/templates/login.html:38
+msgid "Not registered yet?"
+msgstr "¿Aun no te has registrado?"
+
+#: user/templates/login.html:40
+msgid "Register now"
+msgstr "Registrate ahora"
+
+#: user/templates/login.html:41
+msgid ""
+"It is easy and done in 1 minute and gives you access to special discounts "
+"and much more"
+msgstr ""
+"Es fácil y puedes hacerlo en un 1 minuto, además te da acceso a descuentos "
+"especiles y mucho más"
+
+#: user/templates/signup.html:5
+msgid "Sign Up"
+msgstr "Registrarse"
+
+#: user/templates/signup.html:14
+msgid "New account"
+msgstr "Nueva cuenta"
+
+#: user/templates/signup.html:19
+msgid "Register"
+msgstr "Registrate"
+
+#: user/templates/update_profile.html:5
+msgid "Personal data"
+msgstr "Datos personales"
+
+#: user/templates/update_profile.html:79
+msgid "Enter your Age"
+msgstr "Ingresa tu edad"
+
+#: user/templates/update_profile.html:88
+msgid "Update info"
+msgstr "Actualizar información"

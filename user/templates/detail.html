@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load i18n%}
 {% load crispy_forms_tags %}
 {% block title %}
-My account
+    {% trans "My account" %}
 {% endblock %}
 
 {% block content %}
@@ -11,41 +12,40 @@ My account
       <div class="row bar">
         <div id="customer-account" class="col-lg-9 clearfix">
             <h3 class="text-uppercase">@{{ request.user.username}} | {{user.get_full_name}}</h3>
-                        
             <hr>
             <div class="bo3">
                 <div class="heading">
-                  <h3 class="text-uppercase">Personal details</h3>
+                  <h3 class="text-uppercase">{% trans "Personal details" %}</h3>
                 </div>
                 <form action="{% url 'user:detail' request.user.username %}" method="POST">
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Age</label>
-                            <input
-                                class="form-control {% if form.edad.errors %}is-invalid{% endif %}"
-                                type="text"
-                                name="edad"
-                                placeholder="Enter your home address"
-                                value="{% if form.errors %}{{ form.edad.value }}{% else %}{{ person.edad }}{% endif %}"
-                            />
-                            <div class="invalid-feedback">
-                                {% for error in form.edad.errors %}
-                                    {{ error }}
-                                {% endfor%}
-                            </div>
+                                <label>{% trans "Age" %}</label>
+                                <input
+                                    class="form-control {% if form.edad.errors %}is-invalid{% endif %}"
+                                    type="text"
+                                    name="edad"
+                                    placeholder="{% trans 'Enter your home address' %}"
+                                    value="{% if form.errors %}{{ form.edad.value }}{% else %}{{ person.edad }}{% endif %}"
+                                />
+                                <div class="invalid-feedback">
+                                    {% for error in form.edad.errors %}
+                                        {{ error }}
+                                    {% endfor%}
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="firstname">Identification Card</label>
+                                <label for="firstname">{% trans "Identification Card" %}</label>
                                 <input
                                     class="form-control {% if form.cc.errors %}is-invalid{% endif %}"
                                     type="text"
                                     name="cc"
-                                    placeholder="Enter your ID number"
+                                    placeholder="{% trans 'Enter your ID number' %}"
                                     value="{% if form.errors %}{{ form.cc.value }}{% else %}{{ person.cc }}{% endif %}"
                                 />
                                 <div class="invalid-feedback">
@@ -57,12 +57,12 @@ My account
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Phone number</label>
+                                <label>{% trans "Phone number" %}</label>
                                 <input
                                     class="form-control {% if form.celphone.errors %}is-invalid{% endif %}"
                                     type="text"
                                     name="celphone"
-                                    placeholder="Enter your cell phone number"
+                                    placeholder="{% trans 'Enter your cell phone number' %}"
                                     value="{% if form.errors %}{{ form.celphone.value }}{% else %}{{ person.celphone }}{% endif %}"
                                 />
                                 <div class="invalid-feedback">
@@ -74,39 +74,39 @@ My account
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Address</label>
-                            <input
-                                class="form-control {% if form.home_address.errors %}is-invalid{% endif %}"
-                                type="text"
-                                name="home_address"
-                                placeholder="Enter your home address"
-                                value="{% if form.errors %}{{ form.home_address.value }}{% else %}{{ person.home_address }}{% endif %}"
-                            />
-                            <div class="invalid-feedback">
-                                {% for error in form.address.errors %}
-                                    {{ error }}
-                                {% endfor%}
-                            </div>
+                                <label>{% trans "Address" %}</label>
+                                <input
+                                    class="form-control {% if form.home_address.errors %}is-invalid{% endif %}"
+                                    type="text"
+                                    name="home_address"
+                                    placeholder="{% trans 'Enter your home address' %}"
+                                    value="{% if form.errors %}{{ form.home_address.value }}{% else %}{{ person.home_address }}{% endif %}"
+                                />
+                                <div class="invalid-feedback">
+                                    {% for error in form.address.errors %}
+                                        {{ error }}
+                                    {% endfor%}
+                                </div>
                             </div>
                         </div>
                     </div>              
                     <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-template-outlined"><i class="fa fa-save"></i> Save changes</button>
+                        <button type="submit" class="btn btn-template-outlined"><i class="fa fa-save"></i>{% trans "Save changes" %}</button>
                     </div>              
                 </form>
             </div>
             <div class="box mt-5">
                 <div class="heading">
-                  <h3 class="text-uppercase">Your Orders</h3>
+                  <h3 class="text-uppercase">{% trans "Your Orders" %}</h3>
                 </div>
                 <div class="site-blocks-table">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Reference No.</th>
-                                <th>Date</th>
-                                <th>Amount</th>
-                                <th>Payment Status</th>
+                                <th>{% trans "Reference No." %}</th>
+                                <th>{% trans "Date" %}</th>
+                                <th>{% trans "Amount" %}</th>
+                                <th>{% trans "Payment Status" %}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -115,11 +115,11 @@ My account
                                 <a href="#"><td>#{{ order.reference_number }}</td></a>
                                 <td>{{ order.ordered_date }}</td>
                                 <td>{{ order.get_total }}</td>
-                                <td>{% if order.ordered %}Paid{% else %}Not paid{% endif %}</td>
+                                <td>{% if order.ordered %}{% trans "Paid" %}{% else %}{% trans "Not paid" %}{% endif %}</td>
                             </tr>
                             {% empty %}
                             <tr>
-                                <td colspan="4">You havent made any purchases</td>
+                                <td colspan="4">{% trans "You haven't made any purchases" %}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -131,13 +131,28 @@ My account
           <!-- CUSTOMER MENU -->
           <div class="panel panel-default sidebar-menu">
             <div class="panel-heading">
-              <h3 class="h4 panel-title">Customer section</h3>
+              <h3 class="h4 panel-title">{% trans "Customer section" %}</h3>
             </div>
             <div class="panel-body">
               <ul class="nav nav-pills flex-column text-sm">
-                <li class="nav-item"><a href="#" class="nav-link "><i class="fa fa-sliders"></i> Settings </a></li>
-                <li class="nav-item"><a href="{% url 'user:detail' request.user.username %}" class="nav-link"><i class="fa fa-user"></i> My account</a></li>
-                <li class="nav-item"><a href="{% url 'user:logout' %}" class="nav-link"><i class="fa fa-sign-out"></i> Logout</a></li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link ">
+                        <i class="fa fa-sliders"></i>
+                        {% trans "Settings" %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'user:detail' request.user.username %}" class="nav-link">
+                        <i class="fa fa-user"></i>
+                        {% trans "My account" %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'user:logout' %}" class="nav-link">
+                        <i class="fa fa-sign-out"></i>
+                        {% trans "Logout" %}
+                    </a>
+                </li>
               </ul>
             </div>
           </div>
