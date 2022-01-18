@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 10:56-0500\n"
+"POT-Creation-Date: 2022-01-18 14:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,6 +170,7 @@ msgid "Here you must write the product description"
 msgstr "Aquí debes escribir la descripción del producto"
 
 #: shop/models.py:80 shop/templates/cart.html:20
+#: shop/templates/product_list.html:27
 msgid "Price"
 msgstr "Precio"
 
@@ -386,6 +387,10 @@ msgstr "Continuar comprando"
 #: shop/templates/product_detail.html:107
 msgid "Go to cart"
 msgstr "Ir al carrito"
+
+#: shop/templates/product_list.html:4
+msgid "Shop"
+msgstr "Tienda"
 
 #: user/forms.py:9 user/templates/login.html:30 user/templates/signup.html:40
 msgid "Username"
