@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load i18n%}
 {% load crispy_forms_tags %}
 {% block title %}
-Personal data
+    {% trans "Personal data" %}
 {% endblock %}
 
 {% block content %}
@@ -10,27 +11,22 @@ Personal data
 
     <div class="row justify-content-md-center">
         <div class="col-6 p-4" id="profile-box">
-
             <form action="{% url 'user:update' %}" method="POST" >
                 {% csrf_token %}
-
                 <div class="media">                   
                     <div class="media-body">
-                        <h5 class="ml-4">@{{ user.username }} | {{ user.get_full_name }}</h5>
-                        
+                        <h5 class="ml-4">@{{ user.username }} | {{ user.get_full_name }}</h5>                        
                     </div>
                 </div>                
-
                 <hr><br>
-
                 {# Identification Card  field #}
                 <div class="form-group">
-                    <label>Identification Card</label>
+                    <label>{% trans "Identification Card" %}</label>
                     <input
                         class="form-control {% if form.cc.errors %}is-invalid{% endif %}"
                         type="text"
                         name="cc"
-                        placeholder="Enter your ID number"
+                        placeholder="{% trans 'Enter your ID number' %}"
                         value="{% if form.errors %}{{ form.cc.value }}{% else %}{{ person.cc }}{% endif %}"
                     />
                     <div class="invalid-feedback">
@@ -39,15 +35,14 @@ Personal data
                         {% endfor%}
                     </div>
                 </div>               
-
                 {# Phone number field #}
                 <div class="form-group">
-                    <label>Phone number</label>
+                    <label>{% trans "Phone number" %}</label>
                     <input
                         class="form-control {% if form.celphone.errors %}is-invalid{% endif %}"
                         type="text"
                         name="celphone"
-                        placeholder="Enter your cell phone number"
+                        placeholder="{% trans 'Enter your cell phone number' %}"
                         value="{% if form.errors %}{{ form.celphone.value }}{% else %}{{ person.celphone }}{% endif %}"
                     />
                     <div class="invalid-feedback">
@@ -59,12 +54,12 @@ Personal data
 
                 {# Address field #}
                 <div class="form-group">
-                    <label>Address</label>
+                    <label>{% trans "Address" %}</label>
                     <input
                         class="form-control {% if form.home_address.errors %}is-invalid{% endif %}"
                         type="text"
                         name="home_address"
-                        placeholder="Enter your home address"
+                        placeholder="{% trans 'Enter your home address' %}"
                         value="{% if form.errors %}{{ form.home_address.value }}{% else %}{{ person.home_address }}{% endif %}"
                     />
                     <div class="invalid-feedback">
@@ -76,12 +71,12 @@ Personal data
 
                 {# Age field #}
                 <div class="form-group">
-                    <label>Age</label>
+                    <label>{% trans "Age" %}</label>
                     <input
                         class="form-control {% if form.edad.errors %}is-invalid{% endif %}"
                         type="text"
                         name="edad"
-                        placeholder="Enter your Age"
+                        placeholder="{% trans 'Enter your Age' %}"
                         value="{% if form.errors %}{{ form.edad.value }}{% else %}{{ person.edad }}{% endif %}"
                     />
                     <div class="invalid-feedback">
@@ -90,7 +85,7 @@ Personal data
                         {% endfor%}
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block mt-5">Update info</button>
+                <button type="submit" class="btn btn-primary btn-block mt-5">{% trans "Update info" %}</button>
             </form>
         </div>
     </div>

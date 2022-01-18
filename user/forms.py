@@ -1,25 +1,29 @@
 from django import forms
 from user.models import Person
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
 class SignupForm(forms.Form):
     """Sign up form."""
 
-    username = forms.CharField(min_length=4, max_length=50)
+    username = forms.CharField(label = _('Username'), min_length=4, max_length=50)
 
     password = forms.CharField(
+        label = _('Password'), 
         max_length=70,
         widget=forms.PasswordInput()
     )
     password_confirmation = forms.CharField(
+        label = _('Password confirmation'), 
         max_length=70,
         widget=forms.PasswordInput()
     )
 
-    first_name = forms.CharField(min_length=2, max_length=50)
-    last_name = forms.CharField(min_length=2, max_length=50)
+    first_name = forms.CharField(label = _('First name'), min_length=2, max_length=50)
+    last_name = forms.CharField(label = _('Last name'), min_length=2, max_length=50)
 
     email = forms.CharField(
+        label = _('Email'), 
         min_length=6,
         max_length=70,
         widget=forms.EmailInput()
@@ -30,7 +34,7 @@ class SignupForm(forms.Form):
         username = self.cleaned_data['username']
         username_taken = User.objects.filter(username=username).exists()
         if username_taken:
-            raise forms.ValidationError('Username is already in use.')
+            raise forms.ValidationError(_('Username is already in use.'))
         return username
 
     def clean(self):
@@ -41,7 +45,7 @@ class SignupForm(forms.Form):
         password_confirmation = data['password_confirmation']
 
         if password != password_confirmation:
-            raise forms.ValidationError('Passwords do not match.')
+            raise forms.ValidationError(_('Passwords do not match.'))
 
         return data
 

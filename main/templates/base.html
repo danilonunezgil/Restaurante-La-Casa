@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n%}
 {% load cart_template_tags %}
 
 <!DOCTYPE html>
@@ -48,7 +48,7 @@
       <div class="container">
         <div class="row d-flex align-items-center">
           <div class="col-md-6 d-md-block d-none">
-            <p>Contact us on +420 777 555 333 or hello@universal.com.</p>
+            <p> {% trans "Contact us on +420 777 555 333 or hello@universal.com." %} </p>
           </div>
           <div class="col-md-6">
             <div class="d-flex justify-content-md-end justify-content-between">
@@ -59,11 +59,11 @@
               {% if not request.user.is_authenticated %}
                 <div class="login">
                   <a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn">
-                    <i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Sign In</span>
+                    <i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">{% trans "Sign In" %}</span>
                   </a>
                   <a href="{% url 'user:signup' %}" class="signup-btn">
                     <i class="fa fa-user"></i>
-                    <span class="d-none d-md-inline-block">Sign Up</span>
+                    <span class="d-none d-md-inline-block">{% trans "Sign Up" %}</span>
                   </a>
                 </div>
               {% else  %}
@@ -77,8 +77,8 @@
                         
                         </a>
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="{% url 'admin:index' %}"><i class="fa fa -cog"></i>Administrate </a>
-                            <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="{% url 'admin:index' %}"><i class="fa fa -cog"></i>{% trans "Administrate" %} </a>
+                            <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i> {% trans "Logout" %}</a>
                         </div>
                     </div>
                   </div>
@@ -92,8 +92,8 @@
                         
                         </a>
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="{% url 'user:detail' request.user.username %}"><i class="fa fa -cog"></i>My account </a>
-                            <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="{% url 'user:detail' request.user.username %}"><i class="fa fa -cog"></i>{% trans "My account" %}</a>
+                            <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i>{% trans "Logout" %}</a>
                         </div>
                     </div>
                   </div>  
@@ -118,7 +118,7 @@
       <div role="document" class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 id="login-modalLabel" class="modal-title">Customer Login</h4>
+            <h4 id="login-modalLabel" class="modal-title">{% trans "Customer Login" %}</h4>
             <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
                 aria-hidden="true">×</span></button>
           </div>
@@ -132,23 +132,25 @@
                     <button type="button" class="close" data-dismiss = "alert" aria-label = "Close">
                     <span aria-hidden = "true">&times;</span>
                     </button>
-                    <strong>Warning: </strong> {{ form.get_invalid_login_error }}
+                    <strong>{% trans "Warning" %}: </strong> {{ form.get_invalid_login_error }}
                   </div>
                 {% endif %}
-                <input class="form-control" type="text" placeholder="Username" name="username" />
+                <input class="form-control" type="text" placeholder="{% trans 'Username' %}" name="username" />
               </div>
 
               <div class="form-group">
-                  <input id="password_modal" class="form-control" type="password" placeholder="Password" name="password" />
+                  <input id="password_modal" class="form-control" type="password" placeholder="{% trans 'Password' %}" name="password" />
               </div>
 
 
-              <button class="btn btn-primary btn-block mt-5" type="submit" >Sign in!</button>
+              <button class="btn btn-primary btn-block mt-5" type="submit" >{% trans "Sign in" %}!</button>
             </form>
-            <p class="text-center text-muted">Not registered yet?</p>
-            <p class="text-center text-muted"><a href="{% url 'user:signup' %}"><strong>Register
-                  now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much
-              more!</p>
+            <p class="text-center text-muted">{% trans "Not registered yet?" %}</p>
+            <p class="text-center text-muted">
+              <a href="{% url 'user:signup' %}">
+                <strong>{% trans "Register now" %}!</strong>
+              </a> {% trans "It is easy and done in 1 minute and gives you access to special discounts and much more" %}!
+            </p>
           </div>
         </div>
       </div>
@@ -158,24 +160,24 @@
     <!-- Navbar Start-->
     <header class="nav-holder make-sticky">
       <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
-        <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="col-lg-2 col-md-3 col-sm-3">
           <a href="{% url 'Home' %}" class="navbar-brand home">
             <img src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-none d-md-inline-block">
             <img src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-inline-block d-md-none">
-            <span class="sr-only">Enciso - go to homepage</span>
+            <span class="sr-only">{% trans "Enciso - go to homepage" %}</span>
           </a>
         </div>
-        <div class="col-lg-8 col-md-8 col-sm-8">
-          <div class="container">          
+        <div class="col-lg-9 col-md-8 col-sm-8 p-0">
+          <div class="container p-0">          
             <button type="button" data-toggle="collapse" data-target="#navigation"
-              class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i
+              class="navbar-toggler btn-template-outlined"><span class="sr-only">{% trans "Toggle navigation" %}</span><i
                 class="fa fa-align-justify"></i>
             </button>          
             <div id="navigation" class="navbar-collapse collapse">            
               <div class="form-group w-50 m-1">
                 <form class="d-flex" method=POST action="{% url 'shop:search' %}">
                   {% csrf_token %}
-                  <input type="text" class="form-control" placeholder="Search" name="search">
+                  <input type="text" class="form-control" placeholder="{% trans 'Search' %}" name="search">
                   <div class="input-group-append">
                     <button class="btn btn-outline-primary" type="submit">
                       <i class="fa fa-search"></i>
@@ -185,24 +187,25 @@
               </div>           
               <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a href="{% url 'Home' %}" class="nav-link">Home</a>                  
+                  <a href="{% url 'Home' %}" class="nav-link">{% trans "Home" %}</a>                  
                 </li>                
                 <!-- ========== FULL WIDTH MEGAMENU ==================-->
                 <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown"
-                    data-delay="200" class="dropdown-toggle">CATEGORY<b class="caret"></b></a>
+                    data-delay="200" class="dropdown-toggle">{% trans "CATEGORY" %}<b class="caret"></b></a>
                   <ul class="dropdown-menu megamenu">
                     <li>
                       <div class="row">
                         <div class="col-md-6 col-lg-3">
-                          <h5>Shop</h5>
+                          <h5>{% trans "Shop" %}</h5>
                           <ul class="list-unstyled mb-3">
-                            <li class="nav-item"><a href="{% url 'shop:product' %}" class="nav-link">All Products</a></li>
+                            <li class="nav-item"><a href="{% url 'shop:product' %}" class="nav-link">{% trans "All Products" %}</a></li>
                             <li class="nav-item"><a href="{% static 'shop-category-left.html' %}"
-                                class="nav-link">Category - sidebar left</a></li>
+                                class="nav-link">{% trans "Category - sidebar left" %}</a></li>
                             <li class="nav-iteminclude"><a href="{% static 'shop-category-full.html' %}"
-                                class="nav-link">Category - full width</a></li>
-                            <li class="nav-item"><a href="{% static 'shop-detail.html' %}" class="nav-link">Product
-                                detail</a></li>
+                                class="nav-link">{% trans "Category - full width" %}</a></li>
+                            <li class="nav-item">
+                              <a href="{% static 'shop-detail.html' %}" class="nav-link">{% trans "Product detail" %}</a>
+                            </li>
                           </ul>
                         </div>
                       </div>
@@ -210,14 +213,14 @@
                   </ul>
                 </li>
                 <li class="nav-item dropdown"><a href="#" data-toggle="dropdown"
-                  class="dropdown-toggle">About<b class="caret"></b></a>
+                  class="dropdown-toggle">{% trans "About" %}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li>                    
                     <ul class="list-unstyled mb-3">
-                      <li class="nav-item"><a href="{% static 'about.html' %}" class="nav-link">About us</a></li>
-                      <li class="nav-item"><a href="{% static 'team.html' %}" class="nav-link">Our team</a></li>
-                      <li class="nav-item"><a href="{% static 'team-member.html' %}" class="nav-link">Team member</a></li>
-                      <li class="nav-item"><a href="{% static 'services.html' %}" class="nav-link">Services</a></li>
+                      <li class="nav-item"><a href="{% static 'about.html' %}" class="nav-link">{% trans "About us" %}</a></li>
+                      <li class="nav-item"><a href="{% static 'team.html' %}" class="nav-link">{% trans "Our team" %}</a></li>
+                      <li class="nav-item"><a href="{% static 'team-member.html' %}" class="nav-link">{% trans "Team member" %}</a></li>
+                      <li class="nav-item"><a href="{% static 'services.html' %}" class="nav-link">{% trans "Services" %}</a></li>
                     </ul>                    
                   </li>
                 </ul>
@@ -225,10 +228,10 @@
                 <!-- ========== FULL WIDTH MEGAMENU END ==================-->
                 <!-- ========== Contact dropdown ==================-->
                 <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown"
-                    class="dropdown-toggle">Contact <b class="caret"></b></a>
+                    class="dropdown-toggle">{% trans "Contact" %}<b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li class="dropdown-item">
-                      <a href="{% url 'shop:contact' %}" class="nav-link">Contact option 1</a>
+                      <a href="{% url 'shop:contact' %}" class="nav-link">{% trans "Contact option 1" %}</a>
                     </li>
                   </ul>
                 </li>
@@ -258,10 +261,10 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3">
-            <h4 class="h6">About Us</h4>
+            <h4 class="h6">{% trans "About Us" %}</h4>
             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
             <hr>
-            <h4 class="h6">Join Our Monthly Newsletter</h4>
+            <h4 class="h6">{% trans "Join Our Monthly Newsletter" %}</h4>
             <form>
               <div class="input-group">
                 <input type="text" class="form-control">
@@ -273,34 +276,34 @@
             <hr class="d-block d-lg-none">
           </div>
           <div class="col-lg-3">
-            <h4 class="h6">Blog</h4>
+            <h4 class="h6">{% trans "Blog" %}</h4>
             <ul class="list-unstyled footer-blog-list">
               <li class="d-flex align-items-center">
                 <div class="image"><img src="{% static 'img/detailsquare.jpg' %}" alt="..." class="img-fluid"></div>
                 <div class="text">
-                  <h5 class="mb-0"> <a href="{% static 'post.html' %}">Blog post name</a></h5>
+                  <h5 class="mb-0"> <a href="{% static 'post.html' %}">{% trans "Blog post name" %}</a></h5>
                 </div>
               </li>
               <li class="d-flex align-items-center">
                 <div class="image"><img src="{% static 'img/detailsquare.jpg' %}" alt="..." class="img-fluid"></div>
                 <div class="text">
-                  <h5 class="mb-0"> <a href="{% static 'post.html' %}">Blog post name</a></h5>
+                  <h5 class="mb-0"> <a href="{% static 'post.html' %}">{% trans "Blog post name" %}</a></h5>
                 </div>
               </li>
               <li class="d-flex align-items-center">
                 <div class="image"><img src="{% static 'img/detailsquare.jpg' %}" alt="..." class="img-fluid"></div>
                 <div class="text">
-                  <h5 class="mb-0"> <a href="{% static 'post.html' %}">Very very long blog post name</a></h5>
+                  <h5 class="mb-0"> <a href="{% static 'post.html' %}">{% trans "Very very long blog post name" %}</a></h5>
                 </div>
               </li>
             </ul>
             <hr class="d-block d-lg-none">
           </div>
           <div class="col-lg-3">
-            <h4 class="h6">Contact</h4>
-            <p class="text-uppercase"><strong>Universal Ltd.</strong><br>13/25 New Avenue <br>Newtown upon River
-              <br>45Y 73J <br>England <br><strong>Great Britain</strong>
-            </p><a href="{% static 'contact.html' %}" class="btn btn-template-main">Go to contact page</a>
+            <h4 class="h6">{% trans "Contact" %}</h4>
+            <p class="text-uppercase"><strong>{% trans "Universal Ltd." %}</strong><br>{% trans "13/25 New Avenue" %} <br>{% trans "Newtown upon River" %}
+              <br>{% trans "45Y 73J" %} <br>{% trans "England" %} <br><strong>{% trans "Great Britain" %}</strong>
+            </p><a href="{% static 'contact.html' %}" class="btn btn-template-main">{% trans "Go to contact page" %}</a>
             <hr class="d-block d-lg-none">
           </div>
           <div class="col-lg-3">
@@ -325,7 +328,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-4 text-center-md">
-              <p>&copy; 2021. Enciso Systems </p>
+              <p>&copy;2021. Enciso Systems</p>
             </div>
           </div>
         </div>
