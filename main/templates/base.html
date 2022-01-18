@@ -41,7 +41,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
 
-<body class="bg-gray">
+<body class="bg-body">
   <div id="all">
     <!-- Top bar-->
     <div class="top-bar">
@@ -56,11 +56,49 @@
                 <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
                 <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
               </ul>
-              <div class="login"><a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn"><i
-                    class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Sign In</span></a><a
-                  href="{% static 'customer-register.html' %}" class="signup-btn"><i class="fa fa-user"></i><span
-                    class="d-none d-md-inline-block">Sign Up</span></a>
-              </div>
+              {% if not request.user.is_authenticated %}
+                <div class="login">
+                  <a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn">
+                    <i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">Sign In</span>
+                  </a>
+                  <a href="{% url 'user:signup' %}" class="signup-btn">
+                    <i class="fa fa-user"></i>
+                    <span class="d-none d-md-inline-block">Sign Up</span>
+                  </a>
+                </div>
+              {% else  %}
+                {% if request.user.is_superuser %}
+                  <a  href="#" > {{ user.username }}  &nbsp; </a>
+                  <div class="header-menu">
+                    <div class="user-area dropdown float">
+                        <a href="#" class="dropdown-toggle active " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          
+                          <i class="fa fa-user " aria-hidden="true"> </i>
+                        
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="{% url 'admin:index' %}"><i class="fa fa -cog"></i>Administrate </a>
+                            <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i>Logout</a>
+                        </div>
+                    </div>
+                  </div>
+                {% else %}
+                  <a  href="#" > {{ user.username }}  &nbsp; </a>
+                  <div class="header-menu">
+                    <div class="user-area dropdown float">
+                        <a href="#" class="dropdown-toggle active " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          
+                          <i class="fa fa-user " aria-hidden="true"> </i>
+                        
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="{% url 'user:detail' request.user.username %}"><i class="fa fa -cog"></i>My account </a>
+                            <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i>Logout</a>
+                        </div>
+                    </div>
+                  </div>  
+                {% endif %}                                
+              {% endif %}
               <ul class="social-custom list-inline">
                 <li class="list-inline-item"><a href="https://es-la.facebook.com/"><i class="fa fa-facebook"></i></a>
                 </li>
@@ -85,20 +123,31 @@
                 aria-hidden="true">×</span></button>
           </div>
           <div class="modal-body">
-            <form action="customer-orders.html" method="get">
-              <div class="form-group">
-                <input id="email_modal" type="text" placeholder="email" class="form-control">
+            <form method="POST" action= "{% url 'user:login' %}" >
+              {% csrf_token %}
+
+              <div class="form-group " >
+                {% if form.error_messages %}
+                  <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss = "alert" aria-label = "Close">
+                    <span aria-hidden = "true">&times;</span>
+                    </button>
+                    <strong>Warning: </strong> {{ form.get_invalid_login_error }}
+                  </div>
+                {% endif %}
+                <input class="form-control" type="text" placeholder="Username" name="username" />
               </div>
+
               <div class="form-group">
-                <input id="password_modal" type="password" placeholder="password" class="form-control">
+                  <input id="password_modal" class="form-control" type="password" placeholder="Password" name="password" />
               </div>
-              <p class="text-center">
-                <button class="btn btn-template-outlined"><i class="fa fa-sign-in"></i> Log in</button>
-              </p>
+
+
+              <button class="btn btn-primary btn-block mt-5" type="submit" >Sign in!</button>
             </form>
             <p class="text-center text-muted">Not registered yet?</p>
-            <p class="text-center text-muted"><a href="{% static 'customer-register.html' %}"><strong>Register
-                  now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much
+            <p class="text-center text-muted"><a href="{% url 'user:signup' %}"><strong>Register
+                  now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much
               more!</p>
           </div>
         </div>
@@ -109,97 +158,91 @@
     <!-- Navbar Start-->
     <header class="nav-holder make-sticky">
       <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
-        <div class="container"><a href="{% url 'Home' %}" class="navbar-brand home"><img
-              src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-none d-md-inline-block"><img
-              src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-inline-block d-md-none"><span
-              class="sr-only">Enciso - go to homepage</span></a>
-          <button type="button" data-toggle="collapse" data-target="#navigation"
-            class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i
-              class="fa fa-align-justify"></i></button>
-          <nav class="navbar navbar-light bg-light">
-            <form class="form-inline">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SEARCH</button>
-            </form>
-          </nav>
-          <div id="navigation" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item dropdown active"><a href="javascript: void(0)" data-toggle="dropdown"
-                  class="dropdown-toggle">Home <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-item"><a href="{% url 'Home' %}" class="nav-link">Option 1: Default Page</a></li>
-                </ul>
-
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown"
-                  class="dropdown-toggle">About<b class="caret"></b></a>
-                <ul class="dropdown-menu megamenu">
-                  <li>
-                    <div class="row">
-                      <div class="col-lg-6"><img src="{% static 'img/template-homepage.png' %}" alt=""
-                          class="img-fluid d-none d-lg-block"></div>
-                      <div class="col-lg-3 col-md-6">
-                        <!--<h5>About</h5>-->
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="{% static 'about.html' %}" class="nav-link">About us</a></li>
-                          <li class="nav-item"><a href="{% static 'team.html' %}" class="nav-link">Our team</a></li>
-                          <li class="nav-item"><a href="{% static 'team-member.html' %}" class="nav-link">Team
-                              member</a></li>
-                          <li class="nav-item"><a href="{% static 'services.html' %}" class="nav-link">Services</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <!-- ========== FULL WIDTH MEGAMENU ==================-->
-              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown"
-                  data-delay="200" class="dropdown-toggle">CATEGORY<b class="caret"></b></a>
-                <ul class="dropdown-menu megamenu">
-                  <li>
-                    <div class="row">
-                      <div class="col-md-6 col-lg-3">
-                        <h5>Shop</h5>
-                        <ul class="list-unstyled mb-3">
-                          <li class="nav-item"><a href="{% url 'shop:product' %}" class="nav-link">Category-sidebar
-                              right</a></li>
-                          <li class="nav-item"><a href="{% static 'shop-category-left.html' %}"
-                              class="nav-link">Category - sidebar left</a></li>
-                          <li class="nav-iteminclude"><a href="{% static 'shop-category-full.html' %}"
-                              class="nav-link">Category - full width</a></li>
-                          <li class="nav-item"><a href="{% static 'shop-detail.html' %}" class="nav-link">Product
-                              detail</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-              <!-- ========== FULL WIDTH MEGAMENU END ==================-->
-              <!-- ========== Contact dropdown ==================-->
-              <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown"
-                  class="dropdown-toggle">Contact <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown-item"><a href="{% url 'shop:contact' %}" class="nav-link">Contact option 1</a>
-                  </li>
-                </ul>
-              </li>
-              <!-- ========== Contact dropdown end ==================-->
-            </ul>
-          </div>
-
-          <!--<div id="search" class="collapse clearfix">
-            <form role="search" class="navbar-form">
-              <div class="input-group">
-                <input type="text" placeholder="Search" class="form-control"><span class="input-group-btn">
-                  <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button></span>
-              </div>
-            </form>
-          </div>-->
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <a href="{% url 'Home' %}" class="navbar-brand home">
+            <img src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-none d-md-inline-block">
+            <img src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-inline-block d-md-none">
+            <span class="sr-only">Enciso - go to homepage</span>
+          </a>
         </div>
-        <a href="{% url 'shop:summary' %}" class="site-cart">
-          <span><i class="fa fa-shopping-cart"></i></span>
-          <span class="count"> {{request|cart_item_count}} </span>
-        </a>
+        <div class="col-lg-8 col-md-8 col-sm-8">
+          <div class="container">          
+            <button type="button" data-toggle="collapse" data-target="#navigation"
+              class="navbar-toggler btn-template-outlined"><span class="sr-only">Toggle navigation</span><i
+                class="fa fa-align-justify"></i>
+            </button>          
+            <div id="navigation" class="navbar-collapse collapse">            
+              <div class="form-group w-50 m-1">
+                <form class="d-flex" method=POST action="{% url 'shop:search' %}">
+                  {% csrf_token %}
+                  <input type="text" class="form-control" placeholder="Search" name="search">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="submit">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </form>                
+              </div>           
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a href="{% url 'Home' %}" class="nav-link">Home</a>                  
+                </li>                
+                <!-- ========== FULL WIDTH MEGAMENU ==================-->
+                <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown"
+                    data-delay="200" class="dropdown-toggle">CATEGORY<b class="caret"></b></a>
+                  <ul class="dropdown-menu megamenu">
+                    <li>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-3">
+                          <h5>Shop</h5>
+                          <ul class="list-unstyled mb-3">
+                            <li class="nav-item"><a href="{% url 'shop:product' %}" class="nav-link">All Products</a></li>
+                            <li class="nav-item"><a href="{% static 'shop-category-left.html' %}"
+                                class="nav-link">Category - sidebar left</a></li>
+                            <li class="nav-iteminclude"><a href="{% static 'shop-category-full.html' %}"
+                                class="nav-link">Category - full width</a></li>
+                            <li class="nav-item"><a href="{% static 'shop-detail.html' %}" class="nav-link">Product
+                                detail</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown"><a href="#" data-toggle="dropdown"
+                  class="dropdown-toggle">About<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>                    
+                    <ul class="list-unstyled mb-3">
+                      <li class="nav-item"><a href="{% static 'about.html' %}" class="nav-link">About us</a></li>
+                      <li class="nav-item"><a href="{% static 'team.html' %}" class="nav-link">Our team</a></li>
+                      <li class="nav-item"><a href="{% static 'team-member.html' %}" class="nav-link">Team member</a></li>
+                      <li class="nav-item"><a href="{% static 'services.html' %}" class="nav-link">Services</a></li>
+                    </ul>                    
+                  </li>
+                </ul>
+              </li>
+                <!-- ========== FULL WIDTH MEGAMENU END ==================-->
+                <!-- ========== Contact dropdown ==================-->
+                <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown"
+                    class="dropdown-toggle">Contact <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item">
+                      <a href="{% url 'shop:contact' %}" class="nav-link">Contact option 1</a>
+                    </li>
+                  </ul>
+                </li>
+                <!-- ========== Contact dropdown end ==================-->
+              </ul>            
+            </div>          
+          </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1">
+          <a href="{% url 'shop:summary' %}" class="site-cart float-right">
+            <span><i class="fa fa-shopping-cart"></i></span>
+            <span class="count"> {{request|cart_item_count}} </span>
+          </a>
+        </div>        
       </div>
     </header>
     <!-- Navbar End-->
@@ -209,21 +252,7 @@
     {% block content %}
 
     {% endblock content %}
-    <section class="bar bg-white">
-      <div class="container">
-        <div class="heading text-center">
-          <h2>Our Clients</h2>
-        </div>
-        <ul class="list-unstyled owl-carousel customers no-mb">
-          <li class="item"><img src="{% static 'img/customer-1.png' %}" alt="" class="img-fluid"></li>
-          <li class="item"><img src="{% static 'img/customer-2.png' %}" alt="" class="img-fluid"></li>
-          <li class="item"><img src="{% static 'img/customer-3.png' %}" alt="" class="img-fluid"></li>
-          <li class="item"><img src="{% static 'img/customer-4.png' %}" alt="" class="img-fluid"></li>
-          <li class="item"><img src="{% static 'img/customer-5.png' %}" alt="" class="img-fluid"></li>
-          <li class="item"><img src="{% static 'img/customer-6.png' %}" alt="" class="img-fluid"></li>
-        </ul>
-      </div>
-    </section>
+    
     <!-- FOOTER -->
     <footer class="main-footer">
       <div class="container">
@@ -316,6 +345,7 @@
   <script src="{% static 'vendor/bootstrap-select/js/bootstrap-select.min.js' %}"></script>
   <script src="{% static 'vendor/jquery.scrollto/jquery.scrollTo.min.js' %}"></script>
   <script src="{% static 'js/front.js' %}"></script>
+  <script src="{% static 'js/product_detail.js' %}"></script>
 </body>
 
 </html>

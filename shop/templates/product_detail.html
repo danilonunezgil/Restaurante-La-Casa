@@ -38,7 +38,7 @@ Product detail
             </div>
             <div class="col-lg-3 border bg-white m-4 p-2">
                 <!-- MENUS -->
-                <form method="post">
+                <form method="post" onsubmit="return Add();" action="{% url 'shop:detail' product.slug %}" id="added">
                     {% csrf_token %}
                     <div class="panel panel-default sidebar-menu">
                         <div class="panel-heading p-2">
@@ -49,13 +49,11 @@ Product detail
                                 <span> {{ product.price }} </span>
                             </div>
                             <div class="pay-method m-1 p-1">
+                                <br />
+                                <p class="font-weight-light">Payment Method</h5>
                                 <table style="width: auto; text-align: left;">
                                     <tr>
-                                        <td> <img src="/static/img/paypal-logo.png" alt="PayPal Logo" class="lpaypal"></td>
-                                        <td><img src="/static/img/visa-logo.png" alt="visa logo"></td>
-                                        <td><img src="/static/img/master-card-logo.png" alt="master card logo" class="lmasterc"></td>
                                         <td><img src="/static/img/credibanco-logo.png" alt="credibanco logo" class="lcredibanco"></td>
-                                        <td></td>
                                     </tr>
                                 </table>
                             </div>
@@ -65,7 +63,7 @@ Product detail
                             </div>
                             <div class="actions m-1 p-1">
                                 <div class="m-1" id="add_car" name="add_car">
-                                    <button type="submit" class="btn btn-template-outlined btn-block" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    <button type="submit" class="btn btn-template-outlined btn-block" data-toggle="modal" data-target="#staticBackdrop">
                                         <i class="fa fa-shopping-cart"></i> Add to cart
                                     </button>
                                 </div>
@@ -80,25 +78,27 @@ Product detail
                 </form>
             </div>
         </div>
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="staticBackdrop" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel"><i class="fa fa-check-circle d-inline text-start btn-info-popup"></i> Your product has been successfully added to your cart.</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <div class="d-inline-block" id="product-img">
-                            <img src="{{ product.image.url }}" alt="{{ product.title }}" width="200">
+                            <img src="{{ product.image.url }}" alt="{{ product.title }}" width="300">
                         </div>
                         <div class="d-inline-block" id="product-title">
                             <h3>{{ product.title }}</h3>
-                            <h3>{{ product.price }}</h3>
+                            <h4 class="font-weight-normal">{{ product.price }}</h4>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue shopping.</button>
-                        <button type="button" class="btn btn-primary" id="add-to-cart">Go to cart</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue shopping.</button>
+                        <a class="btn btn-primary" href="{% url 'shop:summary' %}">Go to cart</a>
                     </div>
                 </div>
             </div>
