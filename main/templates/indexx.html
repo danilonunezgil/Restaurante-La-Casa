@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n%}
 {% block title %}
-Ecommerce
+  {% trans "Enciso's shop" %}
 {% endblock title %}
 
 {% block content %}
@@ -18,8 +18,8 @@ Ecommerce
             <div class="row">
               <div class="col-md-5 text-right">
                 <!--<p><img src="{% static 'img/logo.png' %}" alt="" class="ml-auto"></p>-->
-                <h1>COMPUTER FAIR</h1>
-                <p>Computers for study<br>work and entertainment</p>
+                <h1>{% trans "COMPUTER FAIR" %}</h1>
+                <p>{% trans "Computers for study" %}<br>{% trans "work and entertainment" %}</p>
               </div>
               <div class="col-md-7"><img src="{% static 'img/sportatil.png' %}" alt="" class="img-fluid"></div>
             </div>
@@ -28,7 +28,7 @@ Ecommerce
             <div class="row">
               <div class="col-md-7 text-center"><img src="{% static 'img/small-cell.png' %}" alt="" class="img-fluid"></div>
               <div class="col-md-5">
-                <h1>YOUR IDEAL CELL PHONE AT THE BEST PRICE</h1>
+                <h1>{% trans "YOUR IDEAL CELL PHONE AT THE BEST PRICE" %}</h1>
                 <!-- <ul class="list-unstyled">
                   <li>Sliders and carousels</li>
                   <li>4 Header variations</li>
@@ -41,11 +41,11 @@ Ecommerce
           <div class="item">
             <div class="row">
               <div class="col-md-5 text-right">
-                <h1>THE BEST IN FASHION CAN BE FOUND HERE</h1>
+                <h1>{% trans "THE BEST IN FASHION CAN BE FOUND HERE" %}</h1>
                 <ul class="list-unstyled">
-                  <li>CLOTHES FOR MEN</li>
-                  <li>WOMEN'S CLOTHING</li>
-                  <li>CLOTHES FOR KIDS</li>                
+                  <li>{% trans "CLOTHES FOR MEN" %}</li>
+                  <li>{% trans "WOMEN'S CLOTHING" %}</li>
+                  <li>{% trans "CLOTHES FOR KIDS" %}</li>                
                 </ul>
               </div>
               <div class="col-md-7"><img src="{% static 'img/smoda.png' %}" alt=""
@@ -57,7 +57,7 @@ Ecommerce
               <div class="col-md-7"><img src="{% static 'img/tenis.png' %}" alt="" class="img-fluid">
               </div>
               <div class="col-md-5">
-                <h1>RUNING SPORT SHOES</h1>
+                <h1>{% trans "RUNING SPORT SHOES"%}</h1>
                 <!--<ul class="list-unstyled">
                   <li>7 preprepared colour variations.</li>
                   <li>Easily to change fonts</li>
@@ -74,7 +74,7 @@ Ecommerce
 <section class="bar bg-body">
   <div class="container bg-white">
     <div class="heading text-center"><br>
-      <h2>PRODUCTS</h2>
+      <h2>{% trans "PRODUCTS"%}</h2>
     </div>
 
     <div class="container ">
@@ -92,7 +92,7 @@ Ecommerce
             <a href="{{ product.get_absolute_url }}">
               <h3>{{ product.title }}</h3>
             </a>
-            <p class="mb-0">Price: {{ product.price }}</p>
+            <p class="mb-0">{% trans "Price" %}: {{ product.price }}</p>
           </div>
         </div>
         {% endfor %}
@@ -103,7 +103,7 @@ Ecommerce
 <section class="bar bg-clients">
   <div class="container">
     <div class="heading text-center">
-      <h2>Our Clients</h2>
+      <h2>{% trans "Our Clients" %}</h2>
     </div>
     <ul class="list-unstyled owl-carousel customers no-mb">
       <li class="item"><img src="{% static 'img/customer-1.png' %}" alt="" class="img-fluid"></li>

@@ -1,8 +1,7 @@
 {% extends "base.html" %}
-
-
+{% load i18n %}
 {% block title %}
-Shop
+    {% trans "Shop" %}
 {% endblock title %}
 
 {% block content %}
@@ -22,9 +21,9 @@ Shop
                 </div>             
                 <div class="d-block justify-content-start block-4-text p-2">
                     <a href="{{ product.get_absolute_url }}">
-                        <h3>{{ product.title }}</h3>
+                        <h3>{% trans product.title %}</h3>
                     </a>
-                    <p class="mb-0">Price: {{ product.price }}</p>
+                    <p class="mb-0">{% trans "Price" %}: {{ product.price }}</p>
                 </div>
             </div>
             {% endfor %}                    

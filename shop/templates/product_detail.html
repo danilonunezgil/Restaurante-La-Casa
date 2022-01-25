@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 {% load crispy_forms_tags %}
 {% block title %}
-Product detail
+    {% trans "Product detail" %}
 {% endblock title %}
 
 {% block content %}
@@ -32,8 +32,8 @@ Product detail
                     </div>
                 </div>
                 <div id="description" class="box mb-4 mt-4">
-                    <h3 class="font-weight-bold">Description</h3>
-                    <p>{{ product.descritption }}</p>
+                    <h3 class="font-weight-bold">{% trans "Description" %}</h3>
+                    <p>{% trans product.descritption %}</p>
                 </div>
             </div>
             <div class="col-lg-3 border bg-white m-4 p-2">
@@ -50,7 +50,7 @@ Product detail
                             </div>
                             <div class="pay-method m-1 p-1">
                                 <br />
-                                <p class="font-weight-light">Payment Method</h5>
+                                <p class="font-weight-light">{% trans "Payment Method" %}</h5>
                                 <table style="width: auto; text-align: left;">
                                     <tr>
                                         <td><img src="/static/img/credibanco-logo.png" alt="credibanco logo" class="lcredibanco"></td>
@@ -59,17 +59,18 @@ Product detail
                             </div>
                             <div class="stock m-1 p-1">
                                 {{ form|crispy}}
-                                <span style="font-size: 10px; color: grey;">({{product.stock}} units avalaible)</span>
+                                <span style="font-size: 10px; color: grey;">({{product.stock}} {% trans "units avalaible" %})</span>
                             </div>
                             <div class="actions m-1 p-1">
                                 <div class="m-1" id="add_car" name="add_car">
                                     <button type="submit" class="btn btn-template-outlined btn-block" data-toggle="modal" data-target="#staticBackdrop">
-                                        <i class="fa fa-shopping-cart"></i> Add to cart
+                                        <i class="fa fa-shopping-cart"></i>
+                                        {% trans "Add to cart" %}
                                     </button>
                                 </div>
                                 <div class="m-1" id="buy_now" name="buy_now">
                                     <button type="button" class="btn btn-template-outlined btn-block">
-                                        Buy now
+                                        {% trans "Buy now" %}
                                     </button>
                                 </div>
                             </div>
@@ -82,7 +83,10 @@ Product detail
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel"><i class="fa fa-check-circle d-inline text-start btn-info-popup"></i> Your product has been successfully added to your cart.</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">
+                            <i class="fa fa-check-circle d-inline text-start btn-info-popup"></i>
+                            {% trans "Your product has been successfully added to your cart." %}
+                        </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -97,8 +101,10 @@ Product detail
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue shopping.</button>
-                        <a class="btn btn-primary" href="{% url 'shop:summary' %}">Go to cart</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            {% trans "Continue shopping." %}
+                        </button>
+                        <a class="btn btn-primary" href="{% url 'shop:summary' %}">{% trans "Go to cart" %}</a>
                     </div>
                 </div>
             </div>

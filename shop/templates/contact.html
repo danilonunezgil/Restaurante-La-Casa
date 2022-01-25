@@ -1,7 +1,8 @@
 {% extends "base.html" %}
+{% load i18n%}
 {% load crispy_forms_tags %}
 {% block title %}
-Contact
+    {% trans "Contact" %}
 {% endblock title %}
 
 {% block content %}
@@ -10,9 +11,9 @@ Contact
     <div class="container">
         <div class="row">
             <div class="col-md-12 mb-0">
-                <a href="{% url 'Home' %}">Home</a>
+                <a href="{% url 'Home' %}">{% trans "Home" %}</a>
                 <span class="mx-2 mb-0">/</span>
-                <strong class="text-block">Contact</strong>
+                <strong class="text-block">{% trans "Contact" %}</strong>
             </div>
         </div>
     </div>
@@ -22,14 +23,14 @@ Contact
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-7">
-                <h2 class="h3 mb-3 text-black">Get in touch</h2>
+                <h2 class="h3 mb-3 text-black">{% trans "Get in touch" %}</h2>
             </div>
 
             <div class="col-md-7">
                 <form method="POST"> 
                     {% csrf_token %}
                     {{ form|crispy}}
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit message"/>
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="{% trans 'Submit message' %}"/>
                 </form>
             </div>
         </div>
