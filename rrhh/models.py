@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 
-class interviews(models.Model):
+class Interview(models.Model):
     interviewDate = models.DateField(
         verbose_name = _('Inteview date'),
         help_text=_("Enter the interview date "))
@@ -30,7 +30,7 @@ class interviews(models.Model):
         verbose_name = _('Interview')
         verbose_name_plural = _('Interviews')
 
-class area(models.Model):
+class Area(models.Model):
     areaName = models.CharField(
         verbose_name = _('Area name'),
         max_length=250, 
@@ -52,7 +52,7 @@ class area(models.Model):
         """Return area name"""
         return self.areaName
 
-class jobDescription(models.Model):
+class JobDescription(models.Model):
     createdBy = models.OneToOneField(
         User,
         verbose_name = _('Created by'), 
@@ -72,7 +72,7 @@ class jobDescription(models.Model):
         max_length=250, 
         help_text=_("Enter the title"))
     departament = models.ForeignKey(
-        area,
+        Area,
         null=False,
         on_delete=models.CASCADE,     
         verbose_name = _('Departament'),
@@ -125,7 +125,7 @@ class jobDescription(models.Model):
         """Return code job description"""
         return self.code
 
-class recruitment(models.Model):
+class Recruitment(models.Model):
     requester = models.OneToOneField(
         User,
         verbose_name = _('Requester'), 
@@ -137,13 +137,13 @@ class recruitment(models.Model):
         verbose_name = _('Date of request'),
         help_text=_("Date of request recruitment"))
     departament = models.ForeignKey(
-        area,
+        Area,
         null=False,
         on_delete=models.CASCADE,     
         verbose_name = _('Departament'),
         help_text=_("Enter the departament"))
     jobDescription = models.ForeignKey(
-        jobDescription,
+        JobDescription,
         on_delete=models.CASCADE,
         verbose_name = _('Job description'),
         help_text=_("Select job description"))
