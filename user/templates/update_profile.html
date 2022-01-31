@@ -39,14 +39,14 @@
                 <div class="form-group">
                     <label>{% trans "Phone number" %}</label>
                     <input
-                        class="form-control {% if form.celphone.errors %}is-invalid{% endif %}"
+                        class="form-control {% if form.cellphone.errors %}is-invalid{% endif %}"
                         type="text"
-                        name="celphone"
+                        name="cellphone"
                         placeholder="{% trans 'Enter your cell phone number' %}"
-                        value="{% if form.errors %}{{ form.celphone.value }}{% else %}{{ person.celphone }}{% endif %}"
+                        value="{% if form.errors %}{{ form.cellphone.value }}{% else %}{{ person.cellphone }}{% endif %}"
                     />
                     <div class="invalid-feedback">
-                        {% for error in form.celphone.errors %}
+                        {% for error in form.cellphone.errors %}
                             {{ error }}
                         {% endfor%}
                     </div>
@@ -73,14 +73,14 @@
                 <div class="form-group">
                     <label>{% trans "Age" %}</label>
                     <input
-                        class="form-control {% if form.edad.errors %}is-invalid{% endif %}"
+                        class="form-control {% if form.Age.errors %}is-invalid{% endif %}"
                         type="text"
-                        name="edad"
+                        name="Age"
                         placeholder="{% trans 'Enter your Age' %}"
-                        value="{% if form.errors %}{{ form.edad.value }}{% else %}{{ person.edad }}{% endif %}"
+                        value="{% if form.errors %}{{ form.Age.value }}{% else %}{{ person.Age }}{% endif %}"
                     />
                     <div class="invalid-feedback">
-                        {% for error in form.edad.errors %}
+                        {% for error in form.Age.errors %}
                             {{ error }}
                         {% endfor%}
                     </div>
