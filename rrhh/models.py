@@ -53,10 +53,9 @@ class Area(models.Model):
         return self.areaName
 
 class JobDescription(models.Model):
-    createdBy = models.OneToOneField(
+    createdBy = models.ForeignKey(
         User,
-        verbose_name = _('Created by'), 
-        default=1, 
+        verbose_name = _('Created by'),
         null=False, 
         on_delete=models.CASCADE,
         help_text=_("User who created the description."))
@@ -126,10 +125,9 @@ class JobDescription(models.Model):
         return self.code
 
 class Recruitment(models.Model):
-    requester = models.OneToOneField(
+    requester = models.ForeignKey(
         User,
-        verbose_name = _('Requester'), 
-        default=1, 
+        verbose_name = _('Requester'),
         null=False, 
         on_delete=models.CASCADE,
         help_text=_("Requester who created the request."))
@@ -144,13 +142,15 @@ class Recruitment(models.Model):
         help_text=_("Enter the departament"))
     jobDescription = models.ForeignKey(
         JobDescription,
+        null=True,
+        blank=True,
         on_delete=models.CASCADE,
         verbose_name = _('Job description'),
         help_text=_("Select job description"))
     startingDate = models.DateField(
         verbose_name = _('Starting date'),
         help_text=_("Starting date"))
-    numberOfVacancies = models.IntegerField(
+    numberOfVacancies = models.PositiveIntegerField(
         verbose_name = _('Number of vacancies'),
         help_text=_("Enter the number of vacancies"))
     title = models.CharField(

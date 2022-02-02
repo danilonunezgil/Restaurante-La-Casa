@@ -32,7 +32,8 @@ urlpatterns += i18n_patterns(
     path(_('admin/'), admin.site.urls),
     path('main/', include('main.urls', namespace='main')),
     path('shop/', include('shop.urls', namespace='shop')),
-    path('user/', include(('user.urls', 'user'), namespace='user')), 
+    path('user/', include(('user.urls', 'user'), namespace='user')),
+    path('rrhh/', include('rrhh.urls', namespace='rrhh')), 
 )
 
 if settings.DEBUG:
