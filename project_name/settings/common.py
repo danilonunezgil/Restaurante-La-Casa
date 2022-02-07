@@ -41,12 +41,15 @@ DEPENDENCIES_APPS = [
     #admindocs
     'django.contrib.admindocs',
     'djmoney',
+    'ckeditor',
+    'django_ace',
 ]
  
 PROJECT_APPS = [
     'main',
     'shop',
     'user',
+    'pages',
 ]
 
 ADDONS = [
@@ -145,7 +148,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}
 
 #STATIC_URL = '/static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
