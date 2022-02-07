@@ -47,7 +47,7 @@ PROJECT_APPS = [
     'main',
     'shop',
     'user',
-    'rrhh',
+    'hr',
 ]
 
 ADDONS = [
