@@ -69,3 +69,22 @@ class AddRecruitmentForm(forms.ModelForm):
             _('Responsabilities'),
             _('Location'),
             _('Comments')]
+
+class ApproveRequestForm(forms.Form):
+
+    REQUISITION_APPROVED_CHOICES = [
+        ('True', _('Yes')),
+        ('False', 'No'),
+    ]
+
+    requisitionApproved = forms.ChoiceField(
+        label = _('Requisition approved'),
+        required = True, 
+        widget = forms.RadioSelect,
+        choices = REQUISITION_APPROVED_CHOICES,
+    )
+    approvalsComments = forms.CharField(label = _('Approvals comments'),
+        max_length=500,
+        required=False, 
+        widget=forms.Textarea(attrs={ 'placeholder': _("Approvals comments")
+    }))
