@@ -167,6 +167,16 @@ class Recruitment(models.Model):
         help_text=_("Enter location"))
     comments = models.CharField(
         verbose_name = _('Comments'),
+        blank=True,
+        max_length=500, 
+        help_text=_("Enter the comments"))
+    requisitionApproved = models.BooleanField(
+        verbose_name = _('Requisition approved?'), 
+        default=False,
+        help_text=_("Requisition Approved?"))
+    approvalsComments = models.CharField(
+        verbose_name = _('Approvals comments'),
+        blank=True,
         max_length=500, 
         help_text=_("Enter the comments"))
 
