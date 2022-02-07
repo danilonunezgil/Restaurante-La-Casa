@@ -30,6 +30,7 @@ urlpatterns += i18n_patterns(
     path('', views.Home.as_view(),name="Home"),
     path(_('admin/doc/'), include('django.contrib.admindocs.urls')),
     path(_('admin/'), admin.site.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('main/', include('main.urls', namespace='main')),
     path('shop/', include('shop.urls', namespace='shop')),
     path('user/', include(('user.urls', 'user'), namespace='user')), 
