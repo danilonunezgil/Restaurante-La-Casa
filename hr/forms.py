@@ -83,7 +83,8 @@ class ApproveRequestForm(forms.Form):
         widget = forms.RadioSelect,
         choices = REQUISITION_APPROVED_CHOICES,
     )
-    approvalsComments = forms.CharField(label = _('Approvals comments'),
+    approvalsComments = forms.CharField(
+        label = _('Approvals comments'),
         max_length=500,
         required=False, 
         widget=forms.Textarea(attrs={ 'placeholder': _("Approvals comments")
