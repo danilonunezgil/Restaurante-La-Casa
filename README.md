@@ -21,6 +21,16 @@ The Issues and notes are created in the To Do column.
 Notes are requirements to work in later.
 issues are next or in progress requirements to develop.
 ```
+### Steps to change the name of an application in Django: ###
+```
+-An application with the target name must be created.
+-Copy the contents of the application to be renamed into the application with the target name.
+-Delete the content of the application to be renamed. (delete the url in project_name)
+-Execute the migration commands (makegrations and migrate), this is done to delete the DB tables.
+-Delete the folder of the application to rename and delete the application record in the settings(common.py).
+-Ready, you have renamed the app.
+
+```
 ### Directory Tree ###
 ```
 
