@@ -43,22 +43,7 @@ class ApproveRequestView(generic.FormView):
     def get_success_url(self):
         return reverse('hr:approveRequest')
 
-    def get_object(self):
-        return get_object_or_404(Recruitment, id=kwargs['pk'])
-
-    def get_context_data(self, **kwargs):
-        context = super(ApproveRequestView, self).get_context_data(**kwargs)
-        #context['approveR'] = self.get_object()
-        return context
-
-    def form_valid(self, form):
-        print("entro fv")
-        def get(self, request, *args, **kwargs):
-            print("----------------entro get-----------------")
-            print(request)
-            recruitment = get_object_or_404(Recruitment, id=kwargs['pk'])
-            recruitment.requisitionApproved = True
-            recruitment.approvalsComments = "no"
-            recruitment.save()
-
-        return super(JobDescriptionView, self).form_valid(form)
+class RequestListView(generic.ListView):
+    template_name='requestList.html'
+    model = Recruitment
+    context_object_name = 'reqList'
