@@ -71,30 +71,26 @@
                   <a  href="#" > {{ user.username }}  &nbsp; </a>
                   <div class="header-menu">
                     <div class="user-area dropdown float">
-                        <a href="#" class="dropdown-toggle active " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          
-                          <i class="fa fa-user " aria-hidden="true"> </i>
-                        
-                        </a>
-                        <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="{% url 'admin:index' %}"><i class="fa fa -cog"></i>{% trans "Administrate" %} </a>
-                            <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i> {% trans "Logout" %}</a>
-                        </div>
+                      <a href="#" class="dropdown-toggle active " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user " aria-hidden="true"> </i>
+                      </a>
+                      <div class="user-menu dropdown-menu">
+                          <a class="nav-link" href="{% url 'admin:index' %}"><i class="fa fa -cog"></i>{% trans "Administrate" %} </a>
+                          <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i> {% trans "Logout" %}</a>
+                      </div>
                     </div>
                   </div>
                 {% else %}
                   <a  href="#" > {{ user.username }}  &nbsp; </a>
                   <div class="header-menu">
                     <div class="user-area dropdown float">
-                        <a href="#" class="dropdown-toggle active " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          
-                          <i class="fa fa-user " aria-hidden="true"> </i>
-                        
-                        </a>
-                        <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="{% url 'user:detail' request.user.username %}"><i class="fa fa -cog"></i>{% trans "My account" %}</a>
-                            <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i>{% trans "Logout" %}</a>
-                        </div>
+                      <a href="#" class="dropdown-toggle active " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user " aria-hidden="true"> </i>
+                      </a>
+                      <div class="user-menu dropdown-menu">
+                          <a class="nav-link" href="{% url 'user:detail' request.user.username %}"><i class="fa fa -cog"></i>{% trans "My account" %}</a>
+                          <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i>{% trans "Logout" %}</a>
+                      </div>
                     </div>
                   </div>  
                 {% endif %}                                

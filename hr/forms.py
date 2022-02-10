@@ -1,7 +1,6 @@
 from tabnanny import verbose
-from tkinter.tix import Select
 from django import forms
-from django.forms import fields
+from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 from .models import JobDescription, Recruitment
@@ -89,3 +88,11 @@ class ApproveRequestForm(forms.Form):
         required=False, 
         widget=forms.Textarea(attrs={ 'placeholder': _("Approvals comments")
     }))
+
+    def clean_requisitionApproved(self):
+        data = self.cleaned_data['requisitionApproved']
+
+        if data == "False":
+            raise ValidationError(_("Approval comments is required"), code = 'invalid')
+
+        return data

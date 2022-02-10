@@ -1,6 +1,4 @@
-from re import A
-from django.db.models.query import InstanceCheckMeta
-from django.http import request, JsonResponse, response, Http404
+from django.http import request
 from django.shortcuts import get_object_or_404, reverse, redirect, render
 from django.views import generic
 from django.conf import settings 
@@ -42,6 +40,21 @@ class ApproveRequestView(generic.FormView):
 
     def get_success_url(self):
         return reverse('hr:approveRequest')
+    
+    def get_object(self):
+        return get_object_or_404(Recruitment, id='1')
+
+    def form_valid(self, form):
+        recruitment = self.get_object()
+        recruitment.requisitionApproved = form.cleaned_data['requisitionApproved']
+        recruitment.approvalsComments = form.cleaned_data['approvalsComments']
+        recruitment.save()
+        return super(ApproveRequestView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(ApproveRequestView, self).get_context_data(**kwargs)
+        context['approveR'] = self.get_object()
+        return context
 
 class RequestListView(generic.ListView):
     template_name='requestList.html'
