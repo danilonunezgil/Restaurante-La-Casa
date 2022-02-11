@@ -43,6 +43,7 @@ DEPENDENCIES_APPS = [
     'djmoney',
     'ckeditor',
     'django_ace',
+    'mptt',
 ]
  
 PROJECT_APPS = [
@@ -50,6 +51,7 @@ PROJECT_APPS = [
     'shop',
     'user',
     'pages',
+    'Menus',
 ]
 
 ADDONS = [
