@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from djmoney.models.fields import MoneyField
 from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
@@ -108,13 +107,12 @@ class JobDescription(models.Model):
         verbose_name = _('Knowledge'),
         max_length=250,
         help_text=_("Enter the knowledges"))
-    annualSalary = MoneyField(
+    annualSalary = models.DecimalField(
         verbose_name = _('Annual salary'), 
         default = 0,
         decimal_places = 2,
-        default_currency='USD',
         max_digits = 11,
-        help_text=_("Enter annual salary"))
+        help_text=_("Enter annual salary in USD"))
 
     class Meta:
         verbose_name = _('Job description')
