@@ -167,13 +167,18 @@
             <span class="sr-only">{% trans "Enciso - go to homepage" %}</span>
           </a>
         </div>
+        <!-- Navbar -->
         <div class="col-lg-9 col-md-8 col-sm-8 p-0">
-          <div class="container p-0">          
+          <div class="container p-0">
+            {% load menus %}
+            {% init_menu 'Main Menu' as main_menu %}            
+            <!-- Button collapse-->            
             <button type="button" data-toggle="collapse" data-target="#navigation"
               class="navbar-toggler btn-template-outlined"><span class="sr-only">{% trans "Toggle navigation" %}</span><i
-                class="fa fa-align-justify"></i>
+              class="fa fa-align-justify"></i>
             </button>          
-            <div id="navigation" class="navbar-collapse collapse">            
+            <div id="navigation" class="navbar-collapse collapse">
+              <!--Search -->            
               <div class="form-group w-50 m-1">
                 <form class="d-flex" method=POST action="{% url 'shop:search' %}">
                   {% csrf_token %}
@@ -184,62 +189,13 @@
                     </button>
                   </div>
                 </form>                
-              </div>           
-              <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a href="{% url 'Home' %}" class="nav-link">{% trans "Home" %}</a>                  
-                </li>                
-                <!-- ========== FULL WIDTH MEGAMENU ==================-->
-                <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown"
-                    data-delay="200" class="dropdown-toggle">{% trans "CATEGORY" %}<b class="caret"></b></a>
-                  <ul class="dropdown-menu megamenu">
-                    <li>
-                      <div class="row">
-                        <div class="col-md-6 col-lg-3">
-                          <h5>{% trans "Shop" %}</h5>
-                          <ul class="list-unstyled mb-3">
-                            <li class="nav-item"><a href="{% url 'shop:product' %}" class="nav-link">{% trans "All Products" %}</a></li>
-                            <li class="nav-item"><a href="{% static 'shop-category-left.html' %}"
-                                class="nav-link">{% trans "Category - sidebar left" %}</a></li>
-                            <li class="nav-iteminclude"><a href="{% static 'shop-category-full.html' %}"
-                                class="nav-link">{% trans "Category - full width" %}</a></li>
-                            <li class="nav-item">
-                              <a href="{% static 'shop-detail.html' %}" class="nav-link">{% trans "Product detail" %}</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown"><a href="#" data-toggle="dropdown"
-                  class="dropdown-toggle">{% trans "About" %}<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li>                    
-                    <ul class="list-unstyled mb-3">
-                      <li class="nav-item"><a href="{% static 'about.html' %}" class="nav-link">{% trans "About us" %}</a></li>
-                      <li class="nav-item"><a href="{% static 'team.html' %}" class="nav-link">{% trans "Our team" %}</a></li>
-                      <li class="nav-item"><a href="{% static 'team-member.html' %}" class="nav-link">{% trans "Team member" %}</a></li>
-                      <li class="nav-item"><a href="{% static 'services.html' %}" class="nav-link">{% trans "Services" %}</a></li>
-                    </ul>                    
-                  </li>
-                </ul>
-              </li>
-                <!-- ========== FULL WIDTH MEGAMENU END ==================-->
-                <!-- ========== Contact dropdown ==================-->
-                <li class="nav-item dropdown"><a href="javascript: void(0)" data-toggle="dropdown"
-                    class="dropdown-toggle">{% trans "Contact" %}<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li class="dropdown-item">
-                      <a href="{% url 'shop:contact' %}" class="nav-link">{% trans "Contact option 1" %}</a>
-                    </li>
-                  </ul>
-                </li>
-                <!-- ========== Contact dropdown end ==================-->
-              </ul>            
-            </div>          
+              </div> 
+              <!-- Navbar menus-->          
+              {% render_menu main_menu main %}            
+            </div>                     
           </div>
         </div>
+        <!-- Cart Item -->
         <div class="col-lg-1 col-md-1 col-sm-1">
           <a href="{% url 'shop:summary' %}" class="site-cart float-right">
             <span><i class="fa fa-shopping-cart"></i></span>
