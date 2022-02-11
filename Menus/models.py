@@ -87,6 +87,9 @@ class MenuItem( MPTTModel ):
 
     class Meta:
         ordering = [ 'tree_id', 'lft' ]
+    
+    def __str__(self):
+        return self.title
 
 
 class MenuProxy:
