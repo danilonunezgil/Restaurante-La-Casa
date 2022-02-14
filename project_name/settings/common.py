@@ -44,6 +44,7 @@ DEPENDENCIES_APPS = [
     'ckeditor',
     'django_ace',
     'mptt',
+    'rest_framework',
 ]
  
 PROJECT_APPS = [
@@ -173,3 +174,10 @@ SERVER_EMAIL = 'Server <server@project_name.com>'
 LOGIN_URL = '/user/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'Home'
+
+# PAGES #
+PAGE_TEMPLATE_CHOICES = (
+    ('page_onecolumn.html', 'Default one column layout'),
+    ('page_twocolumn.html', 'Default two column layout'),
+    ('page_search.html', 'Default search layout')
+)

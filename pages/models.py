@@ -53,6 +53,9 @@ class Section( models.Model ):
 
     class Meta:
         ordering = ['name']
+    
+    def __str__(self):
+        return self.name
 
 
 class URL( models.Model ):
@@ -355,38 +358,36 @@ class EmbeddedPageKey( models.Model ):
         verbose_name = _('Page Embedding')
 
 
-# ========================================================================
-# Translation proxy model
-# ========================================================================
-# class PageProxy( Page, TranslationProxyMixin ):
-#     """
-#     Page proxy model for creating admin only to edit
-#     translated objects.
-#     """
-#     objects = Page.translation_objects
 
-#     def clean( self ):
-#         # Note: For some reason it's not possible to
-#         # to define clean/validate_unique in TranslationProxyMixin
-#         # so we have to do this trick, where we add the methods and
-#         # call into translation proxy micin.
-#         self.id_clean()
+class PageProxy(Page):
+    """
+    Page proxy model for creating admin only to edit
+    translated objects.
+    """
+    objects = Page
 
-#     def validate_unique( self, exclude=None ):
-#         self.id_validate_unique( exclude=exclude )
+    def clean( self ):
+        # Note: For some reason it's not possible to
+        # to define clean/validate_unique in TranslationProxyMixin
+        # so we have to do this trick, where we add the methods and
+        # call into translation proxy micin.
+        self.id_clean()
 
-#     def __unicode__( self ):
-#         return "%s: %s" % ( self.id, self.title )
+    def validate_unique( self, exclude=None ):
+        self.id_validate_unique( exclude=exclude )
 
-#     class Meta:
-#         proxy = True
-#         verbose_name = _('Page translation')
+    def __unicode__( self ):
+        return "%s: %s" % ( self.id, self.title )
 
-#     class Archive:
-#         class Meta:
-#             rename_pk = ('pages_page', 'id')
-#             rename_fks = []
-#             clean_html_fields = ['content']
+    class Meta:
+        proxy = True
+        verbose_name = _('Page translation')
+
+    class Archive:
+        class Meta:
+            rename_pk = ('pages_page', 'id')
+            rename_fks = []
+            clean_html_fields = ['content']
 
 
 def register_page_key( app, key, title='', description='' ):

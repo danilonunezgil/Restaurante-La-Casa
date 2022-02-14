@@ -5,12 +5,12 @@ from django.forms import TextInput, ModelForm
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-# from djangoplicity.contrib import admin as dpadmin
+# from contrib import admin as dpadmin
 # from djangoplicity.archives.contrib.admin import ArchiveAdmin
 # from djangoplicity.archives.contrib.admin.defaults import SyncTranslationAdmin, \
 #     TranslationDuplicateAdmin
 from pages.forms import PageForm
-from pages.models import PageGroup, Page, URL, EmbeddedPageKey, Section
+from pages.models import PageGroup, Page, URL, EmbeddedPageKey, Section, PageProxy
 
 
 class URLAdminInline(admin.TabularInline):
@@ -239,16 +239,16 @@ class SectionAdmin( admin.ModelAdmin ):
 # class PageProxyInlineForm( ModelForm ):
 #     class Meta:
 #         model = PageProxy
-#         fields = ( 'id', 'translation_ready', 'lang', )
+#         fields = ( 'id',  )
 
 
-# class PageProxyAdmin( dpadmin.DjangoplicityModelAdmin, dpadmin.CleanHTMLAdmin, SyncTranslationAdmin, TranslationDuplicateAdmin, ArchiveAdmin ):
+# class PageProxyAdmin(ArchiveAdmin ):
 #     list_display = ('title', 'main_url', 'start_publishing', 'end_publishing', 'last_modified', 'is_online', 'view_link' )
 #     list_filter = ('published', 'lang', 'section', 'embedded', 'login_required', 'last_modified', )
 #     list_display_links = ('title', )
 #     search_fields = PageAdmin.search_fields
 #     fieldsets = (
-#             ( 'Language', {'fields': ( 'lang', 'source', 'translation_ready', ) } ),
+#             #( 'Language', {'fields': ( 'lang', 'source', 'translation_ready', ) } ),
 #             ('Publishing', {'fields': ('published', )}),
 #             (None, {'fields': ('title', 'content' )}),
 #             ('Metadata', {'fields': ( 'description', 'keywords' )}),
