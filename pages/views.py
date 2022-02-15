@@ -281,8 +281,8 @@ def view_page( request, url ):
         if lang:
             cache_key += '_%s' % lang
 
-        if is_internal(request):
-            cache_key += '_internal'
+        # if is_internal(request):
+        #     cache_key += '_internal'
         else:
             cache_key += '_external'
 
@@ -301,10 +301,10 @@ def view_page( request, url ):
 
         if url in index:
             page = Page.objects.get(embedded__exact=0, pk=index[url])
-        elif settings.USE_I18N and request.path in index:
-            # If we use translations let's check if the page exists with a full
-            # URL, e.g.: /public/chile/about-eso/
-            page = Page.objects.filter(embedded__exact=0, pk=index[request.path]).get()
+        # elif settings.USE_I18N and request.path in index:
+        #     # If we use translations let's check if the page exists with a full
+        #     # URL, e.g.: /public/chile/about-eso/
+        #     page = Page.objects.filter(embedded__exact=0, pk=index[request.path]).get()
         else:
             # If the URL doesn't exist let's check if it does exist with
             # a trailing /
@@ -416,3 +416,4 @@ def view_page( request, url ):
                 cache.set( cache_key, page_cache )
 
     return HttpResponse( html )
+

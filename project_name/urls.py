@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from argparse import Namespace
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf import settings
@@ -22,6 +23,7 @@ from django.utils.translation import gettext_lazy as _
 #from shop import views
 from main import views 
 from Menus.views import sitemap
+from pages.views import view_page
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),    
@@ -35,7 +37,10 @@ urlpatterns += i18n_patterns(
     path('main/', include('main.urls', namespace='main')),
     path('shop/', include('shop.urls', namespace='shop')),
     path('user/', include(('user.urls', 'user'), namespace='user')),
-    re_path(r'^sitemap/$', sitemap), 
+    re_path(r'^sitemap/$', sitemap),
+    #path('pages/', include('pages.urls', namespace='pages')),
+    re_path( r'^public/admin/pages/', include('pages.urls') ),
+    re_path(r'^(?P<url>.*)$', view_page),
 )
 
 if settings.DEBUG:
