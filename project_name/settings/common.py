@@ -41,6 +41,10 @@ DEPENDENCIES_APPS = [
     #admindocs
     'django.contrib.admindocs',
     'djmoney',
+    'ckeditor',
+    'django_ace',
+    'mptt',
+    'rest_framework',
 ]
  
 PROJECT_APPS = [
@@ -48,6 +52,8 @@ PROJECT_APPS = [
     'shop',
     'user',
     'hr',
+    'pages',
+    'Menus',
 ]
 
 ADDONS = [
@@ -146,7 +152,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    },
+}
 
 #STATIC_URL = '/static/'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -164,3 +175,10 @@ SERVER_EMAIL = 'Server <server@project_name.com>'
 LOGIN_URL = '/user/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'Home'
+
+# PAGES #
+PAGE_TEMPLATE_CHOICES = (
+    ('page_onecolumn.html', 'Default one column layout'),
+    ('page_twocolumn.html', 'Default two column layout'),
+    ('page_search.html', 'Default search layout')
+)
