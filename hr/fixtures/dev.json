@@ -96,5 +96,21 @@
         "knowledge": "Linkedin, etc.",
         "annualSalary": "500"
       }
+    },
+    {
+      "model": "hr.Recruitment",
+      "pk": 1,
+      "fields": {
+        "requester": "1",
+        "dateOfRequest": "2022-02-09",
+        "startingDate": "2022-02-09",
+        "title": "Recruitment Researcher",
+        "departament": "2",
+        "location": "Villavicencio",
+        "jobDescription": "4",
+        "responsabilities": "Search and recruit qualified personnel.",
+        "numberOfVacancies": "5",
+        "comments": "none"
+      }
     }
 ]

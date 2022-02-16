@@ -7,6 +7,23 @@ from hr.forms import AddJobDescriptionForm, AddRecruitmentForm, ApproveRequestFo
 from hr.models import JobDescription, Recruitment
 
 class RecruitmentView(generic.FormView):
+    """
+    The backend of the Recruitment template is implemented in this view.
+
+    Display an individual :model:`hr.Recruitment`.
+
+    **Template:**
+
+    :template:`hr/recruitmentRequest.html`
+
+    **get_success_url()**
+
+    We return/render the template under the alias we passed as parameter.
+
+    **form_valid()**
+
+    Validate the form fields and save the changes.
+    """
     form_class = AddRecruitmentForm
     template_name = "recruitmentRequest.html"
 
@@ -21,6 +38,24 @@ class RecruitmentView(generic.FormView):
         return super(RecruitmentView, self).form_valid(form)
 
 class JobDescriptionView(generic.FormView):
+    """
+    The backend of the JobDescription template is implemented in this view.
+
+    Display an individual :model:`hr.JobDescription`.
+
+    **Template:**
+
+    :template:`hr/jobDescription.html`
+
+    **get_success_url()**
+
+    We return/render the template under the alias we passed as parameter.
+
+    **form_valid()**
+
+    Validate the form fields and save the changes.
+    """
+
     form_class = AddJobDescriptionForm
     template_name = "jobDescription.html"
 
@@ -35,6 +70,33 @@ class JobDescriptionView(generic.FormView):
         return super(JobDescriptionView, self).form_valid(form)
 
 class ApproveRequestView(generic.FormView):
+    """
+    The backend of the ApproveRequest template is implemented in this view.
+
+    Display an individual :model:`hr.Recruitment`.
+
+    **Template:**
+
+    :template:`hr/approveRequest.html`
+
+    **get_success_url()**
+
+    We return/render the template under the alias we passed as parameter.
+
+    **get_object()**
+
+    we return an object from a query, if the record/object to query does not exist it \
+        returns a 404 status code. 
+
+    **form_valid()**
+    
+    Validate the form fields and save the changes.
+
+    **get_context_data()**
+
+    We obtain the queried object and assign it a context name to use it in the FrontEnd.
+    """
+
     form_class = ApproveRequestForm
     template_name = "approveRequest.html"
 

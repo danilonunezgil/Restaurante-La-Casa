@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 
 #general urls
 app_name = 'hr'
+
+""" URLs used in the HR application. """
 urlpatterns = [
     path('recruitment/', views.RecruitmentView.as_view(), name='recruitment'),
     path('jobDescription/', views.JobDescriptionView.as_view(), name='jobDescription'),
