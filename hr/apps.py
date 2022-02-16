@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class RrhhConfig(AppConfig):
+class HrConfig(AppConfig):
     name = 'hr'

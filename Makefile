@@ -27,6 +27,9 @@ testfixture:
 test:
 	docker exec -it project_name ./manage.py test
 
+testapp:
+	docker exec -it project_name ./manage.py test $(app) --noinput -v 3
+
 statics:
 	docker exec -it project_name ./manage.py collectstatic --noinput
 

@@ -30,6 +30,10 @@ class Interview(models.Model):
         verbose_name_plural = _('Interviews')
 
 class Area(models.Model):
+    """
+    In this model the departments that the organization owns are created.
+    """
+
     areaName = models.CharField(
         verbose_name = _('Area name'),
         max_length=250, 
@@ -52,6 +56,12 @@ class Area(models.Model):
         return self.areaName
 
 class JobDescription(models.Model):
+    """
+    In this model the job descriptions to be used for recruitments are created.
+
+    Stores a Job Description entry, related to :model:`auth.User` and :model:`hr.Area`.  
+    """
+
     createdBy = models.ForeignKey(
         User,
         verbose_name = _('Created by'),
@@ -123,6 +133,12 @@ class JobDescription(models.Model):
         return self.code
 
 class Recruitment(models.Model):
+    """  
+    Recruitment applications are created in this model.
+    
+    Stores a Recruitment entry, related to :model:`auth.User`, :model:`hr.JobDescription` and :model:`hr.Area`. 
+    """
+
     requester = models.ForeignKey(
         User,
         verbose_name = _('Requester'),

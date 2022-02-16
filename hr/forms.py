@@ -6,8 +6,11 @@ from django.utils.translation import ugettext_lazy as _
 from .models import JobDescription, Recruitment
 
 class AddJobDescriptionForm(forms.ModelForm):
+    """ Form creation - AddJobDescription Form """
 
     class Meta:
+        """ AddJobDescription Form Inherits from the JobDescription model. """
+
         model = JobDescription
         fields = [
             _('createdBy'), 
@@ -42,8 +45,11 @@ class AddJobDescriptionForm(forms.ModelForm):
             _('Annual salary')]
 
 class AddRecruitmentForm(forms.ModelForm):
-
+    """ Form creation - AddRecruitment Form """
+    
     class Meta:
+        """ AddRecruitment Form Inherits from the Recruitment model. """
+
         model = Recruitment
         fields = [
             _('requester'), 
@@ -70,7 +76,9 @@ class AddRecruitmentForm(forms.ModelForm):
             _('Comments')]
 
 class ApproveRequestForm(forms.Form):
+    """ Form creation - ApproveRequest Form """
 
+    """ Options for RequisitionApproved field in the AddRecruitment Form. """
     REQUISITION_APPROVED_CHOICES = [
         ('True', _('Yes')),
         ('False', 'No'),
@@ -88,11 +96,10 @@ class ApproveRequestForm(forms.Form):
         required=False, 
         widget=forms.Textarea(attrs={ 'placeholder': _("Approvals comments")
     }))
-
+    
     def clean_requisitionApproved(self):
+        """ Validation for RequisitionApproved field in the AddRecruitment Form. """
         data = self.cleaned_data['requisitionApproved']
-
         if data == "False":
             raise ValidationError(_("Approval comments is required"), code = 'invalid')
-
         return data
