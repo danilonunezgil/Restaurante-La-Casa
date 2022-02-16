@@ -53,7 +53,7 @@ PROJECT_APPS = [
     'user',
     'pages',
     'Menus',
-    'hr',
+    'rrhh',
 ]
 
 ADDONS = [
