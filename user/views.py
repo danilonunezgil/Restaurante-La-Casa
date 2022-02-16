@@ -35,7 +35,7 @@ class UserDetailView(LoginRequiredMixin, UpdateView):
     
 
     model = Person
-    fields = ['cc', 'celphone',  'home_address', 'edad']
+    fields = ['cc', 'cellphone',  'home_address', 'Age']
 
     def get_object(self):
         """Return user's profile."""
@@ -72,7 +72,7 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
 
     template_name = 'update_profile.html'
     model = Person
-    fields = ['cc', 'celphone',  'home_address', 'edad']
+    fields = ['cc', 'cellphone',  'home_address', 'Age']
 
     def get_object(self):
         """Return user's profile."""
