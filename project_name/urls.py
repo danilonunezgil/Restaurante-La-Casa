@@ -41,6 +41,7 @@ urlpatterns += i18n_patterns(
     #path('pages/', include('pages.urls', namespace='pages')),
     re_path( r'^public/admin/pages/', include('pages.urls') ),
     re_path(r'^(?P<url>.*)$', view_page),
+    path('hr/', include('hr.urls', namespace='hr')), 
 )
 
 if settings.DEBUG:
