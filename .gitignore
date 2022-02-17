@@ -18,7 +18,8 @@ build/
 tests/report/
 env/
 
-
+**/migrations/**
+!**/migrations
 
 
 !media/.keep
