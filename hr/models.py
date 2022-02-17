@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from djmoney.models.fields import MoneyField
 from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
@@ -31,6 +30,10 @@ class Interview(models.Model):
         verbose_name_plural = _('Interviews')
 
 class Area(models.Model):
+    """
+    In this model the departments that the organization owns are created.
+    """
+
     areaName = models.CharField(
         verbose_name = _('Area name'),
         max_length=250, 
@@ -53,6 +56,12 @@ class Area(models.Model):
         return self.areaName
 
 class JobDescription(models.Model):
+    """
+    In this model the job descriptions to be used for recruitments are created.
+
+    Stores a Job Description entry, related to :model:`auth.User` and :model:`hr.Area`.  
+    """
+
     createdBy = models.ForeignKey(
         User,
         verbose_name = _('Created by'),
@@ -108,13 +117,12 @@ class JobDescription(models.Model):
         verbose_name = _('Knowledge'),
         max_length=250,
         help_text=_("Enter the knowledges"))
-    annualSalary = MoneyField(
+    annualSalary = models.DecimalField(
         verbose_name = _('Annual salary'), 
         default = 0,
         decimal_places = 2,
-        default_currency='USD',
         max_digits = 11,
-        help_text=_("Enter annual salary"))
+        help_text=_("Enter annual salary in USD"))
 
     class Meta:
         verbose_name = _('Job description')
@@ -125,6 +133,12 @@ class JobDescription(models.Model):
         return self.code
 
 class Recruitment(models.Model):
+    """  
+    Recruitment applications are created in this model.
+    
+    Stores a Recruitment entry, related to :model:`auth.User`, :model:`hr.JobDescription` and :model:`hr.Area`. 
+    """
+
     requester = models.ForeignKey(
         User,
         verbose_name = _('Requester'),
@@ -167,6 +181,16 @@ class Recruitment(models.Model):
         help_text=_("Enter location"))
     comments = models.CharField(
         verbose_name = _('Comments'),
+        blank=True,
+        max_length=500, 
+        help_text=_("Enter the comments"))
+    requisitionApproved = models.BooleanField(
+        verbose_name = _('Requisition approved?'), 
+        default=False,
+        help_text=_("Requisition Approved?"))
+    approvalsComments = models.CharField(
+        verbose_name = _('Approvals comments'),
+        blank=True,
         max_length=500, 
         help_text=_("Enter the comments"))
 
