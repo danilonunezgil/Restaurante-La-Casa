@@ -120,7 +120,6 @@ class Product(models.Model):
             url = ''
         return url
 
-
 class OrderItem(models.Model):
 
     class Meta:
