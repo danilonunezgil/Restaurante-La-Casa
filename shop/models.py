@@ -112,6 +112,13 @@ class Product(models.Model):
     def in_stock(self):
         return self.stock > 0
 
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
 
 class OrderItem(models.Model):
 
