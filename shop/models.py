@@ -119,7 +119,7 @@ class Product(models.Model):
         except:
             url = ''
         return url
-        
+
 class OrderItem(models.Model):
 
     class Meta:
