@@ -31,7 +31,7 @@ class Interview(models.Model):
 
 class Area(models.Model):
     """
-    In this model the departments/units that the organization owns are created.
+    In this model the departments/Area that the organization owns are created.
     """
 
     areaName = models.CharField(
@@ -41,7 +41,7 @@ class Area(models.Model):
     areaDescription = models.CharField(
         verbose_name = _('Area description'),
         max_length=500, 
-        help_text=_("Function or description of the department/area"))
+        help_text=_("Description of the department/area"))
     areaCode = models.CharField(
         verbose_name = _('Area Code'),
         max_length=250, 
@@ -92,7 +92,7 @@ class JobDescription(models.Model):
     jobDescription = models.CharField(
         verbose_name = _('Job description'),
         max_length=500, 
-        help_text=_("Job descriptions"))
+        help_text=_("Job description"))
     responsabilities = models.CharField(
         verbose_name = _('Responsabilities'),
         max_length=500, 
@@ -100,11 +100,11 @@ class JobDescription(models.Model):
     skills = models.CharField(
         verbose_name = _('Skills'),
         max_length=500, 
-        help_text=_("Skills to perform a task"))
+        help_text=_("The capacities to perform tasks that you are developed"))
     abilities = models.CharField(
         verbose_name = _('Abilities'),
         max_length=250,
-        help_text=_("Innate abilities to perform a task"))
+        help_text=_("Talents you are born with."))
     experience = models.CharField(
         verbose_name = _('Experience'),
         max_length=250,
@@ -147,13 +147,13 @@ class Recruitment(models.Model):
         help_text=_("User who created the request"))
     dateOfRequest = models.DateField(
         verbose_name = _('Date of request'),
-        help_text=_("Date of request recruitment"))
+        help_text=_("Date of recruitment request"))
     departament = models.ForeignKey(
         Area,
         null=False,
         on_delete=models.CASCADE,     
         verbose_name = _('Departament'),
-        help_text=_("Department/Area where you will be working"))
+        help_text=_("Department/Area that require the recruitment"))
     jobDescription = models.ForeignKey(
         JobDescription,
         null=True,
