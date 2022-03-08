@@ -1,6 +1,6 @@
 # project_name
 
-Django 3.1.1 + Postgres 11 + Dokku config (Production Ready)
+Django 3.2.12 + Postgres 11 + Dokku config (Production Ready)
 
 ## Documentation ##
 
@@ -189,3 +189,35 @@ Optional: Additional nginx configuration (like client_max_body_size) should be p
 ```
 
 > Further dokku configuration can be found here: http://dokku.viewdocs.io/dokku/
+
+## Create volume for file storage (jpg, pdf, mp3, mp4, txt): ##
+
+First we must connect to the server, with the following command.
+``` 
+ssh root@137.184.18.181 
+```
+Once inside the server we list the dokku applications.
+```
+dokku apps:list
+```
+After identifying the application to be connected to the volume, we proceed to create the directory (cms-media).
+```
+mkdir -p /var/dir/dokku/data/storage/cms-media
+```
+Then we grant access permissions to the folder and link the project directory to the folder.
+```
+chown -R dokku:dokku /var/dir/dokku/data/storage/cms-media
+chown -R 32767:32767 /var/dir/dokku/data/storage/cms-media
+dokku storage:mount project_name /var/dir/dokku/data/storage/cms-media:/src/media
+```
+Then we restart the application.
+```
+dokku ps:restart project_name
+```
+To verify that the volume was created successfully.
+```
+dokku storage:report
+cd /var/dir/dokku/data/storage/cms-media
+ls -la
+```
+> For more documentation: https://dokku.com/docs~v0.26.8/advanced-usage/persistent-storage/
