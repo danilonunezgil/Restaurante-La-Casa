@@ -3,8 +3,9 @@ from django.shortcuts import get_object_or_404, reverse, redirect, render
 from django.views import generic
 from django.conf import settings 
 
-from hr.forms import AddJobDescriptionForm, AddRecruitmentForm, ApproveRequestForm
+from hr.forms import AddJobDescriptionForm, AddRecruitmentForm, ApproveRequestForm, ReceiveCVsForm
 from hr.models import JobDescription, Recruitment
+from user.models import Person
 
 class RecruitmentView(generic.FormView):
     """
@@ -122,3 +123,41 @@ class RequestListView(generic.ListView):
     template_name='requestList.html'
     model = Recruitment
     context_object_name = 'reqList'
+
+class ReceiveCVsView(generic.FormView):
+    """
+    The backend of the ReceiveCVs template is implemented in this view.
+
+    Display an individual :model:`user.Person`.
+
+    **Template:**
+
+    :template:`hr/receiveCVs.html`
+
+    **get_success_url()**
+
+    We return/render the template under the alias we passed as parameter.
+
+    **form_valid()**
+    
+    Validate the form fields and save the changes.
+
+    """
+    
+    form_class = ReceiveCVsForm
+    template_name = "receiveCVs.html"
+
+    def get_success_url(self):
+        return reverse('hr:receiveCV')
+
+    def form_valid(self, form):
+        Person.name = form.cleaned_data['name']
+        Person.lastName = form.cleaned_data['lastName']
+        Person.cc = form.cleaned_data['cc']
+        Person.Age = form.cleaned_data['age']
+        Person.email = form.cleaned_data['email']
+        Person.cellphone = form.cleaned_data['cellphone']
+        Person.home_address = form.cleaned_data['homeAddress']
+        Person.cv = form.cleaned_data['cv']
+        Person.save()
+        return super(ReceiveCVsView, self).form_valid(form)

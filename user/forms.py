@@ -19,8 +19,8 @@ class SignupForm(forms.Form):
         widget=forms.PasswordInput()
     )
 
-    first_name = forms.CharField(label = _('First name'), min_length=2, max_length=50)
-    last_name = forms.CharField(label = _('Last name'), min_length=2, max_length=50)
+    # first_name = forms.CharField(label = _('First name'), min_length=2, max_length=50)
+    # last_name = forms.CharField(label = _('Last name'), min_length=2, max_length=50)
 
     email = forms.CharField(
         label = _('Email'), 
