@@ -1,4 +1,5 @@
-{% load static i18n%}
+{% load static %}
+{% load i18n %}
 {% load cart_template_tags %}
 
 <!DOCTYPE html>
@@ -46,16 +47,17 @@
     <!-- Top bar-->
     <div class="top-bar">
       <div class="container">
-        <div class="row d-flex align-items-center">
-          <div class="col-md-6 d-md-block d-none">
+        <div class="row d-flex align-items-center" style="width: 1280px;">
+          <div class="col-md-4 d-md-block d-none">
             <p> {% trans "Contact us on +420 777 555 333 or hello@universal.com." %} </p>
           </div>
+          
           <div class="col-md-6">
-            <div class="d-flex justify-content-md-end justify-content-between">
-              <ul class="list-inline contact-info d-block d-md-none">
+            <div class="d-flex justify-content-md-end justify-content-between" >
+              <!-- <ul class="list-inline contact-info d-block d-md-none">
                 <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
                 <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
-              </ul>
+              </ul> -->              
               {% if not request.user.is_authenticated %}
                 <div class="login">
                   <a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn">
@@ -101,11 +103,25 @@
                 <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
                 <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
                 <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fa fa-youtube"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
               </ul>
             </div>
           </div>
+          <div class="col-md-2 justify-content-md-end" >
+            <form action="/i18n/setlang/" method="post" style="display: inline;">
+              {% csrf_token %}
+              <div style="display: inline;">
+                <select class="text-white" name="language" onchange="javascript:form.submit()" style="border: none; background: #555;">
+                  {% for lang in LANGUAGES %}
+                    <option value="{{ lang.0 }}"{% ifequal LANGUAGE_CODE lang.0 %} selected="selected"{% endifequal %}>{{ lang.1 }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </form>
+          </div>          
         </div>
-      </div>
+      </div>      
     </div>
     <!-- Top bar end-->
     <!-- Login Modal-->

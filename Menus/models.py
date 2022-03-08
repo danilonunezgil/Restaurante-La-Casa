@@ -247,24 +247,24 @@ def build_menu( name ):
         raise MenuDoesNotExist
 
 
-def mark_selected_item( byurls, path ):
-    """
-    Highlighting of selected menu item
+# def mark_selected_item( byurls, path ):
+#     """
+#     Highlighting of selected menu item
 
-    Works like the bread crumb generation (see below).
-    """
+#     Works like the bread crumb generation (see below).
+#     """
 
-    path = (path)[2]
+#     path = (path)[2]
 
-    for url, val in byurls:
-        if path.startswith( url ) and url != '':
-            val['leaf_selected'] = True
-            while val:
-                if val['selected']:
-                    break
-                val['selected'] = True
-                val = val['parent']
-            return
+#     for url, val in byurls:
+#         if path.startswith( url ) and url != '':
+#             val['leaf_selected'] = True
+#             while val:
+#                 if val['selected']:
+#                     break
+#                 val['selected'] = True
+#                 val = val['parent']
+#             return
 
 
 def make_breadcrumb( byurls, path ):
@@ -283,8 +283,8 @@ def make_breadcrumb( byurls, path ):
     if path == '/':
         return []
 
-    if settings.USE_I18N:
-        lang = translation.get_language()
+    # if settings.USE_I18N:
+    #     lang = translation.get_language()
 
     for url, val in byurls:
         # if settings.USE_I18N:
