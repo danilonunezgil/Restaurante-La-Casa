@@ -19,60 +19,60 @@
         <div class="card card-body">
             <div class="row">
                 <div class="form-group col row">
-                    <label for="dateRequest" class="col-sm-5 col-form-label">{% trans "Date of request" %}:</label>
+                    <label for="dateRequest" class="font-weight-bold col-sm-5 col-form-label">{% trans "Date of request" %}:</label>
                     <div class="col-sm-7 p-1">
-                        <input type="text" readonly class="form-control-plaintext" id="dateOfRequest" value="{{JVA.dateOfRequest}}">
+                        <input type="text" readonly class="form-control-plaintext font-weight-light" id="dateOfRequest" value="{{JVA.dateOfRequest}}">
                     </div>
                 </div>
                 <div class="form-group col row">
-                    <label for="requester" class="col-sm-3 col-form-label p-1">{% trans "Requester" %}:</label>
+                    <label for="requester" class="font-weight-bold col-sm-3 col-form-label p-1">{% trans "Requester" %}:</label>
                     <div class="col-sm-9">
-                        <input type="text" readonly class="form-control-plaintext" id="requester" value="{{JVA.requester}}">
+                        <input type="text" readonly class="form-control-plaintext font-weight-light" id="requester" value="{{JVA.requester}}">
                     </div>
                 </div>
                 <div class="form-group col row">
-                    <label for="departament" class="col-sm-5 col-form-label p-1">{% trans "Departament" %}:</label>
+                    <label for="departament" class="font-weight-bold col-sm-5 col-form-label p-1">{% trans "Departament" %}:</label>
                     <div class="col-sm-7">
-                        <input type="text" readonly class="form-control-plaintext" id="departament" value="{{JVA.departament}}">
+                        <input type="text" readonly class="form-control-plaintext font-weight-light" id="departament" value="{{JVA.departament}}">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col row">
-                    <label for="startingDate" class="col-sm-5 col-form-label">{% trans "Starting date" %}:</label>
+                    <label for="startingDate" class="font-weight-bold col-sm-5 col-form-label">{% trans "Starting date" %}:</label>
                     <div class="col-sm-7 p-1">
-                        <input type="text" readonly class="form-control-plaintext" id="startingDate" value="{{JVA.startingDate}}">
+                        <input type="text" readonly class="form-control-plaintext font-weight-light" id="startingDate" value="{{JVA.startingDate}}">
                     </div>
                 </div>
                 <div class="form-group col row">
-                    <label for="title" class="col-sm-3 col-form-label p-1">{% trans "Title" %}:</label>
+                    <label for="title" class="font-weight-bold col-sm-3 col-form-label p-1">{% trans "Title" %}:</label>
                     <div class="col-sm-9">
-                        <input type="text" readonly class="form-control-plaintext" id="title" value="{{JVA.title}}">
+                        <input type="text" readonly class="form-control-plaintext font-weight-light" id="title" value="{{JVA.title}}">
                     </div>
                 </div>
                 <div class="form-group col row">
-                    <label for="vacancies" class="col-sm-5 col-form-label p-1">{% trans "Number of vacancies" %}:</label>
+                    <label for="vacancies" class="font-weight-bold col-sm-5 col-form-label p-1">{% trans "Number of vacancies" %}:</label>
                     <div class="col-sm-7">
-                        <input type="text" readonly class="form-control-plaintext" id="numberOfVacancies" value="{{JVA.numberOfVacancies}}">
+                        <input type="text" readonly class="form-control-plaintext font-weight-light" id="numberOfVacancies" value="{{JVA.numberOfVacancies}}">
                     </div>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="responsabilities" class="col-sm-2 col-form-label">{% trans "Responsabilities" %}:</label>
+                <label for="responsabilities" class="font-weight-bold col-sm-2 col-form-label">{% trans "Responsabilities" %}:</label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="responsabilities" value="{{JVA.responsabilities}}">
+                    <input type="text" readonly class="form-control-plaintext font-weight-light" id="responsabilities" value="{{JVA.responsabilities}}">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="location" class="col-sm-2 col-form-label">{% trans "Location" %}:</label>
+                <label for="location" class="font-weight-bold col-sm-2 col-form-label">{% trans "Location" %}:</label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="location" value="{{JVA.location}}">
+                    <input type="text" readonly class="form-control-plaintext font-weight-light" id="location" value="{{JVA.location}}">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="comments" class="col-sm-2 col-form-label">{% trans "Comments" %}:</label>
+                <label for="comments" class="font-weight-bold col-sm-2 col-form-label">{% trans "Comments" %}:</label>
                 <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="comments" value="{{JVA.comments}}">
+                    <input type="text" readonly class="form-control-plaintext font-weight-light" id="comments" value="{{JVA.comments}}">
                 </div>
             </div>
         </div>
@@ -88,19 +88,19 @@
         <div class="card card-body">
             <div class="row">
                 <div class="form-group col row">
-                    <label for="requisitionApproved" class="col-sm-5 col-form-label">{% trans "Requisition Approval" %}:</label>
+                    <label for="requisitionApproved" class="font-weight-bold col-sm-5 col-form-label">{% trans "Requisition Approval" %}:</label>
                     <div class="col-sm-7 p-1">
                         {% if JVA.requisitionApproved %} 
-                            <input type="text" readonly class="form-control-plaintext" id="requisitionApproved" value="Yes">
+                            <input type="text" readonly class="form-control-plaintext font-weight-light" id="requisitionApproved" value="Yes">
                         {% else %}
-                            <input type="text" readonly class="form-control-plaintext" id="requisitionApproved" value="No">
+                            <input type="text" readonly class="form-control-plaintext font-weight-light" id="requisitionApproved" value="No">
                         {% endif %}
                     </div>
                 </div>
                 <div class="form-group col row">
-                    <label for="approvalsComments" class="col-sm-3 col-form-label p-1">{% trans "Approvals Comments" %}:</label>
+                    <label for="approvalsComments" class="font-weight-bold col-sm-3 col-form-label p-1">{% trans "Approvals Comments" %}:</label>
                     <div class="col-sm-9">
-                        <input type="text" readonly class="form-control-plaintext" id="approvalsComments" value="{{JVA.approvalsComments}}">
+                        <input type="text" readonly class="form-control-plaintext font-weight-light" id="approvalsComments" value="{{JVA.approvalsComments}}">
                     </div>
                 </div>
             </div>
@@ -118,33 +118,26 @@
             </div>
             <div id="JobVacancyAdvertisement" class="collapse show">
                 <div class="card card-body">
-
                     <div class="row"> 
                         <div class="form-group col row">
-                            <label for="id_advertisementType" class="col-sm-1.5 col-form-label p-1">{% trans "Advertisement Type" %}:</label>
+                            <label for="id_advertisementType" class="font-weight-bold col-sm-1.5 col-form-label p-1">{% trans "Advertisement Type" %}:</label>
                             <div class="col-sm-5">
-                                {{ form.advertisementType}}
-
-                                
+                                {{ form.advertisementType}}  
                             </div>
                         </div>
-    
                         <div class="form-group col row">
-                            <label for="id_closingDate" class="col-sm-4 col-form-label p-1">{% trans "Closing date" %}:</label>
+                            <label for="id_closingDate" class="font-weight-bold col-sm-4 col-form-label p-1">{% trans "Closing date" %}:</label>
                             <div class="col-sm-7">
                                 {{ form.closingDate }}
                             </div>
                         </div>
                     </div>
-                      
-
                     <div class="form-group col row">
-                        <label for="id_comments" class="col-sm-2 col-form-label p-1">{% trans "Comments" %}:</label>
+                        <label for="id_comments" class="font-weight-bold col-sm-2 col-form-label p-1">{% trans "Comments" %}:</label>
                         <div class="col-sm-10">
                             {{ form.comments}}
                         </div>
                     </div>
-                    
                 </div>
             </div>
             <div class="card card-header p-0 mb-0 mt-2">
@@ -156,50 +149,42 @@
             </div>
             <div id="adInformation" class="collapse show">
                 <div class="card card-body">
-                    <!--Aqui se ponen los campos-->
-
                     <div class="form-group col row">
-                        <label for="id_jobTitle" class="col-sm-2 col-form-label p-1">{% trans "Job Title" %}:</label>
+                        <label for="id_jobTitle" class="font-weight-bold col-sm-2 col-form-label p-1">{% trans "Job Title" %}:</label>
                         <div class="col-sm-10">
                             {{ form.jobTitle}}
                         </div>
                     </div>
-
                     <div class="form-group col row">
-                        <label for="id_jobDescription" class="col-sm-2 col-form-label p-1">{% trans "Job Description" %}:</label>
+                        <label for="id_jobDescription" class="font-weight-bold col-sm-2 col-form-label p-1">{% trans "Job Description" %}:</label>
                         <div class="col-sm-10">
                             {{ form.jobDescription }}
                         </div>
                     </div>
-
                     <div class="form-group col row">
-                        <label for="id_idealCandidate" class="col-sm-2 col-form-label p-1">{% trans "Ideal candidate" %}:</label>
+                        <label for="id_idealCandidate" class="font-weight-bold col-sm-2 col-form-label p-1">{% trans "Ideal candidate" %}:</label>
                         <div class="col-sm-10">
                             {{ form.idealCandidate }}
                         </div>
                     </div>
-
                     <div class="form-group col row">
-                        <label for="id_location" class="col-sm-2 col-form-label p-1">{% trans "Location" %}:</label>
+                        <label for="id_location" class="font-weight-bold col-sm-2 col-form-label p-1">{% trans "Location" %}:</label>
                         <div class="col-sm-10">
                             {{ form.location }}
                         </div>
                     </div>
-
                     <div class="form-group col row">
-                        <label for="id_salaryGuide" class="col-sm-2 col-form-label p-1">{% trans "Salary guide" %}:</label>
+                        <label for="id_salaryGuide" class="font-weight-bold col-sm-2 col-form-label p-1">{% trans "Salary guide" %}:</label>
                         <div class="col-sm-10">
                             {{ form.salaryGuide }}
                         </div>
                     </div>
-
                     <div class="form-group col row">
-                        <label for="id_contactDetails" class="col-sm-2 col-form-label p-1">{% trans "Contact Details" %}:</label>
+                        <label for="id_contactDetails" class="font-weight-bold col-sm-2 col-form-label p-1">{% trans "Contact Details" %}:</label>
                         <div class="col-sm-10">
                             {{ form.contactDetails }}
                         </div>
                     </div>
-
                 </div>
             </div>        
             <div id="btn_save" class="d-flex col-md-12 justify-content-center">
@@ -207,6 +192,5 @@
             </div>
         </form>
     </div>
-
 </div>
 {% endblock content %}
