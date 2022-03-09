@@ -151,13 +151,14 @@ class ReceiveCVsView(generic.FormView):
         return reverse('hr:receiveCV')
 
     def form_valid(self, form):
-        Person.name = form.cleaned_data['name']
-        Person.lastName = form.cleaned_data['lastName']
-        Person.cc = form.cleaned_data['cc']
-        Person.Age = form.cleaned_data['age']
-        Person.email = form.cleaned_data['email']
-        Person.cellphone = form.cleaned_data['cellphone']
-        Person.home_address = form.cleaned_data['homeAddress']
-        Person.cv = form.cleaned_data['cv']
-        Person.save()
+        person = Person()
+        person.name = form.cleaned_data['name']
+        person.lastName = form.cleaned_data['lastName']
+        person.cc = form.cleaned_data['cc']
+        person.Age = form.cleaned_data['age']
+        person.email = form.cleaned_data['email']
+        person.cellphone = form.cleaned_data['cellphone']
+        person.home_address = form.cleaned_data['homeAddress']
+        person.cv = form.cleaned_data['cv']
+        person.save()
         return super(ReceiveCVsView, self).form_valid(form)
