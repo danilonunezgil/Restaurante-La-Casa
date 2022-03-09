@@ -10,7 +10,7 @@ class Interview(models.Model):
         help_text=_("Enter the interview date "))
     interviewFile = models.CharField(
         verbose_name = _('Interview file'),
-        max_length=250, 
+        max_length=250,
         help_text=_("Add interview file"))
     interviewPerformance = models.BooleanField(
         verbose_name = _('Interview performance'),
@@ -36,15 +36,15 @@ class Area(models.Model):
 
     areaName = models.CharField(
         verbose_name = _('Area name'),
-        max_length=250, 
+        max_length=250,
         help_text=_("Enter the area name"))
     areaDescription = models.CharField(
         verbose_name = _('Area description'),
-        max_length=500, 
+        max_length=500,
         help_text=_("Enter the area description"))
     areaCode = models.CharField(
         verbose_name = _('Area Code'),
-        max_length=250, 
+        max_length=250,
         help_text=_("Enter area code"))
 
     class Meta:
@@ -73,33 +73,33 @@ class JobDescription(models.Model):
         help_text=_("Creation date for job description"))
     code = models.CharField(
         verbose_name = _('Code'),
-        max_length=250, 
+        max_length=250,
         help_text=_("Enter the code"))
     title = models.CharField(
         verbose_name = _('Title'),
-        max_length=250, 
+        max_length=250,
         help_text=_("Enter the title"))
     departament = models.ForeignKey(
         Area,
         null=False,
-        on_delete=models.CASCADE,     
+        on_delete=models.CASCADE,  
         verbose_name = _('Departament'),
         help_text=_("Enter the departament"))
     reportTo = models.CharField(
         verbose_name = _('Report to'),
-        max_length=250, 
+        max_length=250,
         help_text=_("Enter report to"))
     jobDescription = models.CharField(
         verbose_name = _('Job description'),
-        max_length=500, 
+        max_length=500,
         help_text=_("Enter job description"))
     responsabilities = models.CharField(
         verbose_name = _('Responsabilities'),
-        max_length=500, 
+        max_length=500,
         help_text=_("Enter the responsabilities"))
     skills = models.CharField(
         verbose_name = _('Skills'),
-        max_length=500, 
+        max_length=500,
         help_text=_("Enter the skills"))
     abilities = models.CharField(
         verbose_name = _('Abilities'),
@@ -151,7 +151,7 @@ class Recruitment(models.Model):
     departament = models.ForeignKey(
         Area,
         null=False,
-        on_delete=models.CASCADE,     
+        on_delete=models.CASCADE,
         verbose_name = _('Departament'),
         help_text=_("Enter the departament"))
     jobDescription = models.ForeignKey(
@@ -169,29 +169,29 @@ class Recruitment(models.Model):
         help_text=_("Enter the number of vacancies"))
     title = models.CharField(
         verbose_name = _('Title'),
-        max_length=250, 
+        max_length=250,
         help_text=_("Enter the title"))
     responsabilities = models.CharField(
         verbose_name = _('Responsabilities'),
-        max_length=500, 
+        max_length=500,
         help_text=_("Enter the responsabilities"))
     location = models.CharField(
         verbose_name = _('Location'),
-        max_length=250, 
+        max_length=250,
         help_text=_("Enter location"))
     comments = models.CharField(
         verbose_name = _('Comments'),
         blank=True,
-        max_length=500, 
+        max_length=500,
         help_text=_("Enter the comments"))
     requisitionApproved = models.BooleanField(
-        verbose_name = _('Requisition approved?'), 
+        verbose_name = _('Requisition approved'), 
         default=False,
         help_text=_("Requisition Approved?"))
     approvalsComments = models.CharField(
         verbose_name = _('Approvals comments'),
         blank=True,
-        max_length=500, 
+        max_length=500,
         help_text=_("Enter the comments"))
 
     class Meta:
@@ -201,3 +201,56 @@ class Recruitment(models.Model):
     def __str__(self):
         """Return title of recruitment"""
         return self.title
+
+class Advertisement(models.Model):
+    """
+    Model to obtain the data that will be used to generate the advertising of the vacancies. 
+
+    """
+    closingDate = models.DateField(
+        verbose_name = _('Closing date'),
+        help_text=_("Closing date for advertisement"))
+    companyDescription = models.CharField(
+        verbose_name = _('Company description'),
+        max_length=500,
+        help_text=_("Short description of the company"))
+    contactDetails = models.CharField(
+        verbose_name = _('Contact details'),
+        max_length=250,
+        help_text=_("The necessary information to contact the candidate"))
+    idealCandidate= models.CharField(
+        verbose_name = _('Ideal candidate'),
+        max_length=250,
+        help_text=_("The characteristics of the ideal candidate"))
+    jobDescription = models.CharField(
+        verbose_name = _('Job description'),
+        max_length=500,
+        help_text=_("Characteristics that describe the vacancy ")) 
+    jobTitle = models.CharField(
+        verbose_name = _('Job title'),
+        max_length=250,
+        help_text=_("Name of the vacancy"))
+    location = models.CharField(
+        verbose_name = _('Location'),
+        max_length=250,
+        help_text=_("Location of the vacancy"))
+    salaryGuide = models.CharField(
+        verbose_name = _('Salary guide'),
+        max_length=250,
+        help_text=_("Characteristics such as experience that help establish the salary"))
+    comments = models.CharField(
+        verbose_name = _('Comments'),
+        max_length=500,
+        help_text=_("Comment here some additional features to consider"))
+    advertisementType = models.BooleanField(
+        verbose_name = _('Advertisement type'),
+        default = False,
+        help_text=_("Internal or External?"))
+
+    class Meta:
+        verbose_name = _('Advertisement')
+        verbose_name_plural = _('Advertisements')
+
+    def __str__(self):
+        """Return job title of advertisement"""
+        return self.jobTitle
