@@ -12,7 +12,11 @@ urlpatterns = [
     path('jobDescription/', views.JobDescriptionView.as_view(), name='jobDescription'),
     path('approveRequest/', views.ApproveRequestView.as_view(), name='approveRequest'),
     path('requestList/', views.RequestListView.as_view(), name='requestList'),
+    path('jobVacancy/', views.JobVacancyAdvertisementView.as_view(), name='jobVacancy'),
     path('receiveCVs/', views.ReceiveCVsView.as_view(), name='receiveCV'),
+
+    
+
 ]
 if not settings.DEBUG:    
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
