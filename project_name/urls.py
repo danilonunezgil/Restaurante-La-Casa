@@ -26,10 +26,7 @@ from Menus.views import sitemap
 from pages.views import view_page
 
 urlpatterns = [
-    path('i18n/', include('django.conf.urls.i18n')),    
-]
-
-urlpatterns += i18n_patterns(
+    path('i18n/', include('django.conf.urls.i18n')),
     path('', views.Home.as_view(),name="Home"),
     path(_('admin/doc/'), include('django.contrib.admindocs.urls')),
     path(_('admin/'), admin.site.urls),
@@ -41,8 +38,8 @@ urlpatterns += i18n_patterns(
     re_path(r'^sitemap/$', sitemap),
     #path('pages/', include('pages.urls', namespace='pages')),
     re_path( r'^public/admin/pages/', include('pages.urls') ),
-    re_path(r'^(?P<url>.*)$', view_page),
-)
+    re_path(r'^(?P<url>.*)$', view_page),    
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

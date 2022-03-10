@@ -1,7 +1,7 @@
 from django import template
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
-from Menus.models import mark_selected_item, MenuDoesNotExist, MenuProxy, make_breadcrumb
+from Menus.models import MenuDoesNotExist, MenuProxy, make_breadcrumb
 
 MENU_TMPL_NAME = u'menus/menu.html'
 
@@ -42,8 +42,8 @@ class MenuNode( template.Node ):
             menu_proxy = template.Variable( self.menu_var_name ).resolve( context )
             menu = menu_proxy.get_menu()
 
-            if 'request' in context:
-                mark_selected_item( menu['byurls'], context['request'].path )
+            # if 'request' in context:
+            #     mark_selected_item( menu['byurls'], context['request'].path )
 
         except MenuDoesNotExist as e:
             return node_error( u"The menu '%s' does not exists" % menu_proxy.menu_name )

@@ -7,6 +7,7 @@ from django.utils.text import slugify
 from django.shortcuts import reverse
 from djmoney.models.fields import MoneyField
 from django.utils.translation import ugettext_lazy as _
+from parler.models import TranslatableModel, TranslatedFields
 
 User = get_user_model()
 """""
@@ -54,28 +55,28 @@ class Address(models.Model):
         verbose_name_plural = _('Addresses')
 
 
-class Product(models.Model):
-
-    class Meta:
-        verbose_name = _('Product')
-        verbose_name_plural = _('Products')
+class Product(TranslatableModel):
     """
     class to store a product.
     """
-    title = models.CharField(
+    translations = TranslatedFields(
+        title = models.CharField(
         verbose_name = _('Title'), 
         max_length=150, 
-        help_text=_("Name of product, example product 1"))
+        help_text=_("Name of product, example product 1")),
+
+        descritption = models.TextField(
+        verbose_name = _('Description'), 
+        help_text=_("Here you must write the product description"))
+    )
+    
     slug = models.SlugField(
         verbose_name = _('Slug'), 
         unique=True, 
         help_text=_("A short name, generally used in URLs."))
     image = models.ImageField(
         verbose_name = _('Image'), 
-        upload_to='product_images')
-    descritption = models.TextField(
-        verbose_name = _('Description'), 
-        help_text=_("Here you must write the product description"))
+        upload_to='product_images')    
     price = MoneyField(
         verbose_name = _('Price'), 
         default = 0,
@@ -98,6 +99,10 @@ class Product(models.Model):
         default=False, 
         help_text=_("Field to know if the product is active or not active"))
     
+    class Meta:
+        verbose_name = _('Product')
+        verbose_name_plural = _('Products')
+
     def __str__(self):
         """Return title of product."""
         return self.title

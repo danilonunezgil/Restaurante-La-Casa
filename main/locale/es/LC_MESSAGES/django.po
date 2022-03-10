@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-18 14:55-0500\n"
+"POT-Creation-Date: 2022-03-09 15:07-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: main/templates/base.html:51
+#: main/templates/base.html:52
 msgid "Contact us on +420 777 555 333 or hello@universal.com."
 msgstr "Contactenos en el +420 777 555 333 o hello@universal.com."
 
-#: main/templates/base.html:62
+#: main/templates/base.html:64
 msgid "Sign In"
 msgstr "Inicio de sesión"
 
-#: main/templates/base.html:66
+#: main/templates/base.html:68
 msgid "Sign Up"
 msgstr "Registro"
 
@@ -34,43 +34,43 @@ msgstr "Registro"
 msgid "Administrate"
 msgstr "Administrar"
 
-#: main/templates/base.html:81 main/templates/base.html:96
+#: main/templates/base.html:81 main/templates/base.html:94
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: main/templates/base.html:95
+#: main/templates/base.html:93
 msgid "My account"
 msgstr "Mi cuenta"
 
-#: main/templates/base.html:121
+#: main/templates/base.html:133
 msgid "Customer Login"
 msgstr "Inicio de sesión - Cliente"
 
-#: main/templates/base.html:135
+#: main/templates/base.html:147
 msgid "Warning"
 msgstr "Advertencia"
 
-#: main/templates/base.html:138
+#: main/templates/base.html:150
 msgid "Username"
 msgstr "Usuario"
 
-#: main/templates/base.html:142
+#: main/templates/base.html:154
 msgid "Password"
 msgstr "Contraseña"
 
-#: main/templates/base.html:146
+#: main/templates/base.html:158
 msgid "Sign in"
 msgstr "Inicio de sesión"
 
-#: main/templates/base.html:148
+#: main/templates/base.html:160
 msgid "Not registered yet?"
 msgstr "¿Aun no esta registrado?"
 
-#: main/templates/base.html:151
+#: main/templates/base.html:163
 msgid "Register now"
 msgstr "Registrese ahora"
 
-#: main/templates/base.html:152
+#: main/templates/base.html:164
 msgid ""
 "It is easy and done in 1 minute and gives you access to special discounts "
 "and much more"
@@ -78,119 +78,67 @@ msgstr ""
 "Es fácil y se hace en 1 minuto, ademas te da acceso a descuentos especiales "
 "y mucho más"
 
-#: main/templates/base.html:167
+#: main/templates/base.html:179
 msgid "Enciso - go to homepage"
 msgstr "Enciso - ir a la página principal"
 
-#: main/templates/base.html:173
+#: main/templates/base.html:189
 msgid "Toggle navigation"
 msgstr "Alternar navegación"
 
-#: main/templates/base.html:180
+#: main/templates/base.html:197
 msgid "Search"
 msgstr "Buscar"
 
-#: main/templates/base.html:190
-msgid "Home"
-msgstr "Inicio"
-
-#: main/templates/base.html:194
-msgid "CATEGORY"
-msgstr "CATEGORIA"
-
-#: main/templates/base.html:199
-msgid "Shop"
-msgstr "Tienda"
-
-#: main/templates/base.html:201
-msgid "All Products"
-msgstr "Todos los productos"
-
-#: main/templates/base.html:203
-msgid "Category - sidebar left"
-msgstr "Categoria - barra lateral izquierda"
-
-#: main/templates/base.html:205
-msgid "Category - full width"
-msgstr "Categoria - ancho total"
-
-#: main/templates/base.html:207
-msgid "Product detail"
-msgstr "Detalle de producto"
-
-#: main/templates/base.html:216
-msgid "About"
-msgstr "Acerca de"
-
-#: main/templates/base.html:220
-msgid "About us"
-msgstr "Sobre nosotros"
-
-#: main/templates/base.html:221
-msgid "Our team"
-msgstr "Nuestro equipo"
-
-#: main/templates/base.html:222
-msgid "Team member"
-msgstr "Miembros del equipo"
-
-#: main/templates/base.html:223
-msgid "Services"
-msgstr "Servicios"
-
-#: main/templates/base.html:231 main/templates/base.html:303
-msgid "Contact"
-msgstr "Contacto"
-
-#: main/templates/base.html:234
-msgid "Contact option 1"
-msgstr "Opción de contacto 1"
-
-#: main/templates/base.html:264
+#: main/templates/base.html:232
 msgid "About Us"
 msgstr "Sobre nosotros"
 
-#: main/templates/base.html:267
+#: main/templates/base.html:235
 msgid "Join Our Monthly Newsletter"
 msgstr "Únase a nuestro boletín mensual"
 
-#: main/templates/base.html:279
+#: main/templates/base.html:247
 msgid "Blog"
 msgstr "Blog"
 
-#: main/templates/base.html:284 main/templates/base.html:290
+#: main/templates/base.html:252 main/templates/base.html:258
 msgid "Blog post name"
 msgstr "Nombre de la publicación"
 
-#: main/templates/base.html:296
+#: main/templates/base.html:264
 msgid "Very very long blog post name"
 msgstr "Nombre de la publicación muy muy largo"
 
-#: main/templates/base.html:304
+#: main/templates/base.html:271
+msgid "Contact"
+msgstr "Contacto"
+
+#: main/templates/base.html:272
 msgid "Universal Ltd."
 msgstr "Universal Ltd."
 
-#: main/templates/base.html:304
+#: main/templates/base.html:272
 msgid "13/25 New Avenue"
 msgstr "Nueva avenida 13/25"
 
-#: main/templates/base.html:304
+#: main/templates/base.html:272
 msgid "Newtown upon River"
 msgstr "Newtown upon River"
 
-#: main/templates/base.html:305
+#: main/templates/base.html:273
 msgid "45Y 73J"
 msgstr "45Y 73J"
 
-#: main/templates/base.html:305
+#: main/templates/base.html:273
 msgid "England"
 msgstr "Inglaterra"
 
-#: main/templates/base.html:305
+#: main/templates/base.html:273
 msgid "Great Britain"
 msgstr "Gran Bretaña"
 
-#: main/templates/base.html:306
+#: main/templates/base.html:274
 msgid "Go to contact page"
 msgstr "Ir a la página de contacto"
 
@@ -245,3 +193,42 @@ msgstr "Precio"
 #: main/templates/indexx.html:106
 msgid "Our Clients"
 msgstr "Nuestros clientes"
+
+#~ msgid "Home"
+#~ msgstr "Inicio"
+
+#~ msgid "CATEGORY"
+#~ msgstr "CATEGORIA"
+
+#~ msgid "Shop"
+#~ msgstr "Tienda"
+
+#~ msgid "All Products"
+#~ msgstr "Todos los productos"
+
+#~ msgid "Category - sidebar left"
+#~ msgstr "Categoria - barra lateral izquierda"
+
+#~ msgid "Category - full width"
+#~ msgstr "Categoria - ancho total"
+
+#~ msgid "Product detail"
+#~ msgstr "Detalle de producto"
+
+#~ msgid "About"
+#~ msgstr "Acerca de"
+
+#~ msgid "About us"
+#~ msgstr "Sobre nosotros"
+
+#~ msgid "Our team"
+#~ msgstr "Nuestro equipo"
+
+#~ msgid "Team member"
+#~ msgstr "Miembros del equipo"
+
+#~ msgid "Services"
+#~ msgstr "Servicios"
+
+#~ msgid "Contact option 1"
+#~ msgstr "Opción de contacto 1"

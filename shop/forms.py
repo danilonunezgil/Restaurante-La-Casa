@@ -26,6 +26,6 @@ class AddToCartForm(forms.ModelForm):
 
     class Meta:
         model = OrderItem
-        fields = [_('quantity')]
+        fields = ['quantity']
         help_texts = {'quantity': None,}
         verbose_name = _('quantity')
