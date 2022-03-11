@@ -7,21 +7,42 @@ from django.utils.translation import ugettext_lazy as _
 class Person(models.Model):
     user = models.OneToOneField(
         User,
-        verbose_name = _('User'), 
-        default=1, 
-        null=True, 
+        verbose_name = _('User'),
+        null=True,
+        blank=True, 
         on_delete=models.CASCADE,
-        help_text=_("Enter a user name "))
+        help_text=_("Enter a user name"))
     cc = models.CharField(
         verbose_name = _('CC'),
         max_length=11, 
         blank=True, 
-        help_text=_("Enter your ID number "))
+        help_text=_("Enter your ID number"))
+    name = models.CharField(
+        verbose_name = _('Name'),
+        max_length=50, 
+        blank=True, 
+        help_text=_("Enter your name"))
+    lastName = models.CharField(
+        verbose_name = _('Last name'),
+        max_length=50, 
+        blank=True, 
+        help_text=_("Enter your last name"))
+    email = models.CharField(
+        verbose_name = _('E-mail'),
+        max_length=100, 
+        blank=True, 
+        help_text=_("Enter your e-mail"))
+    cv = models.FileField(
+        verbose_name = _('CVs'),
+        blank=True, 
+        upload_to='CVs',
+        default = ""
+    )
     cellphone = models.CharField(
         verbose_name = _('Cellphone'),
         max_length=11, 
         blank=True, 
-        help_text=_("Enter your cell phone number "))
+        help_text=_("Enter your cell phone number"))
     home_address = models.CharField(
         verbose_name = _('Home address'),
         max_length=150, 
@@ -33,7 +54,7 @@ class Person(models.Model):
         help_text=_("Enter your Age"))
 
     def __str__(self):
-        return self.user.username
+        return self.name +" "+ self.lastName 
 
     class Meta:
         verbose_name = _('Person')
