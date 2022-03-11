@@ -31,21 +31,21 @@ class Interview(models.Model):
 
 class Area(models.Model):
     """
-    In this model the departments that the organization owns are created.
+    In this model the departments/Area that the organization owns are created.
     """
 
     areaName = models.CharField(
         verbose_name = _('Area name'),
-        max_length=250,
-        help_text=_("Enter the area name"))
+        max_length=250, 
+        help_text=_("Department/Area name"))
     areaDescription = models.CharField(
         verbose_name = _('Area description'),
-        max_length=500,
-        help_text=_("Enter the area description"))
+        max_length=500, 
+        help_text=_("Description of the department/area"))
     areaCode = models.CharField(
         verbose_name = _('Area Code'),
-        max_length=250,
-        help_text=_("Enter area code"))
+        max_length=250, 
+        help_text=_("Department/Area code"))
 
     class Meta:
         verbose_name = _('Area')
@@ -67,62 +67,62 @@ class JobDescription(models.Model):
         verbose_name = _('Created by'),
         null=False, 
         on_delete=models.CASCADE,
-        help_text=_("User who created the description."))
+        help_text=_("User creating the job description"))
     creationDate = models.DateField(
         verbose_name = _('Creation date'),
         help_text=_("Creation date for job description"))
     code = models.CharField(
         verbose_name = _('Code'),
-        max_length=250,
-        help_text=_("Enter the code"))
+        max_length=250, 
+        help_text=_("ID of the job description"))
     title = models.CharField(
         verbose_name = _('Title'),
-        max_length=250,
-        help_text=_("Enter the title"))
+        max_length=250, 
+        help_text=_("Title/name of the job description"))
     departament = models.ForeignKey(
         Area,
         null=False,
         on_delete=models.CASCADE,  
         verbose_name = _('Departament'),
-        help_text=_("Enter the departament"))
+        help_text=_("Department/Area associated with the job description"))
     reportTo = models.CharField(
         verbose_name = _('Report to'),
-        max_length=250,
-        help_text=_("Enter report to"))
+        max_length=250, 
+        help_text=_("Immediate supervisor associated with the job description"))
     jobDescription = models.CharField(
         verbose_name = _('Job description'),
-        max_length=500,
-        help_text=_("Enter job description"))
+        max_length=500, 
+        help_text=_("Job description"))
     responsabilities = models.CharField(
         verbose_name = _('Responsabilities'),
-        max_length=500,
-        help_text=_("Enter the responsabilities"))
+        max_length=500, 
+        help_text=_("Job functions"))
     skills = models.CharField(
         verbose_name = _('Skills'),
-        max_length=500,
-        help_text=_("Enter the skills"))
+        max_length=500, 
+        help_text=_("The capacities to perform tasks that you are developed"))
     abilities = models.CharField(
         verbose_name = _('Abilities'),
         max_length=250,
-        help_text=_("Enter the abilities"))
+        help_text=_("Talents you are born with."))
     experience = models.CharField(
         verbose_name = _('Experience'),
         max_length=250,
-        help_text=_("Enter the Experience"))
+        help_text=_("Time of experience on the job"))
     educationRequirements = models.CharField(
         verbose_name = _('Education requirements'),
         max_length=250,
-        help_text=_("Enter the education requirements"))
+        help_text=_("Level of education required"))
     knowledge = models.CharField(
         verbose_name = _('Knowledge'),
         max_length=250,
-        help_text=_("Enter the knowledges"))
+        help_text=_("Knowledge required for the job"))
     annualSalary = models.DecimalField(
         verbose_name = _('Annual salary'), 
         default = 0,
         decimal_places = 2,
         max_digits = 11,
-        help_text=_("Enter annual salary in USD"))
+        help_text=_("Approximate annual salary"))
 
     class Meta:
         verbose_name = _('Job description')
@@ -144,46 +144,46 @@ class Recruitment(models.Model):
         verbose_name = _('Requester'),
         null=False, 
         on_delete=models.CASCADE,
-        help_text=_("Requester who created the request."))
+        help_text=_("User who created the request"))
     dateOfRequest = models.DateField(
         verbose_name = _('Date of request'),
-        help_text=_("Date of request recruitment"))
+        help_text=_("Date of recruitment request"))
     departament = models.ForeignKey(
         Area,
         null=False,
         on_delete=models.CASCADE,
         verbose_name = _('Departament'),
-        help_text=_("Enter the departament"))
+        help_text=_("Department/Area that require the recruitment"))
     jobDescription = models.ForeignKey(
         JobDescription,
         null=True,
         blank=True,
         on_delete=models.CASCADE,
         verbose_name = _('Job description'),
-        help_text=_("Select job description"))
+        help_text=_("Associated job description"))
     startingDate = models.DateField(
         verbose_name = _('Starting date'),
-        help_text=_("Starting date"))
+        help_text=_("Start date of the job"))
     numberOfVacancies = models.PositiveIntegerField(
         verbose_name = _('Number of vacancies'),
-        help_text=_("Enter the number of vacancies"))
+        help_text=_("Number of vacancies available"))
     title = models.CharField(
         verbose_name = _('Title'),
-        max_length=250,
-        help_text=_("Enter the title"))
+        max_length=250, 
+        help_text=_("Name of vacancy"))
     responsabilities = models.CharField(
         verbose_name = _('Responsabilities'),
-        max_length=500,
-        help_text=_("Enter the responsabilities"))
+        max_length=500, 
+        help_text=_("Job functions"))
     location = models.CharField(
         verbose_name = _('Location'),
-        max_length=250,
-        help_text=_("Enter location"))
+        max_length=250, 
+        help_text=_("Work location"))
     comments = models.CharField(
         verbose_name = _('Comments'),
         blank=True,
-        max_length=500,
-        help_text=_("Enter the comments"))
+        max_length=500, 
+        help_text=_("A maximum of 500 characters is allowed"))
     requisitionApproved = models.BooleanField(
         verbose_name = _('Requisition approved'), 
         default=False,
@@ -191,8 +191,8 @@ class Recruitment(models.Model):
     approvalsComments = models.CharField(
         verbose_name = _('Approvals comments'),
         blank=True,
-        max_length=500,
-        help_text=_("Enter the comments"))
+        max_length=500, 
+        help_text=_("A maximum of 500 characters is allowed"))
 
     class Meta:
         verbose_name = _('Recruitment')
@@ -205,7 +205,6 @@ class Recruitment(models.Model):
 class Advertisement(models.Model):
     """
     Model to obtain the data that will be used to generate the advertising of the vacancies. 
-
     """
     closingDate = models.DateField(
         verbose_name = _('Closing date'),
