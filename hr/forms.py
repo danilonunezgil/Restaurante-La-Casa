@@ -1,4 +1,5 @@
 from tabnanny import verbose
+from tkinter import Widget
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
@@ -180,4 +181,45 @@ class AdvertisementForm(forms.Form):
             raise ValidationError(_("Company Description is required"), code = 'invalid')
         return data
 
+class ReceiveCVsForm(forms.Form):
+    """ Form creation - ApproveRequest Form """
 
+    name = forms.CharField(
+        label = _('Name'),
+        max_length = 50,
+        required = True,
+        widget = forms.TextInput(attrs={'class': 'form-control', 'placeholder': _("Enter your name")})
+    )
+    lastName = forms.CharField(
+        label = _('Last Name'),
+        max_length = 50,
+        widget = forms.TextInput(attrs={'class': 'form-control', 'placeholder': _("Enter your last name")})
+    )
+    cc = forms.CharField(
+        label = _('CC'),
+        max_length = 11,
+        widget = forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _("Enter your #ID")})
+    )
+    email = forms.EmailField(
+        label = _('E-mail'),
+        max_length = 100,
+        widget = forms.EmailInput(attrs={'class': 'form-control', 'placeholder': _("Enter your E-mail")})
+    )
+    cellphone = forms.CharField(
+        label = _('Cellphone'),
+        max_length = 11,
+        widget = forms.TextInput(attrs={'class': 'form-control', 'placeholder': _("Enter your cellphone")})
+    )
+    homeAddress = forms.CharField(
+        label = _('Home address'),
+        max_length = 150,
+        widget = forms.TextInput(attrs={'class': 'form-control', 'placeholder': _("Enter your home address")})
+    )
+    age = forms.CharField(
+        label = _('Age'),
+        max_length = 3,
+        widget = forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _("Enter your age")})
+    )
+    cv = forms.FileField(
+        widget = forms.FileInput(attrs={'class': 'form-control-file', 'placeholder': _("Choose file...")})
+    )

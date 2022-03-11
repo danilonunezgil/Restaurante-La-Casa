@@ -3,8 +3,10 @@ from django.shortcuts import get_object_or_404, reverse, redirect, render
 from django.views import generic
 from django.conf import settings 
 
-from hr.forms import AddJobDescriptionForm, AddRecruitmentForm, ApproveRequestForm, AdvertisementForm
-from hr.models import Advertisement, JobDescription, Recruitment
+from hr.forms import AddJobDescriptionForm, AddRecruitmentForm, ApproveRequestForm, AdvertisementForm, ReceiveCVsForm
+from hr.models import JobDescription, Recruitment, Advertisement
+from user.models import Person
+
 
 class RecruitmentView(generic.FormView):
     """
@@ -123,8 +125,6 @@ class RequestListView(generic.ListView):
     model = Recruitment
     context_object_name = 'reqList'
 
-
-
 class JobVacancyAdvertisementView(generic.FormView):
     """
     The backend of the JobVacancyAdvertisement template is implemented in this view.
@@ -134,11 +134,11 @@ class JobVacancyAdvertisementView(generic.FormView):
     **Template:**
 
     :template:`hr/jobVacancyAdvertisement.html`
-
+    
     **get_success_url()**
 
     We return/render the template under the alias we passed as parameter.
-
+    
     **get_object()**
 
     we return an object from a query, if the record/object to query does not exist it \
@@ -149,7 +149,7 @@ class JobVacancyAdvertisementView(generic.FormView):
     Validate the form fields and save the changes.
 
     **get_context_data()**
-
+    
     We obtain the queried object and assign it a context name to use it in the FrontEnd.
     """
 
@@ -180,7 +180,43 @@ class JobVacancyAdvertisementView(generic.FormView):
     def get_context_data(self, **kwargs):
         context = super(JobVacancyAdvertisementView, self).get_context_data(**kwargs)
         context['JVA'] = self.get_object()
-        return context
+        return context    
+    
+class ReceiveCVsView(generic.FormView):
+    """
+    The backend of the ReceiveCVs template is implemented in this view.
 
+    Display an individual :model:`user.Person`.
 
+    **Template:**
 
+    :template:`hr/receiveCVs.html`
+
+    **get_success_url()**
+
+    We return/render the template under the alias we passed as parameter.
+
+    **form_valid()**
+    
+    Validate the form fields and save the changes.
+
+    """
+    
+    form_class = ReceiveCVsForm
+    template_name = "receiveCVs.html"
+
+    def get_success_url(self):
+        return reverse('hr:receiveCV')
+
+    def form_valid(self, form):
+        person = Person()
+        person.name = form.cleaned_data['name']
+        person.lastName = form.cleaned_data['lastName']
+        person.cc = form.cleaned_data['cc']
+        person.Age = form.cleaned_data['age']
+        person.email = form.cleaned_data['email']
+        person.cellphone = form.cleaned_data['cellphone']
+        person.home_address = form.cleaned_data['homeAddress']
+        person.cv = form.cleaned_data['cv']
+        person.save()
+        return super(ReceiveCVsView, self).form_valid(form)
