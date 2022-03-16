@@ -1,7 +1,3 @@
-#from re import template
-#from django.contrib.messages.api import error
-#from typing import Generic
-from django.core import paginator
 from django.db.models.query import InstanceCheckMeta
 from django.http import request, JsonResponse, response, Http404
 from django.shortcuts import reverse, get_object_or_404, redirect, render
@@ -9,12 +5,9 @@ from django.views import generic
 from django.core.mail import send_mail
 from django.conf import settings 
 from django.contrib import messages 
-#from django.db.models import Q
-#from django.urls import resolve
-from django.core.paginator import Paginator
-
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from shop.forms import Contactf, AddToCartForm
-from shop.models import Product, OrderItem
+from shop.models import Category, Product, OrderItem, SubCategory
 from shop.utils import get_or_set_order_session
 
 
@@ -60,11 +53,46 @@ def search(request):
     else:
         return render(request, 'product_list.html', {})
 
-class ProductListView(generic.ListView):
-    template_name='product_list.html'
-    model = Product
-    paginate_by = 12
-    context_object_name = 'product'
+def ProductListView(request, parent_or_child=None, pk=None):
+    categories = Category.objects.filter(parent=None)
+    
+    if parent_or_child is None:
+        products = Product.objects.all()
+        paginator = Paginator(products, 6)
+            
+    elif parent_or_child == 'child':
+        sub_cat= SubCategory.objects.get(pk=pk)
+        products= sub_cat.product_set.all()
+        paginator = Paginator(products, 6)
+            
+    elif parent_or_child == 'parent':
+        products= []
+        sub_cats= Category.objects.get(pk=pk).children.all()
+
+        for sub_cat in sub_cats:
+            prds = sub_cat.product_set.all()
+            products += prds
+        paginator = Paginator(products, 6)
+            
+    else:
+        products = []        
+          
+    page = request.GET.get('page')
+ 
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        products = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        products= paginator.page(paginator.num_pages)
+
+    return render(
+        request,
+        'product_list.html',
+        {'categories': categories, 'products': products, }
+    )
     
 class ProductDetailView(generic.FormView):
     template_name='product_detail.html'

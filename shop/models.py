@@ -1,4 +1,5 @@
 from tabnanny import verbose
+from weakref import proxy
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.db.models.fields import DecimalField
@@ -54,6 +55,44 @@ class Address(models.Model):
         verbose_name = _('Address')
         verbose_name_plural = _('Addresses')
 
+class Node(models.Model):
+    name = models.CharField(
+        verbose_name = _('Name'), 
+        max_length=150, 
+        help_text=_("Name of category or subcategory")
+    )
+    parent = models.ForeignKey(
+        'self',
+        verbose_name=_('Parent'),
+        on_delete=models.CASCADE,
+        related_name='children',
+        null=True,
+        blank=True
+    )
+    
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name',]
+        verbose_name = _('Node')
+        verbose_name_plural = _('Nodes')
+
+class Category(Node):
+
+    class Meta:
+        proxy = True
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
+    
+
+class SubCategory(Node):
+
+    class Meta:
+        proxy = True
+        verbose_name = _('Sub Category')
+        verbose_name_plural = _('Sub Categories')
+    
 
 class Product(TranslatableModel):
     """
@@ -69,7 +108,11 @@ class Product(TranslatableModel):
         verbose_name = _('Description'), 
         help_text=_("Here you must write the product description"))
     )
-    
+    subcategory = models.ForeignKey(
+        SubCategory,
+        verbose_name= _('Sub category'),
+        on_delete= models.CASCADE
+    )
     slug = models.SlugField(
         verbose_name = _('Slug'), 
         unique=True, 
