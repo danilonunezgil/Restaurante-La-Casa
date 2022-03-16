@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-09 15:07-0500\n"
+"POT-Creation-Date: 2022-03-15 16:52-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -210,7 +210,7 @@ msgstr ""
 
 #: hr/forms.py:35 hr/forms.py:73 hr/models.py:79 hr/models.py:171
 #: hr/templates/approveRequest.html:61 hr/templates/jobDescription.html:48
-#: pages/models.py:107 shop/models.py:64
+#: pages/models.py:107 shop/models.py:103
 msgid "Title"
 msgstr "Titulo"
 
@@ -608,7 +608,7 @@ msgstr ""
 msgid "Page"
 msgstr "Pagina"
 
-#: pages/models.py:80 shop/forms.py:10
+#: pages/models.py:80 shop/forms.py:10 shop/models.py:60
 msgid "Name"
 msgstr "Nombre"
 
@@ -616,7 +616,7 @@ msgstr "Nombre"
 msgid "Name of the group"
 msgstr "Nombre del grupo"
 
-#: pages/models.py:81 pages/models.py:128 shop/models.py:69
+#: pages/models.py:81 pages/models.py:128 shop/models.py:108
 #: shop/templates/product_detail.html:35
 msgid "Description"
 msgstr "Descripción"
@@ -856,11 +856,11 @@ msgstr "No se ha podido resolver la variable de solicitud: %s"
 msgid "embed_page tag requires one argument"
 msgstr "La etiqueta embed_page requiere un argumento"
 
-#: project_name/urls.py:31
+#: project_name/urls.py:34
 msgid "admin/doc/"
 msgstr "admin/doc/"
 
-#: project_name/urls.py:32
+#: project_name/urls.py:35
 msgid "admin/"
 msgstr "admin/"
 
@@ -896,235 +896,271 @@ msgstr "Tu mensaje"
 msgid "quantity"
 msgstr "Cantidad"
 
-#: shop/models.py:19
+#: shop/models.py:20
 msgid "Billing"
 msgstr ""
 
-#: shop/models.py:20 shop/templates/cart.html:116
+#: shop/models.py:21
 msgid "Shipping"
-msgstr "Costo de envio"
+msgstr ""
 
-#: shop/models.py:23 shop/models.py:159 user/models.py:10
+#: shop/models.py:24 shop/models.py:202 user/models.py:10
 #, fuzzy
 #| msgid "Username"
 msgid "User"
 msgstr "Usuario"
 
-#: shop/models.py:25
+#: shop/models.py:26
 msgid "Address line 1"
 msgstr "Dirección 1"
 
-#: shop/models.py:27
+#: shop/models.py:28
 msgid "Register an address "
 msgstr "Registra una dirección"
 
-#: shop/models.py:29
+#: shop/models.py:30
 msgid "Address line 2"
 msgstr "Dirección 2"
 
-#: shop/models.py:31
+#: shop/models.py:32
 msgid "Register a second address"
 msgstr "Registra una segunda dirección"
 
-#: shop/models.py:33
+#: shop/models.py:34
 msgid "City"
 msgstr "Ciudad"
 
-#: shop/models.py:35
+#: shop/models.py:36
 msgid "City where the purchase is made"
 msgstr "Ciudad donde realizo la compra"
 
-#: shop/models.py:37
+#: shop/models.py:38
 msgid "Zip code"
 msgstr "Código postal"
 
-#: shop/models.py:39
+#: shop/models.py:40
 msgid "City zip code"
 msgstr "Código postal de la ciudad"
 
-#: shop/models.py:41
+#: shop/models.py:42
 msgid "Address type"
 msgstr "Tipo de dirección"
 
-#: shop/models.py:44
+#: shop/models.py:45
 msgid "Allows you to choose between different types of addresses"
 msgstr "Te permite elegir entre diferentes tipos de direcciones"
 
-#: shop/models.py:46
+#: shop/models.py:47
 msgid "Default"
 msgstr "Por defecto"
 
-#: shop/models.py:48
+#: shop/models.py:49
 msgid "Allows to set default address"
 msgstr "Te permite establecer una dirección predeterminada"
 
-#: shop/models.py:54 user/templates/detail.html:77
+#: shop/models.py:55 user/templates/detail.html:77
 #: user/templates/update_profile.html:57
 msgid "Address"
 msgstr "Dirección"
 
-#: shop/models.py:55
+#: shop/models.py:56
 msgid "Addresses"
 msgstr "Direcciones"
 
+#: shop/models.py:62
+msgid "Name of category or subcategory"
+msgstr "Nombre de la categoria o la subcategoria"
+
 #: shop/models.py:66
+msgid "Parent"
+msgstr "Padre"
+
+#: shop/models.py:78
+msgid "Node"
+msgstr "Node"
+
+#: shop/models.py:79
+msgid "Nodes"
+msgstr "Nodes"
+
+#: shop/models.py:85
+msgid "Category"
+msgstr "Categoria"
+
+#: shop/models.py:86
+msgid "Categories"
+msgstr "Categorias"
+
+#: shop/models.py:93
+msgid "Sub Category"
+msgstr "Sub Categoria"
+
+#: shop/models.py:94
+msgid "Sub Categories"
+msgstr "Sub Categorias"
+
+#: shop/models.py:105
 msgid "Name of product, example product 1"
 msgstr "Nombe del producto, ejemplo producto 1"
 
-#: shop/models.py:70
+#: shop/models.py:109
 msgid "Here you must write the product description"
 msgstr "Aquí debes escribir la descripción del producto"
 
-#: shop/models.py:74
+#: shop/models.py:113
+msgid "Sub category"
+msgstr "Sub Categoria"
+
+#: shop/models.py:117
 msgid "Slug"
 msgstr "Slug"
 
-#: shop/models.py:76
+#: shop/models.py:119
 msgid "A short name, generally used in URLs."
 msgstr "Un nombre corto, se usa generalmente en las URLs."
 
-#: shop/models.py:78 shop/templates/cart.html:18
+#: shop/models.py:121 shop/templates/cart.html:18
 msgid "Image"
 msgstr "Imagen"
 
-#: shop/models.py:81 shop/templates/cart.html:20
-#: shop/templates/product_list.html:26
+#: shop/models.py:124 shop/templates/cart.html:20
+#: shop/templates/product_list.html:28
 msgid "Price"
 msgstr "Precio"
 
-#: shop/models.py:86
+#: shop/models.py:129
 msgid "Price of product"
 msgstr "Precio del producto"
 
-#: shop/models.py:88
+#: shop/models.py:131
 msgid "Stock"
 msgstr "Unidades"
 
-#: shop/models.py:90
+#: shop/models.py:133
 msgid "Stock of product"
 msgstr "Unidades del producto"
 
-#: shop/models.py:92
+#: shop/models.py:135
 msgid "Created"
 msgstr "Creado"
 
-#: shop/models.py:95
+#: shop/models.py:138
 msgid "Updated"
 msgstr "Actualizado"
 
-#: shop/models.py:98
+#: shop/models.py:141
 msgid "Active"
 msgstr "Activo"
 
-#: shop/models.py:100
+#: shop/models.py:143
 msgid "Field to know if the product is active or not active"
 msgstr "Campo para saber si el producto esta activo o no"
 
-#: shop/models.py:103 shop/models.py:137 shop/templates/cart.html:19
+#: shop/models.py:146 shop/models.py:180 shop/templates/cart.html:19
 msgid "Product"
 msgstr "Producto"
 
-#: shop/models.py:104
+#: shop/models.py:147
 msgid "Products"
 msgstr "Productos"
 
-#: shop/models.py:131
+#: shop/models.py:174
 msgid "OrderItem"
 msgstr "OrdenArticulo"
 
-#: shop/models.py:132
+#: shop/models.py:175
 msgid "OrderItems"
 msgstr "OrdenArticulos"
 
-#: shop/models.py:136 shop/models.py:154 shop/models.py:215
+#: shop/models.py:179 shop/models.py:197 shop/models.py:258
 msgid "Order"
 msgstr "Pedido"
 
-#: shop/models.py:138 shop/templates/cart.html:21
+#: shop/models.py:181 shop/templates/cart.html:21
 msgid "Quantity"
 msgstr "Cantidad"
 
-#: shop/models.py:138
+#: shop/models.py:181
 msgid "Quantity you want to buy"
 msgstr "Cantidad que quieres comprar"
 
-#: shop/models.py:155
+#: shop/models.py:198
 msgid "Orders"
 msgstr "Pedidos"
 
-#: shop/models.py:159
+#: shop/models.py:202
 msgid "Name of the user making the purchase "
 msgstr "Nombre del usuario que realizo la compra"
 
-#: shop/models.py:160
+#: shop/models.py:203
 msgid "Start date"
 msgstr "Fecha de inicio"
 
-#: shop/models.py:161
+#: shop/models.py:204
 msgid "Ordered date"
 msgstr "Fecha de compra"
 
-#: shop/models.py:161
+#: shop/models.py:204
 msgid "Date of purchase"
 msgstr "Fecha de compra"
 
-#: shop/models.py:162
+#: shop/models.py:205
 msgid "Ordered"
 msgstr "Pedido"
 
-#: shop/models.py:166
+#: shop/models.py:209
 msgid "Billing address"
 msgstr "Dirección de facturación"
 
-#: shop/models.py:173
+#: shop/models.py:216
 msgid "Shipping address"
 msgstr "Dirección de envío"
 
-#: shop/models.py:210
+#: shop/models.py:253
 msgid "Payment"
 msgstr "Pago"
 
-#: shop/models.py:211
+#: shop/models.py:254
 msgid "Payments"
 msgstr "Pagos"
 
-#: shop/models.py:217
+#: shop/models.py:260
 msgid "Payment method"
 msgstr "Metodo de pago"
 
-#: shop/models.py:220
+#: shop/models.py:263
 msgid "Select payment method"
 msgstr "Selecciona el metodo de pago"
 
-#: shop/models.py:222
+#: shop/models.py:265
 msgid "Timestamp"
 msgstr "Fecha de pago"
 
-#: shop/models.py:224
+#: shop/models.py:267
 msgid "Date of payment"
 msgstr "Fecha de pago"
 
-#: shop/models.py:226
+#: shop/models.py:269
 msgid "Succesful"
 msgstr "Exitoso"
 
-#: shop/models.py:228
+#: shop/models.py:271
 msgid "Successful payment?"
 msgstr "¿Pago exitoso?"
 
-#: shop/models.py:230 user/templates/detail.html:108
+#: shop/models.py:273 user/templates/detail.html:108
 msgid "Amount"
 msgstr "Monto (Cantidad)"
 
-#: shop/models.py:231
+#: shop/models.py:274
 msgid "Amount paid"
 msgstr "Monto pagado"
 
-#: shop/models.py:233
+#: shop/models.py:276
 msgid "Raw response"
 msgstr "Confirmacion de pago"
 
-#: shop/models.py:234
+#: shop/models.py:277
 msgid "Payment gateway response"
 msgstr "Respuesta pasarela de pago"
 
@@ -1152,6 +1188,12 @@ msgstr "Continuar comprando"
 msgid "Order summary"
 msgstr "Resumen de compra"
 
+#: shop/templates/cart.html:116
+#, fuzzy
+#| msgid "Shipping"
+msgid "Shipping Cost"
+msgstr "Costo de envio"
+
 #: shop/templates/cart.html:128
 msgid "Proceed to Checkout"
 msgstr "Proceder a pagar"
@@ -1172,11 +1214,11 @@ msgstr "Ponte en contacto"
 msgid "Submit message"
 msgstr "Enviar mensaje"
 
-#: shop/templates/pagination.html:6 shop/templates/pagination.html:39
+#: shop/templates/pagination.html:7 shop/templates/pagination.html:40
 msgid "Previous"
 msgstr "Anterior"
 
-#: shop/templates/pagination.html:32 shop/templates/pagination.html:42
+#: shop/templates/pagination.html:33 shop/templates/pagination.html:43
 msgid "Next"
 msgstr "Siguiente"
 
