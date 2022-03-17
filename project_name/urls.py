@@ -26,7 +26,7 @@ from Menus.views import sitemap
 from pages.views import view_page
 
 urlpatterns = [
-    path('i18n/', include('django.conf.urls.i18n')),    
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 urlpatterns += i18n_patterns(

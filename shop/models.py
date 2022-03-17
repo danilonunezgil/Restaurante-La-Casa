@@ -1,4 +1,5 @@
 from tabnanny import verbose
+from weakref import proxy
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.db.models.fields import DecimalField
@@ -7,6 +8,7 @@ from django.utils.text import slugify
 from django.shortcuts import reverse
 from djmoney.models.fields import MoneyField
 from django.utils.translation import ugettext_lazy as _
+from parler.models import TranslatableModel, TranslatedFields
 
 User = get_user_model()
 """""
@@ -53,29 +55,71 @@ class Address(models.Model):
         verbose_name = _('Address')
         verbose_name_plural = _('Addresses')
 
-
-class Product(models.Model):
+class Node(models.Model):
+    name = models.CharField(
+        verbose_name = _('Name'), 
+        max_length=150, 
+        help_text=_("Name of category or subcategory")
+    )
+    parent = models.ForeignKey(
+        'self',
+        verbose_name=_('Parent'),
+        on_delete=models.CASCADE,
+        related_name='children',
+        null=True,
+        blank=True
+    )
+    
+    def __str__(self):
+        return self.name
 
     class Meta:
-        verbose_name = _('Product')
-        verbose_name_plural = _('Products')
+        ordering = ['name',]
+        verbose_name = _('Node')
+        verbose_name_plural = _('Nodes')
+
+class Category(Node):
+
+    class Meta:
+        proxy = True
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
+    
+
+class SubCategory(Node):
+
+    class Meta:
+        proxy = True
+        verbose_name = _('Sub Category')
+        verbose_name_plural = _('Sub Categories')
+    
+
+class Product(TranslatableModel):
     """
     class to store a product.
     """
-    title = models.CharField(
+    translations = TranslatedFields(
+        title = models.CharField(
         verbose_name = _('Title'), 
         max_length=150, 
-        help_text=_("Name of product, example product 1"))
+        help_text=_("Name of product, example product 1")),
+
+        descritption = models.TextField(
+        verbose_name = _('Description'), 
+        help_text=_("Here you must write the product description"))
+    )
+    subcategory = models.ForeignKey(
+        SubCategory,
+        verbose_name= _('Sub category'),
+        on_delete= models.CASCADE
+    )
     slug = models.SlugField(
         verbose_name = _('Slug'), 
         unique=True, 
         help_text=_("A short name, generally used in URLs."))
     image = models.ImageField(
         verbose_name = _('Image'), 
-        upload_to='product_images')
-    descritption = models.TextField(
-        verbose_name = _('Description'), 
-        help_text=_("Here you must write the product description"))
+        upload_to='product_images')    
     price = MoneyField(
         verbose_name = _('Price'), 
         default = 0,
@@ -98,6 +142,10 @@ class Product(models.Model):
         default=False, 
         help_text=_("Field to know if the product is active or not active"))
     
+    class Meta:
+        verbose_name = _('Product')
+        verbose_name_plural = _('Products')
+
     def __str__(self):
         """Return title of product."""
         return self.title
