@@ -3,6 +3,7 @@ from tkinter import Widget
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
+from user.models import Person
 
 from .models import JobDescription, Recruitment
 
@@ -145,6 +146,6 @@ class ReceiveCVsForm(forms.Form):
         widget = forms.NumberInput(attrs={'class': 'form-control', 'placeholder': _("Enter your age")})
     )
     cv = forms.FileField(
-        widget = forms.FileInput(attrs={'class': 'form-control-file', 'placeholder': _("Choose file...")})
+        widget = forms.FileInput(attrs={'class': 'form-control-file'})
     )
     
