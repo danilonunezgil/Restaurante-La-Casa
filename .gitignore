@@ -21,6 +21,7 @@ env/
 **/migrations/**
 !**/migrations
 
-
+media/
 !media/.keep
+
 !static/.keep
