@@ -11,7 +11,7 @@
     <div id="formCVs" name="formCVs"> 
         <h3 class="d-flex col-md-12 justify-content-center m-3"> Receive CVs </h3>
         <hr><br>
-        <form id="Receive" method="post" action="">
+        <form id="Receive" method="post" action="" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
                 <div class="form-group row col">

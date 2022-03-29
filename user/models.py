@@ -34,9 +34,8 @@ class Person(models.Model):
         help_text=_("Enter your e-mail"))
     cv = models.FileField(
         verbose_name = _('CVs'),
-        blank=True, 
-        upload_to='CVs',
-        default = ""
+        blank=True,
+        upload_to='CVs'
     )
     cellphone = models.CharField(
         verbose_name = _('Cellphone'),
