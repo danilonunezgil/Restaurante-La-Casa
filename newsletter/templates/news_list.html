@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}
+    {{ newsletter.category }}
+{% endblock title %}
+
+{% block content %}
+
+<div class="site-section m-5">
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-md-9 bg-white p-3 ml-5">
+                <div class="row mb-3">            
+                    {% for newsletter in newsletters %}
+                        <div class="col-lg-4 col-md-6 col-ms-6 mb-2 mt-3" data-aos='fade-up'>
+                            <div class="card border-secondary" style="width: 18rem;">
+                                <figure class="block-4-image ">
+                                    <a href="{{ newsletter.get_absolute_url }}">
+                                        <img class="card-img-top img-fluid img-responsive" style="height: 250px;" src="{{ newsletter.image.url }}" alt="{{ newsletter.name }}"> 
+                                    </a>
+                                </figure>
+                                <div class="card-body">
+                                    <a href="{{ newsletter.get_absolute_url }}">
+                                        <h5 class="card-title">{{ newsletter.name }} </h5>
+                                    </a>
+                                  <p class="card-text:justify"> {{ newsletter.abstract }} </p>
+                                  <a href="{{ newsletter.get_absolute_url }}" class="btn btn-primary">{% trans "Read more" %}</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}                    
+                </div> 
+                <div>
+                    {% include 'pagination.html'%}
+                    
+                </div> 
+    
+            </div>            
+                <!-- Category -->
+            <div class="col-md-2  ml-3 p-3 border bg-white">
+                <div class="panel panel-default sidebar-menu">
+                    <div class="panel-heading">
+                        <h3 class="h4 panel-title ">
+                            <a href="{% url 'news:news-list' %}" style="color:black;">
+                                Categories 
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-pills flex-column text-sm category-menu">
+                            {% for category in categories %} 
+                                <li class="nav-product">
+                                    <a href="{% url 'news:news_cat' parent_or_child='parent' pk=category.id %}" 
+                                        class="nav-link d-flex align-products-center justify-content-between">
+                                        <span>{{ category }}</span>
+                                    </a>                                
+                                    {% for sub_cat in category.children.all %}
+                                        <ul class="nav nav-pills flex-column">                      
+                                            <li class="nav-product">
+                                                <a href="{% url 'news:news_cat' parent_or_child='child' pk=sub_cat.id %}" 
+                                                    class="nav-link">
+                                                    <span>{{ sub_cat }}</span>
+                                                </a>
+                                            </li>                                             
+                                        </ul>
+                                    {% endfor %}                                
+                                </li>
+                            {% endfor %}                         
+                        </ul>
+                    </div>
+                </div>
+            </div>             
+        </div>
+    </div>
+</div>
+{% endblock content %}
