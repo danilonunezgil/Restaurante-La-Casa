@@ -2,7 +2,6 @@ from django.contrib import admin
 from mptt.admin import MPTTModelAdmin
 from parler.admin import TranslatableAdmin
 from newsletter.models import Category, Newsletter 
-from newsletter.forms import NewsletterForm
 # Register your models here.
 
 admin.site.register(Category, MPTTModelAdmin)
