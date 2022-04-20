@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "home.html" %}
 {% load i18n %}
 {% block title %}
     {{ newsletter.category }}
@@ -12,26 +12,82 @@
             <div class="col-md-9 bg-white p-3 ml-5">
                 <div class="row mb-3">            
                     {% for newsletter in newsletters %}
-                        <div class="col-lg-4 col-md-6 col-ms-6 mb-2 mt-3" data-aos='fade-up'>
-                            <div class="card border-secondary" style="width: 18rem;">
-                                <figure class="block-4-image ">
-                                    <a href="{{ newsletter.get_absolute_url }}">
-                                        <img class="card-img-top img-fluid img-responsive" style="height: 250px;" src="{{ newsletter.image.url }}" alt="{{ newsletter.name }}"> 
-                                    </a>
-                                </figure>
-                                <div class="card-body">
-                                    <a href="{{ newsletter.get_absolute_url }}">
-                                        <h5 class="card-title">{{ newsletter.name }} </h5>
-                                    </a>
-                                  <p class="card-text:justify"> {{ newsletter.abstract }} </p>
-                                  <a href="{{ newsletter.get_absolute_url }}" class="btn btn-primary">{% trans "Read more" %}</a>
+                <div class="col-lg-12 col-md-12 col-ms-12 mb-2 mt-3" data-aos='fade-up'>
+                    <div class="card border-secondary ">
+                        <div class="card-header">
+                            <a href="{{ newsletter.get_absolute_url }}">
+                                <h3 class="card-title">{{ newsletter.name }} </h3>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <figure class="block-4-image ">
+                                        <a href="{{ newsletter.get_absolute_url }}">
+                                            <img class="card-img-top" width="250" height="150"
+                                                src="{{ newsletter.image.url }}" alt="{{ newsletter.name }}">
+                                        </a>
+                                    </figure>
+                                </div>
+                                <div class="col-9">
+                                    <p class="card-text:justify"> {{ newsletter.abstract|safe }} </p>
+                                    <a href="{{ newsletter.get_absolute_url }}" class="btn btn-primary">{% trans "Read more" %}</a>
                                 </div>
                             </div>
                         </div>
-                    {% endfor %}                    
+                    </div>
+                </div>
+                {% endfor %}                    
                 </div> 
                 <div>
-                    {% include 'pagination.html'%}
+                    
+                    {% if newsletters.paginator.num_pages > 1%}
+                        <div class="d-flex justify-content-center">
+                            <ul class="pagination">
+                                {% if newsletters.has_previous %}
+                                    <li class="page-item d-none d-sm-block"><a class="page-link" href="?page={{ newsletters.previous_page_number }}">
+                                        &lang; {% trans "Previous" %}</a></li>
+                                {% endif %}
+                                {% for page in newsletters.paginator.page_range %}
+                                    {% if forloop.last and page != newsletters.number and newsletters.paginator.num_pages > 7 %} 
+                                        {% if newsletters.next_page_number != newsletters.paginator.num_pages%}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ newsletters.number | add:1}}">...</a>
+                                        </li>
+                                        {% endif %}
+                                    <li class="page-item">
+                                            <a class="page-link" href="?page={{paginator.num_pages}}">{{newsletters.paginator.num_pages}}</a>
+                                    </li>
+                                    {% endif %}
+                                    {% if page == newsletters.number and page > 7 %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page | add:-1 }}">...</a>
+                                    </li>    
+                                    {% endif %}
+                                    {% if page < 7 or page == newsletters.number %}
+                                    <li class="page-item {% if page == newsletters.number %}active{% endif %}">
+                                        <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+                                    </li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if newsletters.has_next %}
+                                    <li class="page-item d-none d-sm-block">
+                                        <a class="page-link" href="?page={{ newsletters.next_page_number }}">{% trans "Next" %} &rang;</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <div class="d-flex justify-content-center d-sm-none">            
+                            {% if newsletters.has_previous %}
+                                <span class="page-item"><a  class="page-link" href="?page={{ newsletters.previous_page_number }}">&lang; {% trans "Previous" %}</a></span>
+                            {% endif %}
+                            {% if newsletters.has_next %}
+                                <span class="page-item"><a class="page-link" href="?page={{ newsletters.next_page_number }}">{% trans "Next" %} &rang;</a></span>
+                            {% endif %}
+                            <br>
+                            <br>
+                        </div>
+                    {% endif %}
                     
                 </div> 
     
