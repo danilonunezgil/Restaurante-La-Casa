@@ -7,7 +7,6 @@ app_name = 'shop'
 urlpatterns = [
     path('cart/', views.CartView.as_view(), name='summary'),   
     path('product/', views.ProductListView, name='product'),
-    #path('product/page/', views.ProductList.as_view(), name='product-page'),
     path('<str:parent_or_child>/<int:pk>', views.ProductListView, name='product_cat'),
     path('search/', views.search, name="search"), 
     path('contact/', views.ContactView.as_view(), name='contact'),

@@ -1,10 +1,7 @@
-#from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import generic
 from shop.models import Product
 from newsletter.models import Newsletter
-
-
 
 class Shop(generic.ListView):
     template_name = "indexx.html"
