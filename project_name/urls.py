@@ -38,7 +38,7 @@ urlpatterns += i18n_patterns(
     path('shop/', include('shop.urls', namespace='shop')),
     path('user/', include(('user.urls', 'user'), namespace='user')),
     path('hr/', include('hr.urls', namespace='hr')),
-    path('newsletter/', include('newsletter.urls', namespace='news')), 
+    path('article/', include('article.urls', namespace='article')), 
     re_path(r'^sitemap/$', sitemap),
     #path('pages/', include('pages.urls', namespace='pages')),
     re_path( r'^public/admin/pages/', include('pages.urls') ),
