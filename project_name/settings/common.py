@@ -55,7 +55,7 @@ PROJECT_APPS = [
     'hr',
     'pages',
     'Menus',
-    'newsletter',
+    'article',
 ]
 
 ADDONS = [

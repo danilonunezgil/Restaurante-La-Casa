@@ -44,14 +44,14 @@
         <!-- Carousel Start-->
         <div class="home-carousel">
             <div class="homepage owl-carousel">
-                {% for newsletter in publish_list %}
+                {% for article in publish_list %}
                 <div class="item" style="height: 500px;">
                     <div class="row">
                         <div class="col-md-12" style="overflow: hidden;">
-                            <a href="{{ newsletter.get_absolute_url }}">
+                            <a href="{{ article.get_absolute_url }}">
                                 <img class="img-top img-fluid img-responsive "
                                     style="width: 1200px; height: auto; left: 0px; top: 0px;"
-                                    src="{{ newsletter.image.url }}" alt="{{ newsletter.name }}">
+                                    src="{{ article.image.url }}" alt="{{ article.name }}">
                             </a>
                         </div>
                     </div>
@@ -69,27 +69,27 @@
     </div>
     <div class="container ">    
         <div class="row mb-5">
-            {% for newsletter in object_list %}
+            {% for article in object_list %}
             <div class="col-lg-12 col-md-12 col-ms-12 mb-2 mt-3" data-aos='fade-up'>
                 <div class="card border-secondary ">
                     <div class="card-header">
-                        <a href="{{ newsletter.get_absolute_url }}">
-                            <h3 class="card-title">{{ newsletter.name }} </h3>
+                        <a href="{{ article.get_absolute_url }}">
+                            <h3 class="card-title">{{ article.name }} </h3>
                         </a> 
                     </div>                                      
                     <div class="card-body">
                         <div class="row">
                             <div class="col-3">
                                 <figure class="block-4-image ">
-                                    <a href="{{ newsletter.get_absolute_url }}">
+                                    <a href="{{ article.get_absolute_url }}">
                                         <img class="card-img-top" width="250" height="150"
-                                            src="{{ newsletter.image.url }}" alt="{{ newsletter.name }}">
+                                            src="{{ article.image.url }}" alt="{{ article.name }}">
                                     </a>
                                 </figure>
                             </div>
                             <div class="col-9">
-                                <p class="card-text:justify"> {{ newsletter.abstract|safe }} </p>
-                                <a href="{{ newsletter.get_absolute_url }}" class="btn btn-primary">{% trans "Read more" %}</a>
+                                <p class="card-text:justify"> {{ article.abstract|safe }} </p>
+                                <a href="{{ article.get_absolute_url }}" class="btn btn-primary">{% trans "Read more" %}</a>
                             </div>
                         </div>                      
                     </div>

@@ -31,12 +31,12 @@ class Category(MPTTModel):
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
 
-class Newsletter(TranslatableModel):
+class Article(TranslatableModel):
     translations = TranslatedFields(
         name = models.CharField(
             verbose_name=_('Name'), 
             max_length=200, 
-            help_text=_('Name of the newsletters')
+            help_text=_('Name of the articles')
         ),
         title = models.CharField(
             verbose_name=_('Title'),
@@ -46,12 +46,33 @@ class Newsletter(TranslatableModel):
         abstract = models.TextField(
             verbose_name=_('Abstract'), 
             max_length=500, 
-            help_text=_('Here you must write the abstract of the newsletter')
+            help_text=_('Here you must write the abstract of the articles')
         ),
         content = RichTextField(
             verbose_name=_('content'), 
             help_text=_('Here you must write the description of the article or news.')
+        ),
+        notes = RichTextField(
+            verbose_name=_('Notes'), 
+            help_text=_('Here you must write the notes of the article or news.')
+        ),
+        links = RichTextField(
+            verbose_name=_('Links'), 
+            help_text=_('Here you must write the links of the article or news.')
+        ),
+        more_information = RichTextField(
+            verbose_name=_('More information'), 
+            help_text=_('Here you must write the More information of the article or news.')
+        ),
+        contacts = RichTextField(
+            verbose_name=_('Contacts'), 
+            help_text=_('Here you must write the contacts.')
+        ),
+        tags = RichTextField(
+            verbose_name=_('Tags'), 
+            help_text=_('Here you must write the tags.')
         )
+
     )
     id = models.AutoField(primary_key = True)
     category = models.ForeignKey(
@@ -63,7 +84,7 @@ class Newsletter(TranslatableModel):
     )
     image = models.ImageField(
         verbose_name = _('Image'), 
-        upload_to='newsletter')
+        upload_to='article')
     date_created = models.DateTimeField(
         verbose_name = _('Date created'), 
         auto_now_add=True)
@@ -73,17 +94,17 @@ class Newsletter(TranslatableModel):
     active = models.BooleanField(
         verbose_name = _('Active'), 
         default=False, 
-        help_text=_("Field to know if the newsletter is active or not active"))
+        help_text=_("Field to know if the article is active or not active"))
     
 
     class Meta:
         ordering = ['pk']
-        verbose_name = _('Newsletter')
-        verbose_name_plural = _('Newsletters')
+        verbose_name = _('Article')
+        verbose_name_plural = _('Articles')
 
     def __str__(self):
-        """Return title of newsletter."""
+        """Return title of article."""
         return self.name
     
     def get_absolute_url(self):
-        return reverse("news:news-detail", kwargs={'id': self.id})
+        return reverse("article:article-detail", kwargs={'id': self.id})

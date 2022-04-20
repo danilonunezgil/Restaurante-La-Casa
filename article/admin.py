@@ -1,13 +1,13 @@
 from django.contrib import admin
 from mptt.admin import MPTTModelAdmin
 from parler.admin import TranslatableAdmin
-from newsletter.models import Category, Newsletter 
+from article.models import Category, Article 
 # Register your models here.
 
 admin.site.register(Category, MPTTModelAdmin)
 
-@admin.register(Newsletter)
-class NewsletterAdmin(TranslatableAdmin):
+@admin.register(Article)
+class ArticleAdmin(TranslatableAdmin):
     fieldsets = (
         (None, {'fields': (
             'name',
@@ -16,6 +16,11 @@ class NewsletterAdmin(TranslatableAdmin):
             'title', 
             'abstract', 
             'content',
+            'notes',
+            'links',
+            'more_information',
+            'contacts',
+            'tags',
             'active',
             )}
         ),
