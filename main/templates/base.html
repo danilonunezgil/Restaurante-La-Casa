@@ -1,10 +1,8 @@
 {% load static %}
 {% load i18n %}
-{% load cart_template_tags %}
 
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,12 +32,8 @@
   <!-- Favicon and apple touch icons-->
   <link rel="shortcut icon" href="{% static 'img/logo-tab.png' %}" type="image/x-icon"><!-- Imagene tab-->
 
-
-
   <!-- Tweaks for older IEs-->
-  <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+  <!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
 
 <body class="bg-body">
@@ -49,15 +43,11 @@
       <div class="container">
         <div class="row d-flex align-items-center" style="width: 1280px;">
           <div class="col-md-4 d-md-block d-none">
-            <p> {% trans "Contact us on +420 777 555 333 or hello@universal.com." %} </p>
+            <p> {% trans "Contact us on +57 (608) 678 2084 or info@encisosystems.com." %} </p>
           </div>
           
           <div class="col-md-6">
-            <div class="d-flex justify-content-md-end justify-content-between" >
-              <!-- <ul class="list-inline contact-info d-block d-md-none">
-                <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
-              </ul> -->              
+            <div class="d-flex justify-content-md-end justify-content-between" >             
               {% if not request.user.is_authenticated %}
                 <div class="login">
                   <a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn">
@@ -98,13 +88,12 @@
                 {% endif %}                                
               {% endif %}
               <ul class="social-custom list-inline">
-                <li class="list-inline-item"><a href="https://es-la.facebook.com/"><i class="fa fa-facebook"></i></a>
+                <li class="list-inline-item"><a href="https://www.facebook.com/encisosystems/"><i class="fa fa-facebook"></i></a>
                 </li>
-                <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fa fa-youtube"></i></a></li>
-                <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li class="list-inline-item"><a href="https://www.instagram.com/encisosystemsco/"><i class="fa fa-instagram"></i></a></li>
+                <li class="list-inline-item"><a href="https://www.twitter.com/encisosystems/"><i class="fa fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a href="https://www.youtube.com/c/EncisoSystems"><i class="fa fa-youtube"></i></a></li>
+                <li class="list-inline-item"><a href="https://www.linkedin.com/company/encisosystems/"><i class="fa fa-linkedin"></i></a></li>
               </ul>
             </div>
           </div>
@@ -169,56 +158,8 @@
     </div>
     <!-- Login modal end-->
     {% block navbar %}
-    <!-- Navbar Start-->
-    <header class="nav-holder make-sticky">
-      <div id="navbar" role="navigation" class="navbar navbar-expand-lg">
-        <div class="col-lg-2 col-md-3 col-sm-3">
-          <a href="{% url 'Home' %}" class="navbar-brand home">
-            <img src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-none d-md-inline-block">
-            <img src="{% static 'img/enciso.png' %}" alt="Universal logo" class="d-inline-block d-md-none">
-            <span class="sr-only">{% trans "Enciso - go to homepage" %}</span>
-          </a>
-        </div>
-        <!-- Navbar -->
-        <div class="col-lg-9 col-md-8 col-sm-8 p-0">
-          <div class="container p-0">
-            {% load menus %}
-            {% init_menu 'Main Menu' as main_menu %}            
-            <!-- Button collapse-->            
-            <button type="button" data-toggle="collapse" data-target="#navigation"
-              class="navbar-toggler btn-template-outlined"><span class="sr-only">{% trans "Toggle navigation" %}</span><i
-              class="fa fa-align-justify"></i>
-            </button>          
-            <div id="navigation" class="navbar-collapse collapse">
-              <!--Search -->            
-              <div class="form-group w-50 m-1">
-                <form class="d-flex" method=POST action="{% url 'shop:search' %}">
-                  {% csrf_token %}
-                  <input type="text" class="form-control" placeholder="{% trans 'Search' %}" name="search">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="submit">
-                      <i class="fa fa-search"></i>
-                    </button>
-                  </div>
-                </form>                
-              </div> 
-              <!-- Navbar menus-->          
-              {% render_menu main_menu main %}            
-            </div>                     
-          </div>
-        </div>
-        <!-- Cart Item -->
-        <div class="col-lg-1 col-md-1 col-sm-1">
-          <a href="{% url 'shop:summary' %}" class="site-cart float-right">
-            <span><i class="fa fa-shopping-cart"></i></span>
-            <span class="count"> {{request|cart_item_count}} </span>
-          </a>
-        </div>        
-      </div>
-    </header>
-    <!-- Navbar End-->
+   
     {% endblock navbar %}
-
 
     {% block content %}
 
@@ -228,66 +169,70 @@
     <footer class="main-footer">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3">
-            <h4 class="h6">{% trans "About Us" %}</h4>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+          <div class="col-lg-4">
+            <h4 class="h4">{% trans "Contact" %}</h4>
             <hr>
-            <h4 class="h6">{% trans "Join Our Monthly Newsletter" %}</h4>
-            <form>
-              <div class="input-group">
-                <input type="text" class="form-control">
-                <div class="input-group-append">
-                  <button type="button" class="btn btn-secondary"><i class="fa fa-send"></i></button>
-                </div>
-              </div>
-            </form>
-            <hr class="d-block d-lg-none">
-          </div>
-          <div class="col-lg-3">
-            <h4 class="h6">{% trans "Blog" %}</h4>
-            <ul class="list-unstyled footer-blog-list">
-              <li class="d-flex align-items-center">
-                <div class="image"><img src="{% static 'img/detailsquare.jpg' %}" alt="..." class="img-fluid"></div>
-                <div class="text">
-                  <h5 class="mb-0"> <a href="{% static 'post.html' %}">{% trans "Blog post name" %}</a></h5>
-                </div>
+            <ul id="contact" class="list-unstyled">
+              <li id="c-address">
+                <strong>{% trans "Address:" %}</strong><p class="m-0 d-inline"> Calle 35B # 19D - 40</p>
+                <p class="m-0">Villavicencio, Colombia</p>
               </li>
-              <li class="d-flex align-items-center">
-                <div class="image"><img src="{% static 'img/detailsquare.jpg' %}" alt="..." class="img-fluid"></div>
-                <div class="text">
-                  <h5 class="mb-0"> <a href="{% static 'post.html' %}">{% trans "Blog post name" %}</a></h5>
-                </div>
+              <li id="c-phone">
+                <strong>{% trans "Phone:" %}</strong><p class="m-0 d-inline"> +57 (608) 678 2084</p>
               </li>
-              <li class="d-flex align-items-center">
-                <div class="image"><img src="{% static 'img/detailsquare.jpg' %}" alt="..." class="img-fluid"></div>
-                <div class="text">
-                  <h5 class="mb-0"> <a href="{% static 'post.html' %}">{% trans "Very very long blog post name" %}</a></h5>
-                </div>
+              <li id="c-cell">
+                <strong>{% trans "Cell:" %}</strong><p class="m-0 d-inline"> +57 320 880 8381</p>
+              </li>
+              <li id="c-email">
+                <strong>{% trans "Email:" %}</strong> <a href="mailto:info@encisosystems.com">info@encisosystems.com</a>
               </li>
             </ul>
             <hr class="d-block d-lg-none">
           </div>
-          <div class="col-lg-3">
-            <h4 class="h6">{% trans "Contact" %}</h4>
-            <p class="text-uppercase"><strong>{% trans "Universal Ltd." %}</strong><br>{% trans "13/25 New Avenue" %} <br>{% trans "Newtown upon River" %}
-              <br>{% trans "45Y 73J" %} <br>{% trans "England" %} <br><strong>{% trans "Great Britain" %}</strong>
-            </p><a href="{% static 'contact.html' %}" class="btn btn-template-main">{% trans "Go to contact page" %}</a>
+          <div class="col-lg-2">
+            <h4 class="h4">{% trans "Social Media" %}</h4>
+            <hr>
+            <ul class="list-unstyled" id="socialMedia">
+              <li id="sm-facebook">
+                <a href="https://www.facebook.com/encisosystems/"> Facebook </a>
+              </li>
+              <li id="sm-instagram">
+                <a href="https://www.instagram.com/encisosystemsco/"> Instagram </a>
+              </li>
+              <li id="sm-twitter">
+                <a href="https://www.twitter.com/encisosystems/"> Twitter </a>
+              </li>
+              <li id="sm-linkedin">
+                <a href="https://www.linkedin.com/company/encisosystems/"> LinkedIn </a>
+              </li>
+              <li id="sm-youtube">
+                <a href="https://www.youtube.com/c/EncisoSystems"> Youtube </a>
+              </li>
+            </ul>
             <hr class="d-block d-lg-none">
           </div>
-          <div class="col-lg-3">
-            <ul class="list-inline photo-stream">
-              <li class="list-inline-item"><a href="#"><img src="{% static 'img/detailsquare.jpg' %}" alt="..."
-                    class="img-fluid"></a></li>
-              <li class="list-inline-item"><a href="#"><img src="{% static 'img/detailsquare2.jpg' %}" alt="..."
-                    class="img-fluid"></a></li>
-              <li class="list-inline-item"><a href="#"><img src="{% static 'img/detailsquare3.jpg' %}" alt="..."
-                    class="img-fluid"></a></li>
-              <li class="list-inline-item"><a href="#"><img src="{% static 'img/detailsquare3.jpg' %}" alt="..."
-                    class="img-fluid"></a></li>
-              <li class="list-inline-item"><a href="#"><img src="{% static 'img/detailsquare2.jpg' %}" alt="..."
-                    class="img-fluid"></a></li>
-              <li class="list-inline-item"><a href="#"><img src="{% static 'img/detailsquare.jpg' %}" alt="..."
-                    class="img-fluid"></a></li>
+          <div class="col-lg-4">
+            <h4 class="h4">{% trans "Legal Notice" %}</h4>
+            <hr>
+            <p>
+              Enciso Systems SAS is a simplified stock company, NIT 901390798 - 9. Send your legal notifications to
+              <br><a href="mailto:legal@encisosystems.com"> legal@encisosystems.com </a>
+            </p>
+            <hr class="d-block d-lg-none">
+          </div>
+          <div class="col-lg-2">
+            <h4 class="h4">{% trans "Help" %}</h4>
+            <hr>
+            <ul id="help" class="list-unstyled">
+              <li id="h-contact">
+                <a href="#"> Contact </a>
+              </li>
+              <li id="h-people">
+                <a href="#"> People </a>
+              </li>
+              <li id="g-terms">
+                <a href="#"> Terms and Conditions </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -295,8 +240,14 @@
       <div class="copyrights p-2">
         <div class="container">
           <div class="row">
-            <div class="col-lg-4 text-center-md">
-              <p>&copy;{% now "Y" %}. Enciso Systems</p>
+            <div class="col-lg-12 col-md-12">
+              <h4 class="h4"> Memberships </h4>
+              <p class="float-right">
+                <a href="https://fedesoft.org/">
+                  <img alt="Fedesoft Logo" src="/static/img/logo-fedesoft-50.png" height="50px">
+                </a>
+                <br>&copy;{% now "Y" %}. Enciso Systems
+              </p>
             </div>
           </div>
         </div>

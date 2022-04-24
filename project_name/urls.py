@@ -20,7 +20,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.utils.translation import gettext_lazy as _
-#from shop import views
 from main import views 
 from Menus.views import sitemap
 from pages.views import view_page
@@ -37,9 +36,9 @@ urlpatterns += i18n_patterns(
     path('main/', include('main.urls', namespace='main')),
     path('shop/', include('shop.urls', namespace='shop')),
     path('user/', include(('user.urls', 'user'), namespace='user')),
-    path('hr/', include('hr.urls', namespace='hr')), 
+    path('hr/', include('hr.urls', namespace='hr')),
+    path('article/', include('article.urls', namespace='article')), 
     re_path(r'^sitemap/$', sitemap),
-    #path('pages/', include('pages.urls', namespace='pages')),
     re_path( r'^public/admin/pages/', include('pages.urls') ),
     re_path(r'^(?P<url>.*)$', view_page),
 )
