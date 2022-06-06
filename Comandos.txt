@@ -1,0 +1,5 @@
+$ dokku config:set --no-restart lacasarestaurante DOKKU_LETSENCRYPT_EMAIL=restaurantelacasaadm@gmail.com
+
+dokku letsencrypt:enable lacasarestaurante
+
+git remote add dokku dokku@147.182.143.50:lacasarestaurante
