@@ -1,5 +1,40 @@
-$ dokku config:set --no-restart lacasarestaurante DOKKU_LETSENCRYPT_EMAIL=restaurantelacasaadm@gmail.com
+ssh root@159.223.136.164
 
+dokku apps:create lacasarestaurante
+
+dokku apps:list
+
+dokku git:initialize lacasarestaurante
+
+dokku git:report
+
+https://cheat.readthedocs.io/en/latest/django/dokku_postgres.html
+
+sudo dokku plugin:install https://github.com/dokku/dokku-postgres.git
+
+dokku postgres:create lacasarestaurante
+
+dokku postgres:link lacasarestaurante lacasarestaurante
+
+dokku domains:report lacasarestaurante
+
+dokku domains:clear-global
+
+dokku domains:set lacasarestaurante lacasarestaurantevillavo.com
+
+sudo dokku plugin:install https://github.com/dokku/dokku-letsencrypt.git
+
+dokku
+
+dokku config:set --no-restart lacasarestaurante DOKKU_LETSENCRYPT_EMAIL=restaurantelacasaadm@gmail.com
+
+#En este comando es donde falla
 dokku letsencrypt:enable lacasarestaurante
 
-git remote add dokku dokku@147.182.143.50:lacasarestaurante
+git remote -v
+
+git remote add dokku dokku@159.223.136.164:lacasarestaurante
+
+git push dokku main:master 
+
+
