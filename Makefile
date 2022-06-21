@@ -1,40 +1,40 @@
 init:
 	test -n "$(name)"
 	rm -rf ./.git
-	find ./ -type f -exec perl -pi -e 's/project_name/$(name)/g' *.* {} \;
-	mv ./project_name ./$(name)
+	find ./ -type f -exec perl -pi -e 's/lacasarestaurante/$(name)/g' *.* {} \;
+	mv ./lacasarestaurante ./$(name)
   
 
 superuser:
-	docker exec -it project_name ./manage.py createsuperuser
+	docker exec -it lacasarestaurante ./manage.py createsuperuser
 
 shell:
-	docker exec -it project_name ./manage.py shell
+	docker exec -it lacasarestaurante ./manage.py shell
 
 makemigrations:
-	docker exec -it project_name ./manage.py makemigrations
+	docker exec -it lacasarestaurante ./manage.py makemigrations
 
 migrate:
-	docker exec -it project_name ./manage.py migrate
+	docker exec -it lacasarestaurante ./manage.py migrate
 
 
 initialfixture:
-	docker exec -it project_name ./manage.py loaddata initial
+	docker exec -it lacasarestaurante ./manage.py loaddata initial
 
 testfixture:
-	docker exec -it project_name ./manage.py loaddata test
+	docker exec -it lacasarestaurante ./manage.py loaddata test
 
 test:
-	docker exec -it project_name ./manage.py test
+	docker exec -it lacasarestaurante ./manage.py test
 
 testapp:
-	docker exec -it project_name ./manage.py test $(app) --noinput -v 3
+	docker exec -it lacasarestaurante ./manage.py test $(app) --noinput -v 3
 
 statics:
-	docker exec -it project_name ./manage.py collectstatic --noinput
+	docker exec -it lacasarestaurante ./manage.py collectstatic --noinput
 
 makemessages:
-	docker exec -it project_name django-admin makemessages
+	docker exec -it lacasarestaurante django-admin makemessages
 
 compilemessages:
-	docker exec -it project_name django-admin compilemessages
+	docker exec -it lacasarestaurante django-admin compilemessages

@@ -1,4 +1,4 @@
-# project_name
+# lacasarestaurante
 
 Django 3.2.12 + Postgres 11 + Dokku config (Production Ready)
 
@@ -25,7 +25,7 @@ issues are next or in progress requirements to develop.
 ```
 -An application with the target name must be created.
 -Copy the contents of the application to be renamed into the application with the target name.
--Delete the content of the application to be renamed. (delete the url in project_name)
+-Delete the content of the application to be renamed. (delete the url in lacasarestaurante)
 -Execute the migration commands (makegrations and migrate), this is done to delete the DB tables.
 -Delete the folder of the application to rename and delete the application record in the settings(common.py).
 -Ready, you have renamed the app.
@@ -48,7 +48,7 @@ issues are next or in progress requirements to develop.
 │   ├── urls.py (Main urls, place the home page here)
 │   └── views.py
 ├── media
-├── project_name
+├── lacasarestaurante
 │   ├── settings
 │   │   ├── partials
 │   │   │   └── util.py (Useful functions to be used in settings)
@@ -75,8 +75,8 @@ issues are next or in progress requirements to develop.
 
 Clone the repository, and update your origin url: 
 ```
-git clone https://github.com/altixco/django-postgres-dokku project_name
-cd project_name
+git clone https://github.com/altixco/django-postgres-dokku lacasarestaurante
+cd lacasarestaurante
 ```
 
 Merge the addons required by your project (Optional):
@@ -88,7 +88,7 @@ git merge origin/push-notifications
 
 Rename your project files and directorys:
 ```
-make name=project_name init
+make name=lacasarestaurante init
 ```
 > Info: Make is required, for mac run `brew install make`
 
@@ -145,9 +145,9 @@ The project is dokku ready, this are the steps to deploy it in your dokku server
 
 Create app and configure postgres:
 ```
-dokku apps:create project_name
-dokku postgres:create project_name
-dokku postgres:link project_name project_name
+dokku apps:create lacasarestaurante
+dokku postgres:create lacasarestaurante
+dokku postgres:link lacasarestaurante lacasarestaurante
 ```
 
 > If you don't have dokku postgres installed, run this before:
@@ -155,7 +155,7 @@ dokku postgres:link project_name project_name
 
 Create the required environment variables:
 ```
-dokku config:set project_name ENVIRONMENT=production DJANGO_SECRET_KEY=....
+dokku config:set lacasarestaurante ENVIRONMENT=production DJANGO_SECRET_KEY=....
 ```
 
 Current required environment variables are:
@@ -171,7 +171,7 @@ Use the same command to configure secret credentials for the app
 Configure the dokku remote:
 
 ```
-git remote add dokku dokku@<my-dokku-server.com>:project_name
+git remote add dokku dokku@<my-dokku-server.com>:lacasarestaurante
 ```
 
 Push your changes and just wait for the magic to happens :D:
@@ -208,11 +208,11 @@ Then we grant access permissions to the folder and link the project directory to
 ```
 chown -R dokku:dokku /var/dir/dokku/data/storage/cms-media
 chown -R 32767:32767 /var/dir/dokku/data/storage/cms-media
-dokku storage:mount project_name /var/dir/dokku/data/storage/cms-media:/src/media
+dokku storage:mount lacasarestaurante /var/dir/dokku/data/storage/cms-media:/src/media
 ```
 Then we restart the application.
 ```
-dokku ps:restart project_name
+dokku ps:restart lacasarestaurante
 ```
 To verify that the volume was created successfully.
 ```

@@ -5,7 +5,7 @@ DEBUG = False
 
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ['.project_name.com']
+ALLOWED_HOSTS = ['.lacasarestaurante.com']
 SECRET_KEY = get_secret('DJANGO_SECRET_KEY')
 
 if get_secret('DATABASE_URL'):
@@ -21,7 +21,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'project_name',
+            'NAME': 'lacasarestaurante',
             'USER': POSTGRES_USER,
             'PASSWORD': POSTGRES_PASSWORD,
             'HOST': 'db',
@@ -33,7 +33,7 @@ else:
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 """
 EMAIL_PASSWORD = get_secret('EMAIL_PASSWORD')
-EMAIL_HOST = 'smtp.project_name.com'
-EMAIL_HOST_USER = 'project_name'
+EMAIL_HOST = 'smtp.lacasarestaurante.com'
+EMAIL_HOST_USER = 'lacasarestaurante'
 EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
 """

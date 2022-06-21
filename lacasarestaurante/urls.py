@@ -1,4 +1,4 @@
-"""project_name URL Configuration
+"""lacasarestaurante URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -26,6 +26,7 @@ from pages.views import view_page
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
+    path('admin/', admin.site.urls),
 ]
 
 urlpatterns += i18n_patterns(

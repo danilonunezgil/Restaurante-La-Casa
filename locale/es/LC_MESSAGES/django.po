@@ -856,11 +856,11 @@ msgstr "No se ha podido resolver la variable de solicitud: %s"
 msgid "embed_page tag requires one argument"
 msgstr "La etiqueta embed_page requiere un argumento"
 
-#: project_name/urls.py:34
+#: lacasarestaurante/urls.py:34
 msgid "admin/doc/"
 msgstr "admin/doc/"
 
-#: project_name/urls.py:35
+#: lacasarestaurante/urls.py:35
 msgid "admin/"
 msgstr "admin/"
 

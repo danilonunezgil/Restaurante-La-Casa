@@ -1,10 +1,10 @@
 version: '3.1'
 
 services:
-  project_name:
+  lacasarestaurante:
     build: .
-    image: project_name:latest
-    container_name: project_name
+    image: lacasarestaurante:latest
+    container_name: lacasarestaurante
     environment:
       ENVIRONMENT: development
     depends_on:
@@ -19,6 +19,6 @@ services:
 
   db:
     image: postgres:11
-    container_name: project_name-postgres
+    container_name: lacasarestaurante-postgres
     environment: 
       POSTGRES_PASSWORD: postgres
