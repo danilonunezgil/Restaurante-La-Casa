@@ -674,6 +674,7 @@ table input[type="number"] {
 
 .top-bar ul {
   margin-bottom: 0;
+  color: #000;
 }
 
 .top-bar a.login-btn, .top-bar a.signup-btn {
