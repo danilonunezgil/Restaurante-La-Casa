@@ -45,6 +45,14 @@
     color: #000;
   }
 
+  #navbar {
+    background: #ebe939;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: 5px solid #000;
+}
+
+
 footer.main-footer {
     padding: 60px 0;
     padding-bottom: 0;
@@ -79,7 +87,7 @@ footer.main-footer {
   
   footer.main-footer .copyrights {
     padding: 50px 0;
-    background: #c2bd2d;
+    background: #ebe939;
     color: #ccc;
     border-top: 5px solid #000;
     margin-top: 50px;
