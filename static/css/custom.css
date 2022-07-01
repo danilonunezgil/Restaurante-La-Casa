@@ -10,7 +10,7 @@
 
 
 .top-bar {
-    background: #ffff00;
+    background: #e8e8e8;
     color: #000;
     font-size: 0.9rem;
     border-top: 5px solid #000;
@@ -56,8 +56,8 @@
 footer.main-footer {
     padding: 60px 0;
     padding-bottom: 0;
-    background: #ffff00;
-    color: var(--tertiary-color-text);
+    background: #ebe939;
+    color: #000;
     border-top: 5px solid #000;
     border-bottom: 5px solid #000;
   }
@@ -87,8 +87,8 @@ footer.main-footer {
   
   footer.main-footer .copyrights {
     padding: 50px 0;
-    background: #ebe939;
-    color: #ccc;
+    background: #e8e8e8;
+    color: #000;
     border-top: 5px solid #000;
     margin-top: 50px;
 }
@@ -98,4 +98,9 @@ img {
   border-style: none;
   width: 150px;
   height: 90px;
+}
+
+strong b{
+  font-weight: 700;
+  color: #000;
 }

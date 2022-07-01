@@ -50,9 +50,10 @@ button {
   cursor: pointer;
 }
 
-strong {
+/*strong b{
   font-weight: 700;
-}
+  color: #000;
+}*/
 
 p.lead {
   margin-bottom: 40px;
@@ -72,35 +73,35 @@ p.lead {
 }
 
 /* color tertiary*/
-footer.main-footer {
+/*footer.main-footer {
   padding: 60px 0;
   padding-bottom: 0;
   background: var(--tertiary-color);
   color: var(--tertiary-color-text);
-}
+}*/
 
 footer.main-footer a {
   color: inherit;
   color: #eee;
 }
 
-footer.main-footer h4 {
+/*footer.main-footer h4 {
   color: #eee;
   margin: 10px 0;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-}
+}*/
 
-footer.main-footer p {
+/*footer.main-footer p {
   font-size: 0.9rem;
   color: #aaa;
-}
+}*/
 
-footer.main-footer hr {
+/*footer.main-footer hr {
   border: none;
   border-top: 1px solid #ddd;
   background: none;
-}
+}*/
 
 footer.main-footer .footer-blog-list li {
   margin-bottom: 20px;
@@ -646,12 +647,12 @@ table input[type="number"] {
   font-size: 0.9rem;
 }
 
-.top-bar {
+/*.top-bar {
   background: #555;
   color: #fff;
   font-size: 0.9rem;
   padding: 10px 0;
-}
+}*/
 
 .top-bar.top-bar-light {
   background: #fff;
@@ -677,7 +678,7 @@ table input[type="number"] {
   color: #000;
 }
 
-.top-bar a.login-btn, .top-bar a.signup-btn {
+/*.top-bar a.login-btn, .top-bar a.signup-btn {
   color: #eee;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -685,7 +686,7 @@ table input[type="number"] {
   font-size: 0.75rem;
   font-weight: 700;
   margin-right: 10px;
-}
+}*/
 
 .top-bar a.login-btn i, .top-bar a.signup-btn i {
   margin-right: 10px;
@@ -700,7 +701,7 @@ table input[type="number"] {
   margin: 0;
 }
 
-.top-bar ul.social-custom a {
+/*.top-bar ul.social-custom a {
   text-decoration: none !important;
   font-size: 0.7rem;
   width: 26px;
@@ -710,12 +711,12 @@ table input[type="number"] {
   text-align: center;
   border-radius: 50%;
   margin: 0;
-}
+}*/
 
-.top-bar ul.social-custom a:hover {
+/*.top-bar ul.social-custom a:hover {
   background: var(--primary-color);
   color: #fff;
-}
+}*/
 
 .top-bar .contact-info {
   margin-right: 20px;
@@ -757,11 +758,11 @@ header.nav-holder.sticky {
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
 }
 
-#navbar {
+/*#navbar {
   background: #fff;
   padding-top: 0;
   padding-bottom: 0;
-}
+}*/
 
 #navbar .navbar-toggler {
   font-size: 0.9rem;
@@ -2306,19 +2307,19 @@ ul ul a.nav-link {
   margin: 0;
 }
 
-footer.main-footer .copyrights {
+/*footer.main-footer .copyrights {
   padding: 50px 0;
   background: #333;
   color: #ccc;
   margin-top: 50px;
-}
+}*/
 
 footer.main-footer .copyrights a {
   color: var(--primary-color);
 }
 
 footer.main-footer .copyrights p {
-  color: inherit;
+  color: #000;
   font-size: 0.8rem;
   margin-bottom: 0;
 }
