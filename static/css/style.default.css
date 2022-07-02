@@ -783,9 +783,6 @@ header.nav-holder.sticky {
   padding-bottom: 0;
 }
 
-#navbar .dropdown-menu .dropdown-item {
-  padding: 0;
-}
 
 #navbar .dropdown-menu h5 {
   text-transform: uppercase;
