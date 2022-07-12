@@ -1,0 +1,16 @@
+La implementación de WhatsApp comnieza desde dos archivos:
+1) Se requiere un archivo CSS con nombre "whatsapp.css", su ubicación es: static/css/whatsapp.css
+2) Se requiere un archivo .html con nombre "whatsapp.html", su ubicación es: main/templates/whatsapp.html
+
+Se realizó lo siguiente:
+
+En el archivo "base.html" que es de donde heredan los demás se colocó un href para referenciar la ubicación del archivo whatsapp.css, esto en la línea 35:
+<link rel="stylesheet" href="{% static 'css/whatsapp.css' %}">
+
+Luego, en el mismo archivo "base.html" se colocaron las siguientes líneas de código, donde se extraen de internet el diseño del logo de whatsapp con font-awesome, y se referencia el link de contacto de whatsapp
+con el numero de celular y el mensaje:
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<a href="https://api.whatsapp.com/send?phone=5195508107&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
