@@ -29,27 +29,8 @@
                     {% load menus %}
                     {% init_menu 'Main Menu' as main_menu %}
 
-                    <!--{% render_menu main_menu main %}-->
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                          <a class="nav-link active" href="/">INICIO</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                          <a class="nav-link" href="/main/shop/">TIENDA</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ACERCA DE</a>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">Nosotros</a>
-                              <ditecnocp@tecnocp-VirtualBox:~/Documentos/Proyecto Tecnologías Avanzadas/Workspae/Restaurante-La-Casa$ v class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Ubicación</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Contacto</a>
-                              <div class="dropdown-divider"></div>
-                            </div>
-                          </li>
-                      </ul> 
+                    {% render_menu main_menu main %}
+
                 </div>
             </div>
         </div>
