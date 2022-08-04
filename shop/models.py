@@ -123,7 +123,7 @@ class Product(TranslatableModel):
     price = MoneyField(
         verbose_name = _('Price'), 
         default = 0,
-        decimal_places = 2,
+        decimal_places = 0,
         default_currency='USD',
         max_digits = 11,
         help_text=_("Price of product"))
