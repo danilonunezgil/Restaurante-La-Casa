@@ -32,7 +32,7 @@
                                         <td class="product-name">
                                             <h2 class="h5 text-black" >{{ item.product.title }}</h2>
                                         </td>
-                                        <td>{{ item.product.get_price }}</td>
+                                        <td>{{ item.product.get_price|cut:",00" }}</td>
                                         <td>
                                             <div class="input-group"  style="max-width: 120px;">
                                                 <div class="input-group-pretend ">
@@ -55,7 +55,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            {{ item.get_total_item_price }}
+                                            {{ item.get_total_item_price|cut:",00" }}
                                         </td>
                                         <td>
                                             <a href="{% url 'shop:remove-from-cart' item.id %}"
@@ -75,7 +75,7 @@
                                 <tfoot>
                                     <tr>
                                         <th colspan="4">Total</th>
-                                        <th>{{ order.get_subtotal }}</th>
+                                        <th>{{ order.get_subtotal|cut:",00" }}</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -110,7 +110,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Subtotal</td>
-                                        <th>{{ order.get_subtotal }}</th>
+                                        <th>{{ order.get_subtotal|cut:",00" }}</th>
                                     </tr>
                                     <tr>
                                         <td>{% trans "Shipping Cost" %}</td>
@@ -118,7 +118,7 @@
                                     </tr>
                                     <tr class="total">
                                         <td>Total</td>
-                                        <th>{{ order.get_total }}</th>
+                                        <th>{{ order.get_total|cut:",00" }}</th>
                                     </tr>
                                 </tbody>
                             </table>                            
