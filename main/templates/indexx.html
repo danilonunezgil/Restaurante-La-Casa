@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static i18n%}
 {% block title %}
-  {% trans "Shop - La Casa Restaurante" %}
+  {% trans "Shop | La Casa Restaurante" %}
 {% endblock title %}
 
 {% block navbar %}
@@ -136,7 +136,7 @@
         <div class="col-lg-4 col-md-6 col-ms-6 mb-2 mt-5" data-aos='fade-up'>
           <div class="d-flex align-items-start justify-content-center" >
             <figure class="block-4-image ">
-              <a href="{{ product.get_absolute_url }}"><img class="img-fluid img-responsive" style="height: 250px;" src="{{ product.image.url }}" alt="{{ product.title }}"> </a>
+              <a href="{{ product.get_absolute_url }}"><img class="img-fluid img-responsive" style="height: 300px; width: 300px;" src="{{ product.image.url }}" alt="{{ product.title }}"> </a>
             </figure>
           </div>         
     
@@ -144,7 +144,7 @@
             <a href="{{ product.get_absolute_url }}">
               <h3>{{ product.title }}</h3>
             </a>
-            <p class="mb-0">{% trans "Price" %}: {{ product.price }}</p>
+            <p class="mb-0">{% trans "Price" %}: {{ product.price|cut:",00" }}</p>
           </div>
         </div>
         {% endfor %}
