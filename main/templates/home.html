@@ -48,12 +48,12 @@
         <div class="home-carousel">
             <div class="homepage owl-carousel">
                 {% for article in publish_list %}
-                <div class="item" style="height: 500px;">
+                <div class="item" style="height: 600px;">
                     <div class="row">
                         <div class="col-md-12" style="overflow: hidden;">
                             <a href="{{ article.get_absolute_url }}">
                                 <img class="img-top img-fluid img-responsive "
-                                    style="width: 1200px; height: auto; left: 0px; top: 0px;"
+                                    style="width: 1200px; height: 600px; left: 0px; top: 0px;"
                                     src="{{ article.image.url }}" alt="{{ article.name }}">
                             </a>
                         </div>

@@ -13,3 +13,4 @@ django-ace==1.0.11
 django-mptt==0.13.4
 djangorestframework==3.13.1
 django-parler==2.3
+django-mercadopago

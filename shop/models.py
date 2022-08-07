@@ -124,7 +124,7 @@ class Product(TranslatableModel):
         verbose_name = _('Price'), 
         default = 0,
         decimal_places = 0,
-        default_currency='USD',
+        default_currency='COP',
         max_digits = 11,
         help_text=_("Price of product"))
     stock = models.IntegerField(
