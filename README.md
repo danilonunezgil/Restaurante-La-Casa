@@ -7,7 +7,7 @@ HTML, CSS3, JavaScript, JQuery, Contenedor Docker, Droplet de DigitalOcean, Lets
 ## Documentation ##
 
 En este enlace encuentra la documentación del proyecto: objetivos, marco de referencia, metodología y desarrollo, análisis económico, conclusiones y recomendaciones. Solicite el acceso y será concedido.
-https://docs.google.com/document/d/1sPXStBqmgArgUppvDD705n8iP_wjbgbnHtVZsB5MZwA
+https://docs.google.com/document/d/1HfIFXiuLiYaKKhzRVhorOYTXwgdg20-FrDrfjzeIlxc/edit?usp=sharing
 
 ### Resumen ###
 ```
