@@ -1,11 +1,50 @@
 # lacasarestaurante
 
-Django 3.2.12 + Postgres 11 + Dokku config (Production Ready)
+Lenguajes y herramientas usadas para el desarrollo y el despliegue:
+Django 3.2.12 + PostgreSQL 11 + Dokku config (Production Ready)
+HTML, CSS3, JavaScript, JQuery, Contenedor Docker, Droplet de DigitalOcean, LetsEncrypt 
 
 ## Documentation ##
 
-The project has a requirements document which is hosted at the following link:
+En este enlace encuentra la documentación del proyecto: objetivos, marco de referencia, metodología y desarrollo, análisis económico, conclusiones y recomendaciones. Solicite el acceso y será concedido.
 https://docs.google.com/document/d/1sPXStBqmgArgUppvDD705n8iP_wjbgbnHtVZsB5MZwA
+
+### Resumen ###
+```
+El presente proyecto consiste en la implementación de una tienda virtual para 
+un restaurante ubicado en la ciudad de Villavicencio. El cliente tiene la posibilidad de ver y comprar
+los productos disponibles pagando por medio de la pasarela de pago MercadoPago. De la misma manera 
+podrá solicitar haciendo clic en el botón de WhatsApp el menú del día, el administrador del sitio generará 
+cada día dicho menú mediante la selección de los productos que varían (sopas, principios, ensaladas)
+y la disponibilidad de los productos que son fijos.
+
+```
+### Requerimiento Funcional Prioritario ###
+```
+Administrar Productos: Se ha priorizado el requerimiento funcional enunciado debido a la importancia 
+que tiene. Es el núcleo del desarrollo pues el administrador actualmente genera de manera manual 
+cada día el menú que va a ser enviado por WhatsApp, lo que representa un proceso tedioso y repetitivo
+que puede ser automatizado. 
+
+```
+
+### Metodología de Desarrollo ###
+```
+El marco de trabajo para el desarrollo del presente producto de software que se utiliza aquí es SCRUM.
+Se tiene una hoja de cálculo que se denomina backlog donde al inicio del desarrollo se especificaron
+cada una de las posibles actividades que se llevarían a cabo y con la puesta en ejecución del proyecto
+se han agregado nuevas actividades. También se tienen reuniones de manera periódica (cada lunes) y entregas
+de resultados al cliente (cada miércoles). Las anteriores dos, son características de SCRUM.
+
+```
+
+### ROLES ###
+```
+-Edgar David Lozada Gonzalez - Desarrollador
+-Carlos Danilo Núñez Gil - Product Owner
+-Jessica Gómez Manrique - Scrum Master
+
+```
 
 ### Kanban ###
 ```
@@ -13,13 +52,8 @@ The visualization and assignment of tasks and project requirements is handled on
 located in the Projects tab called "Base CMS E-Commerce". In the board there are 5 columns.
 - To Do (pending tasks) 
 - In progress (Tasks in progress)
-- Review in progress
-- Reviewer approved
 - Done (tasks/requirements completed)
 
-The Issues and notes are created in the To Do column. 
-Notes are requirements to work in later.
-issues are next or in progress requirements to develop.
 ```
 ### Steps to change the name of an application in Django: ###
 ```
