@@ -1,7 +1,7 @@
 {% extends "indexx.html" %}
 {% load i18n%}
 {% block title %}
-    {% trans "Cart" %}
+    {% trans "Carrito de Compras | La Casa Restaurante" %}
 {% endblock title %}
 {% block content %}
 
@@ -15,12 +15,12 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>{% trans "Image" %}</th>
-                                        <th>{% trans "Product" %}</th>
-                                        <th>{% trans "Price" %}</th>
-                                        <th>{% trans "Quantity" %}</th>
+                                        <th>{% trans "Imagen" %}</th>
+                                        <th>{% trans "Producto" %}</th>
+                                        <th>{% trans "Precio" %}</th>
+                                        <th>{% trans "Cantidad" %}</th>
                                         <th>{% trans "Total" %}</th>
-                                        <th>{% trans "Actions" %}</th>
+                                        <th>{% trans "Acciones" %}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,9 +64,9 @@
                                     </tr>
                                     {% empty %}
                                     <tr>
-                                        <td colspan="6">{% trans "There are no items in your cart." %} 
+                                        <td colspan="6">{% trans "No hay productos en tu carrito." %} 
                                             <a href="{% url 'shop:product' %}">
-                                                {% trans "Continue Shopping" %}
+                                                {% trans " Continua Comprando!" %}
                                             </a>
                                         </td>
                                     </tr>
@@ -87,7 +87,7 @@
                                 <div class="row mb-5">
                                     <div class="col-md-12">
                                         <a class="btn btn-outline-primary btn-sm btn-block"
-                                        href="{% url 'shop:product' %}">{% trans "Continue Shopping" %}</a>
+                                        href="{% url 'shop:product' %}">{% trans "Continua Comprando" %}</a>
                                     </div>
                                 </div>
                             </div>               
@@ -102,7 +102,7 @@
                 <div class="col-lg-3">
                     <div id="order-summary" class="box mb-4 p-0">
                         <div class="box-header mt-0 bg-white">
-                            <h3>{% trans "Order summary" %}</h3>
+                            <h3>{% trans "Resumen del pedido" %}</h3>
                         </div>
 
                         <div class="table-responsive">
@@ -113,7 +113,7 @@
                                         <th>{{ order.get_subtotal|cut:",00" }}</th>
                                     </tr>
                                     <tr>
-                                        <td>{% trans "Shipping Cost" %}</td>
+                                        <td>{% trans "Costo de Envío" %}</td>
                                         <th>$0</th>
                                     </tr>
                                     <tr class="total">
@@ -125,7 +125,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="#" class="btn btn-outline-primary btn-lg py-3 btn-block">{% trans "Proceed to Checkout" %}</a>
+                                <a href="#" class="btn btn-outline-primary btn-lg py-3 btn-block">{% trans "Proceder a pagar" %}</a>
                             </div>
                         </div>
                     </div>

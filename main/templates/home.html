@@ -68,7 +68,7 @@
 <section class="bar bg-body">
   <div class="container bg-white">
     <div class="heading text-center"><br>
-      <h2>{% trans "ARTICLE"%}</h2>
+      <h2>{% trans "NOTICIAS"%}</h2>
     </div>
     <div class="container ">    
         <div class="row mb-5">
@@ -92,7 +92,7 @@
                             </div>
                             <div class="col-9">
                                 <p class="card-text:justify"> {{ article.abstract|safe }} </p>
-                                <a href="{{ article.get_absolute_url }}" class="btn btn-primary">{% trans "Read more" %}</a>
+                                <a href="{{ article.get_absolute_url }}" class="btn btn-primary">{% trans "Saber más" %}</a>
                             </div>
                         </div>                      
                     </div>
@@ -133,17 +133,17 @@
                         {% endfor %}
                         {% if page_obj.has_next %}
                             <li class="page-item d-none d-sm-block">
-                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">{% trans "Next" %} &rang;</a>
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">{% trans "Siguiente" %} &rang;</a>
                             </li>
                         {% endif %}
                     </ul>
                 </div>
                 <div class="d-flex justify-content-center d-sm-none">            
                     {% if page_obj.has_previous %}
-                        <span class="page-item"><a  class="page-link" href="?page={{ page_obj.previous_page_number }}">&lang; {% trans "Previous" %}</a></span>
+                        <span class="page-item"><a  class="page-link" href="?page={{ page_obj.previous_page_number }}">&lang; {% trans "Atrás" %}</a></span>
                     {% endif %}
                     {% if page_obj.has_next %}
-                        <span class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{% trans "Next" %} &rang;</a></span>
+                        <span class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{% trans "Siguiente" %} &rang;</a></span>
                     {% endif %}
                     <br>
                     <br>

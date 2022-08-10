@@ -61,7 +61,7 @@
       <div class="container">
         <div class="row d-flex align-items-center" style="width: 100%;">
           <div class="col-md-4 d-md-block d-none">
-            <p style="width: 800px;"> {% trans "Contact us on <b>+57 (313) 444 8480</b> or <b>restaurantelacasaadmin@gmail.com</b>" %} </p>
+            <p style="width: 800px;"> {% trans "Contáctanos:<b> +57 (313) 444 8480</b> o <b>restaurantelacasaadmin@gmail.com</b>" %} </p>
           </div>
           
           <div class="col-md-6">
@@ -69,11 +69,11 @@
               {% if not request.user.is_authenticated %}
                 <div class="login">
                   <a href="#" data-toggle="modal" data-target="#login-modal" class="login-btn">
-                    <i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">{% trans "Sign In" %}</span>
+                    <i class="fa fa-sign-in"></i><span class="d-none d-md-inline-block">{% trans "INGRESA" %}</span>
                   </a>
                   <a href="{% url 'user:signup' %}" class="signup-btn">
                     <i class="fa fa-user"></i>
-                    <span class="d-none d-md-inline-block">{% trans "Sign Up" %}</span>
+                    <span class="d-none d-md-inline-block">{% trans "REGISTRO" %}</span>
                   </a>
                 </div>
               {% else  %}
@@ -85,8 +85,8 @@
                         <i class="fa fa-user " aria-hidden="true"> </i>
                       </a>
                       <div class="user-menu dropdown-menu">
-                          <a class="nav-link" href="{% url 'admin:index' %}"><i class="fa fa -cog"></i>{% trans "Administrate" %} </a>
-                          <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i> {% trans "Logout" %}</a>
+                          <a class="nav-link" href="{% url 'admin:index' %}"><i class="fa fa -cog"></i>{% trans "DJANGO ADMIN" %} </a>
+                          <a class="nav-link" href="{% url 'user:logout' %}"><i class="fa fa-power -off"></i> {% trans "SALIR" %}</a>
                       </div>
                     </div>
                   </div>
@@ -137,7 +137,7 @@
       <div role="document" class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 id="login-modalLabel" class="modal-title">{% trans "Customer Login" %}</h4>
+            <h4 id="login-modalLabel" class="modal-title">{% trans "INICIO DE SESIÓN" %}</h4>
             <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
                 aria-hidden="true">×</span></button>
           </div>
@@ -162,13 +162,13 @@
               </div>
 
 
-              <button class="btn btn-primary btn-block mt-5" type="submit" >{% trans "Sign in" %}!</button>
+              <button class="btn btn-primary btn-block mt-5" type="submit" >{% trans "Iniciar Sesión" %}!</button>
             </form>
-            <p class="text-center text-muted">{% trans "Not registered yet?" %}</p>
+            <p class="text-center text-muted">{% trans "¿No estás registrado todavía?" %}</p>
             <p class="text-center text-muted">
               <a href="{% url 'user:signup' %}">
-                <strong>{% trans "Register now" %}!</strong>
-              </a> {% trans "It is easy and done in 1 minute and gives you access to special discounts and much more" %}!
+                <strong>{% trans "Regístrate ahora" %}!</strong>
+              </a> {% trans "No gastas más de 1 minuto y te da acceso a la información de nuestro restaurante" %}!
             </p>
           </div>
         </div>
@@ -188,15 +188,15 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
-            <h4 class="h4">{% trans "Contact" %}</h4>
+            <h4 class="h4">{% trans "Contacto" %}</h4>
             <hr>
             <ul id="contact" class="list-unstyled">
               <li id="c-address">
-                <strong>{% trans "Address:" %}</strong><p class="m-0 d-inline"> Calle 33A # 40 - 01</p>
+                <strong>{% trans "Dirección:" %}</strong><p class="m-0 d-inline"> Calle 33A # 40 - 01</p>
                 <p class="m-0">Villavicencio, Colombia</p>
               </li>
               <li id="c-phone">
-                <strong>{% trans "Phone:" %}</strong><a href="https://api.whatsapp.com/send?phone=573214114170&text=Hola%21%20Quisiera%20m%C3%A1s%20realizar%20un%20un%20pedido." target="_blank"> +57 313 444 8480</a>
+                <strong>{% trans "WhatsApp:" %}</strong><a href="https://api.whatsapp.com/send?phone=573214114170&text=Hola%21%20Quisiera%20m%C3%A1s%20realizar%20un%20un%20pedido." target="_blank"> +57 313 444 8480</a>
                 
               </li>
               <li id="c-email">
@@ -206,7 +206,7 @@
             <hr class="d-block d-lg-none">
           </div>
           <div class="col-lg-2">
-            <h4 class="h4">{% trans "Social Media" %}</h4>
+            <h4 class="h4">{% trans "Redes Sociales" %}</h4>
             <hr>
             <ul class="list-unstyled" id="socialMedia">
               <li id="sm-facebook">
@@ -222,7 +222,7 @@
             <hr class="d-block d-lg-none">
           </div>
           <div class="col-lg-4">
-            <h4 class="h4">{% trans "Legal Notice" %}</h4>
+            <h4 class="h4">{% trans "Aviso Legal" %}</h4>
             <hr>              <li id="sm-linkedin">
               <a href="https://www.linkedin.com/"> LinkedIn </a>
             </li>
@@ -230,23 +230,23 @@
               <a href="https://www.youtube.com/"> Youtube </a>
             </li>
             <p>
-              {% trans "La Casa Restaurante SAS is a simplified stock company, NIT 40381716. Send your legal notifications to"  %}
+              {% trans "La Casa Restaurante SAS es una sociedad por acciones simplificadas, NIT 40381716. Envía tus avisos legales a: "  %}
               <a href="mailto:restaurantelacasaadmin@gmail.com">restaurantelacasaadmin@gmail.com</a>
             </p>
             <hr class="d-block d-lg-none">
           </div>
           <div class="col-lg-2">
-            <h4 class="h4">{% trans "Help" %}</h4>
+            <h4 class="h4">{% trans "Ayuda" %}</h4>
             <hr>
             <ul id="help" class="list-unstyled">
               <li id="h-contact">
-                <a href="#">{% trans "Contact" %}</a>
+                <a href="#">{% trans "Contacto" %}</a>
               </li>
               <li id="h-people">
-                <a href="#"> {% trans "People" %} </a>
+                <a href="#"> {% trans "Personas" %} </a>
               </li>
               <li id="g-terms">
-                <a href="#"> {% trans "Terms and Conditions" %} </a>
+                <a href="#"> {% trans "Términos y Condiciones" %} </a>
               </li>
             </ul>
           </div>
@@ -256,13 +256,13 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12 col-md-12">
-              <h4 class="h4"> {% trans "Memberships" %} </h4>
+              <h4 class="h4"> {% trans "Desarrolladores" %} </h4>
               <p class="float-right">
                 <a href="https://unillanos.edu.co/" target="_blank">
                   <img alt="Unillanos Logo" src="/static/img/logo-unillanos.png">
                 </a>
-                <br>&copy;{% now "Y" %}. <br><b>{% trans "Development Team #2" %}</b><br>
-                {% trans "Advanced technologies" %}
+                <br>&copy;{% now "Y" %}. <br><b>{% trans "Equipo de Desarrollo #2" %}</b><br>
+                {% trans "Tecnologías Avanzadas" %}
               </p>
             </div>
           </div>
