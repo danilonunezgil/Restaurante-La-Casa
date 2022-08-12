@@ -126,7 +126,7 @@
 <section class="bar bg-body">
   <div class="container bg-white">
     <div class="heading text-center"><br>
-      <h2>{% trans "PRODUCTS"%}</h2>
+      <h2>{% trans "PRODUCTOS"%}</h2>
     </div>
 
     <div class="container ">
@@ -144,7 +144,7 @@
             <a href="{{ product.get_absolute_url }}">
               <h3>{{ product.title }}</h3>
             </a>
-            <p class="mb-0">{% trans "Price" %}: {{ product.price|cut:",00" }}</p>
+            <p class="mb-0">{% trans "Precio" %}: {{ product.price|cut:",00" }}</p>
           </div>
         </div>
         {% endfor %}
@@ -155,7 +155,7 @@
 <section class="bar bg-clients">
   <div class="container">
     <div class="heading text-center">
-      <h2>{% trans "Our Clients" %}</h2>
+      <h2>{% trans "Nuestros Clientes" %}</h2>
     </div>
     <ul class="list-unstyled owl-carousel customers no-mb">
       <li class="item"><img src="{% static 'img/customer-1.png' %}" alt="" class="img-fluid"></li>
