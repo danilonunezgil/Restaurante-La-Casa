@@ -38,7 +38,7 @@ de resultados al cliente (cada miércoles). Las anteriores dos, son característ
 
 ```
 
-### ROLES ###
+### Roles ###
 ```
 -Edgar David Lozada Gonzalez - Desarrollador
 -Carlos Danilo Núñez Gil - Product Owner
