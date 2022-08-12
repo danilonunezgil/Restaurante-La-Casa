@@ -2,7 +2,7 @@
 {% load i18n%}
 {% load crispy_forms_tags %}
 {% block title %}
-    {% trans "Personal data" %}
+    {% trans "Información Personal | La Casa Restaurante" %}
 {% endblock %}
 
 {% block content %}
@@ -21,7 +21,7 @@
                     <hr><br>
                     {# Name  field #}
                     <div class="form-group">
-                        <label>{% trans "Name" %}</label>
+                        <label>{% trans "Nombres" %}</label>
                         <input
                             class="form-control {% if form.name.errors %}is-invalid{% endif %}"
                             type="text"
@@ -37,7 +37,7 @@
                     </div>
                     {# Last Name  field #}
                     <div class="form-group">
-                        <label>{% trans "Last Name" %}</label>
+                        <label>{% trans "Apellidos" %}</label>
                         <input
                             class="form-control {% if form.lastName.errors %}is-invalid{% endif %}"
                             type="text"
@@ -53,7 +53,7 @@
                     </div>  
                     {# Identification Card  field #}
                     <div class="form-group">
-                        <label>{% trans "Identification Card" %}</label>
+                        <label>{% trans "DNI" %}</label>
                         <input
                             class="form-control {% if form.cc.errors %}is-invalid{% endif %}"
                             type="text"
@@ -85,7 +85,7 @@
                     </div>               
                     {# Phone number field #}
                     <div class="form-group">
-                        <label>{% trans "Phone number" %}</label>
+                        <label>{% trans "Número de Celular" %}</label>
                         <input
                             class="form-control {% if form.cellphone.errors %}is-invalid{% endif %}"
                             type="text"
@@ -102,7 +102,7 @@
     
                     {# Address field #}
                     <div class="form-group">
-                        <label>{% trans "Address" %}</label>
+                        <label>{% trans "Dirección" %}</label>
                         <input
                             class="form-control {% if form.home_address.errors %}is-invalid{% endif %}"
                             type="text"
@@ -119,7 +119,7 @@
     
                     {# Age field #}
                     <div class="form-group">
-                        <label>{% trans "Age" %}</label>
+                        <label>{% trans "Edad" %}</label>
                         <input
                             class="form-control {% if form.Age.errors %}is-invalid{% endif %}"
                             type="text"
@@ -133,7 +133,7 @@
                             {% endfor%}
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block mt-5">{% trans "Update info" %}</button>
+                    <button type="submit" class="btn btn-primary btn-block mt-5">{% trans "Actualizar Información" %}</button>
                 </form>
             </div>
         </div>
