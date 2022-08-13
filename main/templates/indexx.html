@@ -133,7 +133,8 @@
       <div class="row mb-5">
     
         {% for product in object_list %}
-        <div class="col-lg-4 col-md-6 col-ms-6 mb-2 mt-5" data-aos='fade-up'>
+        {% if product.active %}
+        <div class="col-lg-4 col-md-6 col-ms-6 mb-2 mt-5" data-aos='fade-up' style="display: flex; flex-direction: column; align-items: center;">
           <div class="d-flex align-items-start justify-content-center" >
             <figure class="block-4-image ">
               <a href="{{ product.get_absolute_url }}"><img class="img-fluid img-responsive" style="height: 300px; width: 300px;" src="{{ product.image.url }}" alt="{{ product.title }}"> </a>
@@ -147,6 +148,7 @@
             <p class="mb-0">{% trans "Precio" %}: {{ product.price|cut:",00" }}</p>
           </div>
         </div>
+        {% endif %}
         {% endfor %}
       </div>
     </div>

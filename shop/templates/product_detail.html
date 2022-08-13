@@ -9,24 +9,13 @@
 
 <div class="m-3 p-3" id="content-product-detail">
     <div class="container bg-white">
-        <div class="row bar">
+        <div class="row bar" style="display: flex; align-items: center; justify-content: center; margin-left: 50px;">
             <!-- LEFT COLUMN _________________________________________________________-->
             <div class="col-lg-8">
                 <div id="productMain" class="row">
-                    <div class="col-sm-1">
-                        <div data-slider-id="1" class="owl-thumbs">
-                            <picture>
-                                <source srcset="{{ product.image.url }}" type="image/svg+xml">
-                                <img src="{{ product.image.url }}" class="img-fluid img-thumbnail" alt="{{ product.title }}" width="44">
-                                <img src="{{ product.image.url }}" class="img-fluid img-thumbnail" alt="{{ product.title }}" width="44">
-                                <img src="{{ product.image.url }}" class="img-fluid img-thumbnail" alt="{{ product.title }}" width="44">
-                            </picture>
-                        </div>
-                    </div>
+
                     <div class="col-sm-11">
                         <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
-                            <div> <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid"></div>
-                            <div> <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid"></div>
                             <div> <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid"></div>
                         </div>
                     </div>
