@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static i18n%}
+{% block title %}
+  {% trans "Error 404 | La Casa Restaurante" %}
+{% endblock title %}
+
+{% block navbar %}
+
+{% load menus %}
+{% init_menu 'Main Menu' as main_menu %}
+
+{% render_menu main_menu main %}
+
+{% endblock navbar %}
+
+{% endblock content %}
