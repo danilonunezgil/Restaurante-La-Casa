@@ -11,36 +11,46 @@
         <div class="container p-2">
             <div class="mb-2 mt-4">
                 <div>
-                    <h1 class="font-weight-normal">{{ article.name }}</h1>
+                    <h1 class="font-weight-normal" style="text-align: center;"><b>{{ article.name }}</b></h1>
                 </div>
-                <div class="row m-4">
+                <div class="row m-4" style="display: flex; align-items: center; justify-content: center;">
                     <div class="col-sm-11">                        
                         <div class="d-flex justify-content-center">
-                            <img class="img-fluid img-responsive" height="600" width="800" src="{{ article.image.url }}" alt="{{ article.name }}">
+                            <img class="img-fluid img-responsive" style="width: 100%; height: auto;" src="{{ article.image.url }}" alt="{{ article.name }}">
                         </div>            
                     </div>
                 </div>
                 <div>
-                    <h1 class="font-weight-normal ">{{ article.title }}</h1>
+                    <h1 class="font-weight-normal" style="text-align: center;">{{ article.title }}</h1>
                 </div>
                 <div id="description" class="box mb-4 mt-4">
                     <p class="text-justify font-weight-bold h4" style="color: rgb(92, 91, 91) !important;" >{{ article.abstract|safe }}</p>
                     <hr>
                     <p >{{ article.content|safe }}</p>
+                    {% if article.notes %}
                     <h3>Notes</h3>
                     <p>{{ article.notes|safe }}</p>
+                    {% endif %}
+                    {% if article.link %}
                     <h3>Links</h3>
                     <p>{{ article.links|safe }}</p>  
+                    {% endif %}
+                    {% if article.more.information %}
                     <h3>More information</h3>
-                    <p>{{ article.more_information|safe }}</p>  
+                    <p>{{ article.more_information|safe }}</p>
+                    {% endif %}
+                    {% if article.contact %}  
                     <h3>Contacts</h3>
                     <p>{{ article.contacts|safe }}</p>
+                    {% endif%}
+                    {% if article.tags %}
                     <div class="row pl-3">
                         <div>
                             <strong>Tags:</strong>
                         </div>
                         {{ article.tags|safe }} 
-                    </div>                   
+                    </div>
+                    {%endif%}                   
                 </div>
             </div>
         </div>

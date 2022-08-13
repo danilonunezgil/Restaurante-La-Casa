@@ -46,31 +46,37 @@ class Article(TranslatableModel):
         abstract = models.TextField(
             verbose_name=_('Abstract'), 
             max_length=500, 
-            help_text=_('Here you must write the abstract of the articles')
+            help_text=_('Here you must write the abstract of the articles'),
         ),
         content = RichTextField(
             verbose_name=_('content'), 
-            help_text=_('Here you must write the description of the article or news.')
+            help_text=_('Here you must write the description of the article or news.'),
+            blank = True
         ),
         notes = RichTextField(
             verbose_name=_('Notes'), 
-            help_text=_('Here you must write the notes of the article or news.')
+            help_text=_('Here you must write the notes of the article or news.'),
+            blank = True
         ),
         links = RichTextField(
             verbose_name=_('Links'), 
-            help_text=_('Here you must write the links of the article or news.')
+            help_text=_('Here you must write the links of the article or news.'),
+            blank = True
         ),
         more_information = RichTextField(
             verbose_name=_('More information'), 
-            help_text=_('Here you must write the More information of the article or news.')
+            help_text=_('Here you must write the More information of the article or news.'),
+            blank = True
         ),
         contacts = RichTextField(
             verbose_name=_('Contacts'), 
-            help_text=_('Here you must write the contacts.')
+            help_text=_('Here you must write the contacts.'),
+            blank = True
         ),
         tags = RichTextField(
             verbose_name=_('Tags'), 
-            help_text=_('Here you must write the tags.')
+            help_text=_('Here you must write the tags.'),
+            blank = True
         )
 
     )
