@@ -139,7 +139,7 @@ class Product(TranslatableModel):
         auto_now=True)
     active = models.BooleanField(
         verbose_name = _('Active'), 
-        default=False, 
+        default=True, 
         help_text=_("Field to know if the product is active or not active"))
     
     class Meta:
