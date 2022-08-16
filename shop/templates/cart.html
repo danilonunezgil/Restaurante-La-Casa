@@ -65,7 +65,7 @@
                                     {% empty %}
                                     <tr>
                                         <td colspan="6">{% trans "No hay productos en tu carrito." %} 
-                                            <a href="{% url 'shop:product' %}">
+                                            <a href="{% url 'main:shop' %}">
                                                 {% trans " Continua Comprando!" %}
                                             </a>
                                         </td>
@@ -87,7 +87,7 @@
                                 <div class="row mb-5">
                                     <div class="col-md-12">
                                         <a class="btn btn-outline-primary btn-sm btn-block"
-                                        href="{% url 'shop:product' %}">{% trans "Continua Comprando" %}</a>
+                                        href="{% url 'main:shop' %}">{% trans "Continua Comprando" %}</a>
                                     </div>
                                 </div>
                             </div>               
