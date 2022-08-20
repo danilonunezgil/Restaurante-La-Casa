@@ -39,6 +39,7 @@ urlpatterns += i18n_patterns(
     path('user/', include(('user.urls', 'user'), namespace='user')),
     path('hr/', include('hr.urls', namespace='hr')),
     path('article/', include('article.urls', namespace='article')), 
+    path('paypal/', include('paypal.urls')),
     re_path(r'^sitemap/$', sitemap),
     re_path( r'^public/admin/pages/', include('pages.urls') ),
     re_path(r'^(?P<url>.*)$', view_page),
