@@ -1,6 +1,6 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
-from .models import Product, OrderItem, Order, Category, SubCategory
+from .models import Product, OrderItem, Order, Category, SubCategory, Address, Payment
 # Register your models here.
 
 #admin.site.register(Product)
@@ -35,3 +35,5 @@ admin.site.register(Order)
 admin.site.register(OrderItem)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(SubCategory, SubCategoryAdmin)
+admin.site.register(Address)
+admin.site.register(Payment)

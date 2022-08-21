@@ -47,6 +47,7 @@ DEPENDENCIES_APPS = [
     'rest_framework',
     'parler',
     'paypal.apps.PaypalConfig',
+    'paypalcheckoutsdk',
 ]
  
 PROJECT_APPS = [

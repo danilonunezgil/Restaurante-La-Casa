@@ -248,33 +248,26 @@ class Order(models.Model):
         return total
     
 class Payment(models.Model):
-
-    class Meta:
-        verbose_name = _('Payment')
-        verbose_name_plural = _('Payments')
     """
     This class allows you to make a payment for an order.
     """
     order = models.ForeignKey(Order, verbose_name = _('Order'), on_delete=models.CASCADE, related_name='payments')
-    payment_method = models.CharField(
-        verbose_name = _('Payment method'), 
-        max_length=20, 
-        choices=(('Paypal', 'Paypal'),),
-        help_text=_("Select payment method"))
-    timestamp = models.DateTimeField(
-        verbose_name = _('Timestamp'), 
-        auto_now_add=True, 
-        help_text=_("Date of payment"))
-    succesful = models.BooleanField(
-        verbose_name = _('Succesful'), 
-        default=False, 
-        help_text=_("Successful payment?"))
-    amount = models.FloatField(
-        verbose_name = _('Amount'), 
-        help_text=_("Amount paid"))
-    raw_response = models.TextField(
-        verbose_name = _('Raw response'), 
-        help_text=_("Payment gateway response"))
+    full_name = models.CharField(verbose_name=_('Full name'),max_length=100)
+    email = models.EmailField(verbose_name=_('Email'),max_length=254, blank=True)
+    address1 = models.CharField(verbose_name=_('Address 1'),max_length=250)
+    city = models.CharField(verbose_name=_('City'),max_length=100)
+    postal_code = models.CharField(verbose_name=_('postal code'),max_length=20)
+    country_code = models.CharField(verbose_name=_('Country code'),max_length=4, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    total_paid = models.DecimalField(verbose_name=_('Total Pay'),max_digits=5, decimal_places=2)
+    order_key = models.CharField(verbose_name=_('Order key'),max_length=200)
+    payment_option = models.CharField(verbose_name=_('Payment option'),max_length=200)
+    billing_status = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = _('Payment')
+        verbose_name_plural = _('Payments')
 
     def __str__(self):
         return self.reference_number
