@@ -1,7 +1,7 @@
 {% extends "home.html" %}
 {% load i18n %}
 {% load static %}
-{% block title %}{% trans "Payment Successful" %}{%endblock title%}
+{% block title %}{% trans "Payment Successful | La Casa Restaurante" %}{%endblock title%}
 
 {% block content %}
 
@@ -11,10 +11,10 @@
        <div class="check"><i class="fa fa-check" aria-hidden="true" style="color:rgba(79, 191, 168, 0.9)"></i></div>
     </div>
   <div class="container bg-white p-3">
-    <h1 class="text-center"> {% trans "Payment Successful" %} </h1>
-    <p class="text-center">{% trans "Thank you for your purchase" %}</p>
+    <h1 class="text-center"> {% trans "Pago Exitoso" %} </h1>
+    <p class="text-center">{% trans "Gracias por tu compra" %}</p>
     <div class="d-flex justify-content-center p-3" >
-      <a href="{% url 'main:shop'%}" class="btn btn-primary btn-md py-3 w-25 rounded" >{% trans "Go to Home" %}</a>
+      <a href="{% url 'main:shop'%}" class="btn btn-primary btn-md py-3 w-25 rounded" >{% trans "Ir a Inicio" %}</a>
     </div>  
   </div>  
 </div>

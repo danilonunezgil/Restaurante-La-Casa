@@ -14,6 +14,18 @@
                 <h2 class="h3 mb-3 text-black text-center">{% trans "Selecciona el Método de Pago" %}</h2>
                 <hr />
                 <div id="paypal-button-container" class="pt-4"></div>
+
+                <div class="pay-method m-1 p-1">
+                    <br />
+                    <table style="width: auto; text-align: left;">
+                        <tr>
+                            <td><img src="/static/img/nequi.jpg" alt="credibanco logo" class="lcredibanco" style="height: 50px;"></td>
+                        </tr>
+                    </table>
+
+                    <p>{% trans "Realice su pago y envíe el comprobante a nuestro WhatsApp"%}</p>
+                    <img src="/static/img/codigo_qr.jpeg" alt="codigo qr" style="width: 100%; height: 100%;">
+                </div>
             </div>
             <div class="col-md-5">
                 <div class="row mb-5">
@@ -56,8 +68,21 @@
     </div>
 </div>
 
-<script src="https://www.paypal.com/sdk/js?client-id=AXwEU9R8QFdtHbiWdvVteT-7qaWvmJZ-xBq7J5ymkf8cO6RZhHabV2RVLyxJ06VmA5hvKCl6uE4Pmm9Q"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AXwEU9R8QFdtHbiWdvVteT-7qaWvmJZ-xBq7J5ymkf8cO6RZhHabV2RVLyxJ06VmA5hvKCl6uE4Pmm9Q&currency=USD"></script>
 <script>
+    /*var myHeaders = new Headers();
+    myHeaders.append("apikey", "0UwHi2vQtgG5E7HFhAvGOF6nJcyChO3Z");
+
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow',
+        headers: myHeaders
+    };
+    fetch("https://api.apilayer.com/exchangerates_data/convert?to=USD&from=COP&amount=64000", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));*/
+
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -88,7 +113,8 @@
                     purchase_units: [{
                         "amount": {
                             "currency_code": "USD",
-                            "value": '{{order.get_total|stringformat:".2f"}}'
+                            "value":'14.53'
+                            //"value": '{{order.get_total|stringformat:".2f"}}'
                         }
                     }]
                 });
@@ -112,5 +138,7 @@
     }
     initPayPalButton();
 </script>
+
+
 
 {% endblock content %}
