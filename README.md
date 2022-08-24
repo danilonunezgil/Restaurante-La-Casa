@@ -1,6 +1,6 @@
 # LA CASA RESTAURANTE
 
-## Lenguajes y Herramientas utilizadas ##
+## Tecnologías utilizadas ##
 
 Django 3.2.12 + PostgreSQL 11 + Dokku config (Production Ready)
 HTML, CSS3, JavaScript, JQuery, Contenedor Docker, Droplet de DigitalOcean, LetsEncrypt 
@@ -18,7 +18,7 @@ que varían (sopas, principios, ensaladas) y la disponibilidad de los productos 
 ```
 ### Requerimiento Funcional Prioritario ###
 ```
-ADMINISTRAR LOS PRODCTOS: Se ha priorizado el requerimiento funcional enunciado debido a 
+ADMINISTRAR LOS PRODUCTOS: Se ha priorizado el requerimiento funcional enunciado debido a 
 la importancia que tiene. Es el núcleo del desarrollo pues el administrador actualmente 
 genera de manera manual cada día el menú que va a ser enviado por WhatsApp, lo que
 representa un proceso tedioso y repetitivo que puede ser automatizado. 
@@ -61,22 +61,9 @@ un registro en donde se pueda visualizar lo que se tiene pendiente en
 cuanto a actividades según sea el rol.
 
 ```
-### Steps to change the name of an application in Django: ###
+### ------------------------------- ASPECTOS TÉCNICOS ------------------------------- ###
+### Directory Tree ###
 ```
--An application with the target name must be created.
--Copy the contents of the application to be renamed into the application with the target name.
--Delete the content of the application to be renamed. (delete the url in lacasarestaurante)
--Execute the migration commands (makegrations and migrate), this is done to delete the DB tables.
--Delete the folder of the application to rename and delete the application record in the settings(common.py).
--Ready, you have renamed the app.
-
-```
-### Árbol de Directorios ###
-```
-En este apartado encontramos una descripción gráfica general de cuáles son las carpetas y 
-archivos que contiene el presente respositorio. Cabe resaltar que Django (framework con el que desarrollamos) 
-funciona a partir de una serie de aplicaciónes que se pueden ver como módulos. Ej. Módulo Tienda,
-Módulo Usuario. Los módulos comparten la misma estructura.
 
 ├── main (Main application of the project, use it to add main templates, statics and root routes)
 │   ├── fixtures
