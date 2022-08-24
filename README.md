@@ -1,4 +1,4 @@
-# lacasarestaurante
+# LA CASA RESTAURANTE
 
 Lenguajes y herramientas usadas para el desarrollo y el despliegue:
 Django 3.2.12 + PostgreSQL 11 + Dokku config (Production Ready)
