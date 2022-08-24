@@ -1,6 +1,7 @@
 # LA CASA RESTAURANTE
 
-Lenguajes y herramientas usadas para el desarrollo y el despliegue:
+## Lenguajes y Herramientas utilizadas ##
+
 Django 3.2.12 + PostgreSQL 11 + Dokku config (Production Ready)
 HTML, CSS3, JavaScript, JQuery, Contenedor Docker, Droplet de DigitalOcean, LetsEncrypt 
 
