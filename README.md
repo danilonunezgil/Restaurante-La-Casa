@@ -5,55 +5,60 @@
 Django 3.2.12 + PostgreSQL 11 + Dokku config (Production Ready)
 HTML, CSS3, JavaScript, JQuery, Contenedor Docker, Droplet de DigitalOcean, LetsEncrypt 
 
-## Documentation ##
-
-En este enlace encuentra la documentación del proyecto: objetivos, marco de referencia, metodología y desarrollo, análisis económico, conclusiones y recomendaciones. Solicite el acceso y será concedido.
-https://docs.google.com/document/d/1HfIFXiuLiYaKKhzRVhorOYTXwgdg20-FrDrfjzeIlxc/edit?usp=sharing
 
 ### Resumen ###
 ```
-El presente proyecto consiste en la implementación de una tienda virtual para 
-un restaurante ubicado en la ciudad de Villavicencio. El cliente tiene la posibilidad de ver y comprar
-los productos disponibles pagando por medio de la pasarela de pago MercadoPago. De la misma manera 
-podrá solicitar haciendo clic en el botón de WhatsApp el menú del día, el administrador del sitio generará 
-cada día dicho menú mediante la selección de los productos que varían (sopas, principios, ensaladas)
-y la disponibilidad de los productos que son fijos.
+El presente proyecto consiste en la implementación de una tienda virtual 
+para el restaurante ubicado en la ciudad de Villavicencio. El cliente podrá ver y comprar
+los productos disponibles pagando por medio de la pasarela de pago Paypal o por transacción
+Nequi. De la misma manera, podrá solicitar haciendo clic en el botón de WhatsApp el menú del día, 
+el administrador del sitio generará cada día dicho menú mediante la selección de los productos 
+que varían (sopas, principios, ensaladas) y la disponibilidad de los productos que son fijos.
 
 ```
 ### Requerimiento Funcional Prioritario ###
 ```
-Administrar Productos: Se ha priorizado el requerimiento funcional enunciado debido a la importancia 
-que tiene. Es el núcleo del desarrollo pues el administrador actualmente genera de manera manual 
-cada día el menú que va a ser enviado por WhatsApp, lo que representa un proceso tedioso y repetitivo
-que puede ser automatizado. 
+ADMINISTRAR LOS PRODCTOS: Se ha priorizado el requerimiento funcional enunciado debido a 
+la importancia que tiene. Es el núcleo del desarrollo pues el administrador actualmente 
+genera de manera manual cada día el menú que va a ser enviado por WhatsApp, lo que
+representa un proceso tedioso y repetitivo que puede ser automatizado. 
 
 ```
 
 ### Metodología de Desarrollo ###
 ```
-El marco de trabajo para el desarrollo del presente producto de software que se utiliza aquí es SCRUM.
-Se tiene una hoja de cálculo que se denomina backlog donde al inicio del desarrollo se especificaron
-cada una de las posibles actividades que se llevarían a cabo y con la puesta en ejecución del proyecto
-se han agregado nuevas actividades. También se tienen reuniones de manera periódica (cada lunes) y entregas
-de resultados al cliente (cada miércoles). Las anteriores dos, son características de SCRUM.
+El marco de trabajo para el desarrollo del presente producto de software es SCRUM.
+Se tiene una hoja de cálculo que se denomina backlog donde al inicio del desarrollo 
+se especificaron cada una de las posibles actividades que se llevarían a cabo y con la
+puesta en ejecución del proyecto se han agregado nuevas actividades. También se tienen reuniones
+de manera periódica (cada lunes) y entregas de resultados al cliente (cada miércoles). 
+Las anteriores dos, son características de SCRUM.
 
 ```
 
 ### Roles ###
 ```
--Edgar David Lozada Gonzalez - Desarrollador
--Carlos Danilo Núñez Gil - Product Owner
+-Edgar David Lozada Gonzalez - Product Owner
+-Carlos Danilo Núñez Gil - Desarrollador
 -Jessica Gómez Manrique - Scrum Master
 
 ```
 
 ### Kanban ###
 ```
-The visualization and assignment of tasks and project requirements is handled on a Kanban board 
-located in the Projects tab called "Base CMS E-Commerce". In the board there are 5 columns.
-- To Do (pending tasks) 
-- In progress (Tasks in progress)
-- Done (tasks/requirements completed)
+Se hace uso de un Tablero Kanban en GitHub que es una herramienta con 
+la que se puede tener una mirada simplificada de todas las actividades 
+que están pendientes, se estén desarrollando y se hayan desarrollado. 
+Dicho tablero está compuesto de tres columnas de actividades:
+
+- To Do (actividad pendiente) 
+- In progress (actividad en proceso)
+- Done (actividad completadas)
+
+Cada actividad se puede trabajar con un Issues (que traduce incidencia),
+asignar a un integrante del equipo de desarrollo para así disponer de
+un registro en donde se pueda visualizar lo que se tiene pendiente en
+cuanto a actividades según sea el rol.
 
 ```
 ### Steps to change the name of an application in Django: ###
@@ -66,8 +71,12 @@ located in the Projects tab called "Base CMS E-Commerce". In the board there are
 -Ready, you have renamed the app.
 
 ```
-### Directory Tree ###
+### Árbol de Directorios ###
 ```
+En este apartado encontramos una descripción gráfica general de cuáles son las carpetas y 
+archivos que contiene el presente respositorio. Cabe resaltar que Django (framework con el que desarrollamos) 
+funciona a partir de una serie de aplicaciónes que se pueden ver como módulos. Ej. Módulo Tienda,
+Módulo Usuario. Los módulos comparten la misma estructura.
 
 ├── main (Main application of the project, use it to add main templates, statics and root routes)
 │   ├── fixtures
