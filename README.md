@@ -19,9 +19,9 @@ que varían (sopas, principios, ensaladas) y la disponibilidad de los productos 
 ### Requerimiento Funcional Prioritario ###
 ```
 ADMINISTRAR LOS PRODUCTOS: Se ha priorizado el requerimiento funcional enunciado debido a 
-la importancia que tiene. Es el núcleo del desarrollo pues el administrador actualmente 
-genera de manera manual cada día el menú que va a ser enviado por WhatsApp, lo que
-representa un proceso tedioso y repetitivo que puede ser automatizado. 
+la importancia que tiene. Es el núcleo del desarrollo pues es necesario tener todos los productos
+debidamente actualizados, con imágenes consistentes y de buena calidad. Así mismo se debe 
+implementar la estrategia de marketing para dar a conocer el sitio web.
 
 ```
 
